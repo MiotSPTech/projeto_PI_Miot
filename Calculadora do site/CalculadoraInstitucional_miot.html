@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<link href="style.css" rel="stylesheet">
+<body>
+<div class="container_header">
+    <h1>Calculadora Institucional</h1>
+</div>
+    <div class="container_inputs_calculadora">
+
+        <br>
+        <br>
+        Me diga quantas horas paradas a empresa ficou por ano:
+        <input id="input_qtd_horas_paradas">
+        
+        <br>
+        <br>
+        
+        Qual valor de faturamento anual:
+        <input id="input_faturamento">
+        
+        <br>
+        <br>
+        
+        quantas horas a empresa opera por dia
+        <input id="input_horas_por_dia">
+
+        <br>
+        <br>
+
+        <button  class="button_calcular" onclick="calcularEconomia()"">
+            Calcular
+        </button>
+
+        
+        <br>
+        <br>
+    </div>
+    <div style="" class="div_container_result">
+
+        <div id="div_resultado">
+
+    </div>
+        
+    
+</body>
+</html>
+<script>
+    function calcularEconomia() {
+        const qtdHorasParadas = Number(input_qtd_horas_paradas.value);
+        const faturamentoAnual = Number(input_faturamento.value);
+        const horasDeTrabalho = Number(input_horas_por_dia.value); 
+
+        let faturamentoPorDia = faturamentoAnual / 365
+        let horasEmDias = qtdHorasParadas / horasDeTrabalho // vai dar o resultado em dias
+        let causaDoCurto = faturamentoPorDia * horasEmDias
+        
+        let GanhoComNos = causaDoCurto * 0.6
+
+
+        div_resultado.innerHTML = `
+        
+        As empresas enfrentam o risco de curtos-circuitos, resultando em prejuízos. 
+        Com a Miot, oferecemos uma garantia de segurança, reduzindo essa ameaça e proporcionando
+        benefícios anuais consideráveis.
+        Com base no faturamento fornecido, estimamos ${causaDoCurto.toFixed(2)} em perdas.
+        Com nossa solução, podemos recuperar 60% desse valor, deixando ${GanhoComNos.toFixed(2)} em seu bolso.
+
+        Assim trazendo segurança e desenpenho para sua empresa!
+
+        Miot, preservando você, a vida, o negocio e as conquista!
+        `
+        
+    }
+</script>
+

@@ -1,0 +1,44 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+}
+
+.container_header{
+    display: flex;
+    background-color:#007bff;
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    left: 0;
+}
+.container_inputs_calculadora{
+    display: flex;
+    background-color: beige;
+    position: fixed;
+    top: 110px;
+    left: 40px;
+    width: 200px;
+    flex-direction: column;
+    padding: 70px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.div_container_result {
+    margin-top: 20px; /* Adicionando algum espaço entre a div dos inputs e a div da resposta */
+    padding: 20px;
+    background-color: #ff0000; /* Cor de fundo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 400px; /* Largura máxima */
+    margin-left: auto; /* Centralizando horizontalmente */
+    margin-right: auto; /* Centralizando horizontalmente */
+    position: fixed; /* Posicionando a div de forma fixa */
+    top: 100px; /* Posicionando a div abaixo do cabeçalho */
+    right: 10px; /* Afastando a div da direita */
+}
+
