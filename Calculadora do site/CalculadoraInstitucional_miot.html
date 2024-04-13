@@ -6,6 +6,8 @@
     
     <title>Document</title>
 </head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <link href="style.css" rel="stylesheet">
 <body>
 <div class="container_header">
@@ -15,19 +17,19 @@
 
         <br>
         <br>
-        Me diga quantas horas paradas a empresa ficou por ano:
+        <p>Quantas horas sua empresa fica parada por curtos-circuitos por ano:</p>
         <input id="input_qtd_horas_paradas">
         
         <br>
         <br>
         
-        Qual valor de faturamento anual:
+        <p>Qual valor de faturamento anual da sua empresa:</p>
         <input id="input_faturamento">
         
         <br>
         <br>
         
-        quantas horas a empresa opera por dia
+        <p>Quantas horas sua empresa fica em produção por dia:</p>
         <input id="input_horas_por_dia">
 
         <br>
@@ -41,7 +43,10 @@
         <br>
         <br>
     </div>
-    <div style="" class="div_container_result">
+    <div class="div_image" id="div_image">
+        <img src="file:///C:/Users/pablo/Downloads/undraw_calculator_re_alsc.svg" alt="imagem de maluco">
+    </div>
+    <div class="div_container_result" id="div_container_result">
 
         <div id="div_resultado">
 
@@ -62,18 +67,23 @@
         
         let GanhoComNos = causaDoCurto * 0.6
 
+        let div_container_result = document.getElementById("div_container_result"); // Obtendo a referência para o elemento HTML
+        div_container_result.style.display = "block"
+
+        let div_image = document.getElementById("div_image"); // Obtendo a referência para o elemento HTML
+        div_image.style.display = "none"
 
         div_resultado.innerHTML = `
         
-        As empresas enfrentam o risco de curtos-circuitos, resultando em prejuízos. 
+        <p stlye="color:#1B1B1D;" class="p_result">As empresas enfrentam o risco de curtos-circuitos, resultando em prejuízos. 
         Com a Miot, oferecemos uma garantia de segurança, reduzindo essa ameaça e proporcionando
         benefícios anuais consideráveis.
-        Com base no faturamento fornecido, estimamos ${causaDoCurto.toFixed(2)} em perdas.
-        Com nossa solução, podemos recuperar 60% desse valor, deixando ${GanhoComNos.toFixed(2)} em seu bolso.
+        Com base no faturamento fornecido, estimamos ${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} em perdas.
+        Com nossa solução, podemos recuperar 60% desse valor, deixando ${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} em seu bolso.<br>
 
-        Assim trazendo segurança e desenpenho para sua empresa!
+        Assim trazendo segurança e desenpenho para sua empresa!<br>
 
-        Miot, preservando você, a vida, o negocio e as conquista!
+        Miot, preservando você, a vida, o negocio e as conquistas!
         `
         
     }

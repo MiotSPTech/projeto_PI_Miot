@@ -1,44 +1,79 @@
 body {
     background-color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins como fonte principal */
     display: flex;
     margin: 0;
 }
 
 .container_header{
     display: flex;
-    background-color:#007bff;
+    background-color:#3C81D1;
     position: fixed;
     top: 0;
     text-align: center;
     width: 100%;
-    padding: 10px 0;
+    padding: 5px 0;
     left: 0;
 }
 .container_inputs_calculadora{
     display: flex;
-    background-color: beige;
+    background-color: #A0A5AC ;
     position: fixed;
     top: 110px;
     left: 40px;
     width: 200px;
     flex-direction: column;
-    padding: 70px;
-    border-radius: 10px;
+    padding: 60px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #1B1B1D;
 }
 
 .div_container_result {
     margin-top: 20px; /* Adicionando algum espaço entre a div dos inputs e a div da resposta */
-    padding: 20px;
-    background-color: #ff0000; /* Cor de fundo */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 250px;
+    background-color: #3C81D1; /* Cor de fundo */
+    border-radius: 20px; /* Bordas arredondadas */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra */
     max-width: 400px; /* Largura máxima */
     margin-left: auto; /* Centralizando horizontalmente */
     margin-right: auto; /* Centralizando horizontalmente */
     position: fixed; /* Posicionando a div de forma fixa */
-    top: 100px; /* Posicionando a div abaixo do cabeçalho */
-    right: 10px; /* Afastando a div da direita */
+    top: 90px; /* Posicionando a div abaixo do cabeçalho */
+    right: 40px; /* Afastando a div da direita */
+    color: #1B1B1D;
+    display: none;
 }
+
+.container_inputs_calculadora input {
+    padding: 4px; /* Adicionando espaço interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Adicionando uma borda com cor cinza */
+    background-color: #E5E5E5; /* Cor de fundo */
+    margin-bottom: 3px; /* Espaçamento entre os inputs */
+    margin-top: -4px;
+}
+.container_inputs_calculadora p{
+    margin: 3px 0;
+    margin-top: -50px;
+    font-family: 'Poppins', sans-serif;
+}
+#div_resultado{
+    text-align: center;
+    max-width: 100%;
+}
+.p_result{
+    margin-top: -180px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.div_image img{
+    position: absolute;
+    top: 120px; /* Posicionando a mesma distância do topo que a div_container_result */
+    right: 190px; /* Posicionando a mesma distância da direita que a div_container_result */
+    display: block;
+}
+
 
