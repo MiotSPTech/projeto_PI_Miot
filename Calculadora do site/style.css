@@ -20,30 +20,34 @@ body {
     background-color: #A0A5AC ;
     position: fixed;
     top: 110px;
-    left: 40px;
-    width: 200px;
+    left: 10px;
+    width: 30%;
     flex-direction: column;
-    padding: 60px;
+    padding: 57px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #1B1B1D;
 }
 
 .div_container_result {
-    margin-top: 20px; /* Adicionando algum espaço entre a div dos inputs e a div da resposta */
-    padding: 250px;
+    margin-top: 10px; /* Adicionando algum espaço entre a div dos inputs e a div da resposta */
+    padding: 200px;
     background-color: #3C81D1; /* Cor de fundo */
     border-radius: 20px; /* Bordas arredondadas */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra */
-    max-width: 400px; /* Largura máxima */
+    max-width: 30%; /* Largura máxima */
     margin-left: auto; /* Centralizando horizontalmente */
     margin-right: auto; /* Centralizando horizontalmente */
     position: fixed; /* Posicionando a div de forma fixa */
-    top: 90px; /* Posicionando a div abaixo do cabeçalho */
-    right: 40px; /* Afastando a div da direita */
+    top: 105px; /* Posicionando a div abaixo do cabeçalho */
+    right: 10px; /* Afastando a div da direita */
     color: #1B1B1D;
     display: none;
+    height: 2%;
+    height: 7%;
+
 }
+
 
 .container_inputs_calculadora input {
     padding: 4px; /* Adicionando espaço interno */
@@ -75,5 +79,10 @@ body {
     right: 190px; /* Posicionando a mesma distância da direita que a div_container_result */
     display: block;
 }
-
+.p_result .span_causa{
+    background-color: white;
+}
+.p_result .span_ganho{
+    background-color:  white;
+}
 

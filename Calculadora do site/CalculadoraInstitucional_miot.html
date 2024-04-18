@@ -48,7 +48,7 @@
     </div>
     <div class="div_container_result" id="div_container_result">
 
-        <div id="div_resultado">
+        <div id="div_resultado"></div>
 
     </div>
         
@@ -66,6 +66,7 @@
         let causaDoCurto = faturamentoPorDia * horasEmDias
         
         let GanhoComNos = causaDoCurto * 0.6
+        
 
         let div_container_result = document.getElementById("div_container_result"); // Obtendo a referência para o elemento HTML
         div_container_result.style.display = "block"
@@ -78,8 +79,8 @@
         <p stlye="color:#1B1B1D;" class="p_result">As empresas enfrentam o risco de curtos-circuitos, resultando em prejuízos. 
         Com a Miot, oferecemos uma garantia de segurança, reduzindo essa ameaça e proporcionando
         benefícios anuais consideráveis.
-        Com base no faturamento fornecido, estimamos ${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} em perdas.
-        Com nossa solução, podemos recuperar 60% desse valor, deixando ${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} em seu bolso.<br>
+        Com base no faturamento fornecido, estimamos <span class="span_causa">${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em perdas.
+        Com nossa solução, podemos recuperar 60% desse valor, deixando <span class="span_ganho">${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em seu bolso.<br>
 
         Assim trazendo segurança e desenpenho para sua empresa!<br>
 
@@ -88,4 +89,5 @@
         
     }
 </script>
+
 
