@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonte/Poppins-Light.ttf') format('truetype');
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    height: 650px;
+    position: relative;
+}
+.divisao{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.divisao h1{
+    width: 20%;
+    margin-right: 40%;
+    font-size: 5.5vw;
+    font-family: 'Poppins';
+    font-weight: bolder;
+}
+.divisao h2{
+    width: 100%;
+    font-size: 1.45vw;
+    font-family: 'Poppins';
+    margin: 0;
+    margin-left: 10%;
+}
+.divisao-carrosel{
+    width: 50vw;
+    display: grid;
+    flex-flow: row nowrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3vw;
+}
+.card-carrosel{
+    margin-top: 35%;
+    width: 15vw;
+    height: 45vh;
+    background-color: #3C81D1;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 2);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Poppins';
+    transition: all 600ms ease-in-out;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 0;
+}
+.b{
+    grid-column: 2; /* posição na coluna 2 */
+    grid-row: 1;
+    transform: translateX(50%);
+}
+.a{
+    transform: translateX(25%);
+}
+.card-carrosel img{
+    margin-top: 5%;
+    width: 35%;
+}
+.card-carrosel .card-title{
+    font-weight: bolder;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.card-carrosel .card-desc{
+    width: 80%;
+}
+.current-carrosel{
+    background-color: #fff;
+    color: black;
+    opacity: 1;
+    z-index: 1;
+    grid-column: 2;
+    grid-row: 1;
+    transform: translateX(-10%) scale(1, 1.09);
+}
