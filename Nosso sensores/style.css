@@ -21,13 +21,14 @@ body{
     flex-direction: column;
     align-items:center;
     justify-content: center;
+
 }
 .divisao h1{
     width: 20%;
     margin-right: 40%;
     font-size: 5.5vw;
     font-family: 'Poppins';
-    font-weight: bolder;
+    font-weight: 800;
 }
 .divisao h2{
     width: 100%;
