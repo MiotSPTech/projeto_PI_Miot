@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Cadastro Style.css">
+</head>
+
+<body>
+    
+
+    <div class="titulo">
+        <h1>Entre na sua conta!</h1> <br>
+        <span>Ainda não possui uma conta? <a href="Cadastro IOT.html" style="color: aliceblue;">Cadastre-se</a></span>
+    </div>
+
+    <div class="pai">
+        
+        <div class="cadastro">
+
+            E-mail <br>
+            <input type="text" id="ipt_email" class="input"><br><br>
+            Senha <br>
+            <input type="text" id="ipt_senha" class="input"> <br><br>
+            
+                    <button onclick="acessarSite()" class="botao">
+                        Acesse sua conta
+                    </button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function acessarSite() {
+
+        let email = ipt_email.value
+        let senha = ipt_senha.value
+
+        if (email.indexOf("@")) {
+            if (email.endsWith(".com") || email.endsWith(".br")) {
+            } else {
+                alert("Email inválido")
+            }
+        } else {
+            alert("Email inválido")
+        }
+
+    }
+
+
+    // if (senha.lenght >= 8) {
+    //     if (/[A-Z]/.test(senha)) {
+
+    //     }
+    // } else {
+    //     alert("Sua senha deve conter mais de 8 caracteres")
+    // }
+</script>

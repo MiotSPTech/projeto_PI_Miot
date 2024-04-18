@@ -1,13 +1,13 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 
-font-family: 'Poppins', sans-serif;
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
 }
-
-
 
 .titulo {
     width: 100%;
@@ -16,9 +16,8 @@ box-sizing: border-box;
     color: whitesmoke;
     justify-content: center;
     flex-direction: column;
-    align-items: center;  
+    align-items: center;
     background: linear-gradient(90deg, #5583ff, #0004ff);
-
 }
 
 .pai {
@@ -28,15 +27,9 @@ box-sizing: border-box;
     align-items: center;
     justify-content: center;
     background-color: white;
-
-
 }
 
-
-
-
 .cadastro {
-
     background-color: white;
     padding: 40px;
     border-radius: 8px;
@@ -44,40 +37,39 @@ box-sizing: border-box;
     flex-direction: column;
     margin: 10px;
     gap: 10px;
-
 }
 
 .input {
     border-radius: 8px;
-padding: 15px;
-border: none;
-outline: none;
-font-size: 15px;
-background-color: rgb(180, 180, 180);
-color: rgb(0, 0, 0);
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background-color: rgb(180, 180, 180);
+    color: rgb(0, 0, 0);
 }
 
-
 .botao {
-
-background-color: dodgerblue;
-border: none;
-padding: 15px;
-width: 100%;
-border-radius: 10px;
-color: white;
-font-size: 15px;
+    background-color: dodgerblue;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
 }
 
 .botao:hover {
-
-background-color: deepskyblue;
-cursor: pointer;
-
-
+    background-color: deepskyblue;
+    cursor: pointer;
 }
 
 
 
+.letras_pequenas {
+    font-family: 'Dosis', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 
-
+  }
