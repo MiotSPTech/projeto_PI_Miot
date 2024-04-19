@@ -62,7 +62,7 @@
 
 #inicio {
   position: relative; /* Alterado para relativo para que os elementos dentro dele respeitem o layout da página */
-  width: 100vw;
+  width: 100%;
   height: auto;
   /*padding-top: 80px; /* Ajuste conforme necessário para garantir que o conteúdo não se sobreponha à barra de navegação */
 }
