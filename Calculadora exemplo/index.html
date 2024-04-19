@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Dancing+Script&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet" />
+
+
+        <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Calculadora Financiera</title>
+</head>
+
+<body>
+    <main>
+
+        <div class="screen1"> <!--Home screen-->
+            <h1>Calculadora Financeira</h1>
+            <p>Prejuízo por<b><br>Curtos-Circuitos</b></p>
+
+            <span>Horas anuais de parada devido a curtos-circuitos na empresa:</span>
+            <input type="number" id="input_qtd_horas_paradas"><br> <br>
+            <span>Faturamento anual da empresa:</span>
+            <input type="number" id="input_faturamento"><br> <br>
+            <span>Horas de operação diária da empresa:</span>
+            <input type="number" id="input_horas_por_dia"> <br> <br>
+
+            <button onclick="calcularEconomia()">Calcular</button>
+        </div>
+
+        <div id="message"></div>
+  
+</body>
+
+</html>
+
+<script>
+    function calcularEconomia() {
+
+        const qtdHorasParadas = Number(input_qtd_horas_paradas.value);
+        const faturamentoAnual = Number(input_faturamento.value);
+        const horasDeTrabalho = Number(input_horas_por_dia.value); 
+
+        let faturamentoPorDia = faturamentoAnual / 365
+        let horasEmDias = qtdHorasParadas / horasDeTrabalho // vai dar o resultado em dias
+        let causaDoCurto = faturamentoPorDia * horasEmDias
+        
+        let GanhoComNos = causaDoCurto * 0.6
+
+
+        
+
+        message.innerHTML = `
+    <div class="message">
+        Sem a MIOT, você perde uma quantia de:
+        <div class="message__value">${causaDoCurto.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}.</div> <br>
+        Ao adquirir nosso produto, você estaria deixando de perder uma quantia de: 
+        <div class="message__value">${GanhoComNos.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })} anualmente!</div>
+    </div>
+`
+ 
+    }
+</script>
