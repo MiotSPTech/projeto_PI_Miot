@@ -7,6 +7,7 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 .container{
     width: 100vw;
@@ -91,4 +92,4 @@ body{
     grid-column: 2;
     grid-row: 1;
     transform: translateX(-10%) scale(1, 1.09);
-}
+} 
