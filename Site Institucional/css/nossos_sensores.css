@@ -1,13 +1,10 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonte/Poppins-Light.ttf') format('truetype');
-}
 
 body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: 'Poppins';
 }
 .container{
     width: 100vw;
