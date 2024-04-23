@@ -6,7 +6,9 @@
   font-family: 'Poppins';
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 .header {
   width: 100%;

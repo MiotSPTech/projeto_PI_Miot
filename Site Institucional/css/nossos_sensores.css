@@ -6,6 +6,11 @@ body{
     overflow-x: hidden;
     font-family: 'Poppins';
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 .container{
     width: 100vw;
     display: flex;

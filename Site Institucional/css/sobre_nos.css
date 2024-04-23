@@ -5,6 +5,10 @@ body {
     font-family: 'Poppins';
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .cont{
     display: flex;
     width: 100vw;
