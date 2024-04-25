@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Tech</title>
+    <link rel="stylesheet" href="css/dash.css">
+    <link rel="shortcut icon" href="imagens/favicon2.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container">
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title">Usuário</span>
+                    </a>
+                </li>
+
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-circle-outline"></ion-icon></span>
+                        <span class="title">Ajuda</span>
+                    </a>
+                </li>
+
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Configurações</span>
+                    </a>
+                </li>
+
+                <li class="list">
+                    <a href="login.html">
+                        <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+            <div class="dash">
+
+              <div class="alinhar">
+                  <div class="grafico">
+                      <canvas id="grafico_coluna"></canvas>
+                  </div>
+                    
+                  <div class="grafico">
+                      <canvas id="grafico_linha"></canvas>
+                  </div>
+              </div>
+
+                <div class="alinhar">
+                    <div class="card-kpi-a">
+                        <span>Nível Ph da água</span>
+                        <h1>8.6</h1>
+                    </div>
+        
+                    <div class="card-kpi-b">
+                        <span>Salinidade da água</span>
+                        <h1>1.024</h1>
+                    </div>
+                    
+                    <div class="card-kpi-c">
+                        <canvas id="grafico_donut"></canvas>
+                    </div>
+                </div>
+                
+            </div>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink(){
+            list.forEach((item) => 
+            item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) => 
+        item.addEventListener('click', activeLink));
+    </script>
+</body>
+<script>
+    const grafico_linha = document.getElementById('grafico_linha');
+  
+    new Chart(grafico_linha, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          label: 'umidade',
+          data: [80, 82, 80, 85, 80, 83],
+          borderWidth: 1
+        },
+        {
+          label: 'Temperatura',
+          data: [30, 29, 28, 25, 22, 23],
+          borderWidth: 1
+        }]
+        
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const grafico_coluna = document.getElementById('grafico_coluna');
+  
+    new Chart(grafico_coluna, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+        datasets: [{
+          label: 'Umidade',
+          data: [90, 89, 93, 87, 88, 82],
+          borderWidth: 1
+        },
+        {
+          label: 'Temperatura',
+          data: [22, 24, 27, 23, 20, 18],
+          borderWidth: 1
+        }]
+        
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+
+    const grafico_donut = document.getElementById('grafico_donut');
+  
+    new Chart(grafico_donut, {
+      type: 'doughnut',
+      data: {
+        labels: [
+            'Reprodução água salgada',
+            'Reprodução água doce',
+            'Reprodução mariscos'
+        ],
+        datasets: [{
+            label: 'Quantidade de peixes em período fertíl',
+            data: [56, 42, 20],
+            backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+        
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</html>
