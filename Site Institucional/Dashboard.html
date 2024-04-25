@@ -53,12 +53,27 @@
             <div class="dash">
 
               <div class="alinhar">
-                  <div class="grafico">
-                      <canvas id="grafico_coluna"></canvas>
+                <div class="grafico">
+                  <canvas id="grafico_coluna"></canvas>
+                </div>
+
+                  <div id="trocar_grafico" class="grafico">
+                      <canvas id="grafico_linha_temperatura"></canvas>
                   </div>
-                    
-                  <div class="grafico">
-                      <canvas id="grafico_linha"></canvas>
+                    <span id="span_btn">
+                      <button  onclick="temperatura()">
+                        ●
+                      </button>
+                      <button onclick="umidade()">
+                        ○
+                      </button>
+                    </span>
+                  <div id="div_kpi" class="card-kpi-a">
+                    <span>Temperatura:</span>
+                    <span>
+                      <span>estável <b>27ºC</b></span>
+                      <img src="" alt="">
+                    </span>
                   </div>
               </div>
 
@@ -98,17 +113,14 @@
     </script>
 </body>
 <script>
-    const grafico_linha = document.getElementById('grafico_linha');
+    const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
+
   
-    new Chart(grafico_linha, {
+    new Chart(grafico_linha_temperatura, {
       type: 'line',
       data: {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-        datasets: [{
-          label: 'umidade',
-          data: [80, 82, 80, 85, 80, 83],
-          borderWidth: 1
-        },
+        datasets: [
         {
           label: 'Temperatura',
           data: [30, 29, 28, 25, 22, 23],
@@ -183,5 +195,92 @@
         }
       }
     });
+
+    
   </script>
 </html>
+<script>
+  function temperatura(){
+        trocar_grafico.innerHTML = `
+        <canvas id="grafico_temperatura"></canvas>`;
+
+      const grafico_temperatura = document.getElementById('grafico_temperatura');
+
+      new Chart(grafico_temperatura, {
+        type: 'line',
+        data: {
+          labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+          datasets: [{
+            label: 'temperatura',
+            data: [80, 82, 80, 85, 80, 83],
+            borderWidth: 1
+          }]
+          
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      span_btn.innerHTML = `
+                        <button onclick="temperatura()">
+                          ●
+                        </button>
+                        <button onclick="umidade()">
+                          ○
+                        </button>`;
+
+      div_kpi.innerHTML = `
+                    <span>temperatura:</span>
+                    <span>
+                      <span>estável <b>27ºC</b></span>
+                      <img src="" alt="">
+                    </span>`;
+      }
+
+      function umidade(){
+        trocar_grafico.innerHTML = `
+        <canvas id="grafico_umidade"></canvas>`;
+
+      const grafico_umidade = document.getElementById('grafico_umidade');
+
+      new Chart(grafico_umidade, {
+        type: 'line',
+        data: {
+          labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+          datasets: [{
+            label: 'umidade',
+            data: [80, 82, 80, 85, 80, 83],
+            borderWidth: 1
+          }]
+          
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      span_btn.innerHTML = `
+                        <button onclick="temperatura()">
+                          ○
+                        </button>
+                        <button onclick="umidade()">
+                          ●
+                        </button>`;
+
+      div_kpi.innerHTML = `
+                    <span>Umidade:</span>
+                    <span>
+                      <span>estável <b>40%</b></span>
+                      <img src="" alt="">
+                    </span>`;
+      }
+</script>
