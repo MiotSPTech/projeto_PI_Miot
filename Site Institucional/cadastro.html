@@ -87,8 +87,10 @@
 
         if (email == "") {
             p_email.innerHTML = `<p style="color:red;">Insira um email</p>`
-        } else {
+        } else if (email.indexOf("@") > -1 && email.indexOf(".com") >-1){
             p_email.innerHTML = ""
+        } else {
+            p_email.innerHTML = `<p style="color:red;">Insira um email válido</p>`
         }
 
     }
@@ -157,6 +159,7 @@
 
     function cadastrar(){
 
+        
 
     }
 
