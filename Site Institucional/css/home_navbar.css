@@ -63,10 +63,11 @@ html {
 }
 
 #inicio {
-  position: relative; /* Alterado para relativo para que os elementos dentro dele respeitem o layout da página */
+  position: fixed; /* Alterado para relativo para que os elementos dentro dele respeitem o layout da página */
   width: 100%;
   height: auto;
   /*padding-top: 80px; /* Ajuste conforme necessário para garantir que o conteúdo não se sobreponha à barra de navegação */
+  z-index: -1;
 }
 
 
@@ -75,14 +76,20 @@ html {
 }
 
 .imagem-overlay {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: linear-gradient(45deg,  #49a0da 15%, transparent 60%);
   /*opacity: 0.5;  Ajuste a opacidade conforme necessário */
+
+
 }
+
+
+
+
+
 
 
 /* .inicio::after {

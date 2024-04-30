@@ -11,12 +11,12 @@ html {
     scroll-behavior: smooth;
 }
 
-.container{
+.container1{
     width: 100vw;
     display: flex;
     flex-direction: row;
     height: 650px;
-    position: relative;
+    background-color: white;
 }
 .divisao{
     width: 50vw;

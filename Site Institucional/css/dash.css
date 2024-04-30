@@ -17,6 +17,29 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+.rodape  {
+    display: flex;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+.filho {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    right: 70px;
+}
+.filho img{
+    display: flex;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    top: 50px;
+    right: 20px;
+}
+
 .alinhar{
     margin-top: 2%;
     display: flex;
