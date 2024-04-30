@@ -1,16 +1,18 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: Verdana;
     box-sizing: border-box;
 }
-.container{
-   display: flex;
-   overflow: hidden;
+
+.container {
+    display: flex;
+    overflow: hidden;
     flex-direction: row;
     width: 100vw;
 }
-.dash{
+
+.dash {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -47,7 +49,8 @@ body{
     justify-content: space-between;
     width: 70vw;
 }
-.navigation{
+
+.navigation {
     position: relative;
     height: 700px;
     background: black;
@@ -57,10 +60,12 @@ body{
     overflow: hidden;
     transition: 0.5s;
 }
-.navigation:hover{
+
+.navigation:hover {
     width: 300px;
 }
-.navigation ul{
+
+.navigation ul {
     position: absolute;
     top: 0;
     left: 0;
@@ -68,21 +73,24 @@ body{
     padding-left: 5px;
     padding-top: 40px;
 }
-.navigation ul li{
+
+.navigation ul li {
     position: relative;
     list-style: none;
     width: 100%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-.navigation ul li a{
+
+.navigation ul li a {
     position: relative;
     display: flex;
     width: 100%;
     text-decoration: none;
     color: #fff;
 }
-.navigation ul li a .icon{
+
+.navigation ul li a .icon {
     position: relative;
     display: block;
     min-width: 60px;
@@ -90,12 +98,14 @@ body{
     text-align: center;
     line-height: 70px;
 }
-.navigation ul li a .icon ion-icon{
+
+.navigation ul li a .icon ion-icon {
     position: relative;
     font-size: 1.5rem;
     z-index: 1;
 }
-.navigation ul li a .title{
+
+.navigation ul li a .title {
     position: relative;
     display: block;
     padding-left: 10px;
@@ -103,10 +113,12 @@ body{
     line-height: 60px;
     white-space: nowrap;
 }
-.navigation ul li.active{
+
+.navigation ul li.active {
     background: #e3b062;
 }
-.navigation ul li.active a::before{
+
+.navigation ul li.active a::before {
     content: '';
     position: absolute;
     top: -30px;
@@ -117,7 +129,8 @@ body{
     border-radius: 50%;
     box-shadow: 15px 15px 0 #e3b062;
 }
-.navigation ul li.active a::after{
+
+.navigation ul li.active a::after {
     content: '';
     position: absolute;
     bottom: -30px;
@@ -128,7 +141,8 @@ body{
     border-radius: 50%;
     box-shadow: 15px -15px 0 #e3b062;
 }
-.card-kpi-a{
+
+.card-kpi-a {
     border-radius: 15px;
     width: 22vw;
     height: 27vh;
@@ -136,17 +150,45 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #32b9cd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    background: linear-gradient(135deg, #32b9cd, #048299);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease;
 }
-.card-kpi-a span{
+
+.card-kpi-a:hover {
+    transform: scale(1.05);
+}
+
+.card-kpi-a span {
     font-size: 25px;
 }
-.card-kpi-b span{
+
+.card-kpi-b {
+    border-radius: 15px;
+    width: 22vw;
+    height: 27vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e3b062, #d28832);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.card-kpi-b span {
     font-size: 25px;
 }
-.card-kpi-b{
+
+.card-kpi-b:hover {
+    transform: scale(1.05);
+}
+
+.card-kpi-c {
     border-radius: 15px;
     width: 22vw;
     height: 27vh;
@@ -154,22 +196,18 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e3b062;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-    color: #fff;
+    background: linear-gradient(135deg, #eaaeea, #d6b0d6);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #333; /* Mudança na cor do texto para um tom mais escuro */
+    font-family: 'Arial', sans-serif; /* Fonte mais simples e amplamente suportada */
+    transition: transform 0.3s ease;
 }
-.card-kpi-c{
-    border-radius: 15px;
-    width: 22vw;
-    height: 27vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #eaaeea;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+
+.card-kpi-c:hover {
+    transform: scale(1.05); /* Efeito de escala ao passar o mouse */
 }
-.grafico{
+
+.grafico {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,4 +216,10 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
     border-radius: 20px;
     background-color: #ffffff;
+
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
 }
