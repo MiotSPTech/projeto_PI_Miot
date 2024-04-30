@@ -2,18 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aqua Tech</title>
-  <link rel="stylesheet" href="css/dash.css">
-  <link rel="shortcut icon" href="imagens/favicon2.ico" type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIOT</title>
+    <link rel="stylesheet" href="css/dash.css">
+    <link rel="shortcut icon" href="imagens/favicon2.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="container">
   <div class="container">
     <div class="navigation">
       <ul>
+
+        <li class="list ">
+          <a href="#">
+            <span class="icon"><ion-icon name="logo-medium"></ion-icon></span>
+            <span class="title">Miot</span>
+          </a>
+        </li>
+
         <li class="list active">
           <a href="#">
             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
@@ -51,10 +60,10 @@
       </ul>
     </div>
 
-    <div class="rodape">
+    <div class="nome_dashboard">
       Dashboard
     </div>
-    <div class="filho">
+    <div class="nome_perfil">
       Claudia Alves <br>
       Administrador
       <img src="Imagem/foto_perfil.webp" alt="">
@@ -70,28 +79,38 @@
         <div id="trocar_grafico" class="grafico">
           <canvas id="grafico_linha_temperatura"></canvas>
         </div>
-        <span id="span_btn">
-          <button onclick="temperatura()">
-            ●
-          </button>
-          <button onclick="umidade()">
-            ○
-          </button>
-        </span>
-        <div id="div_kpi" class="card-kpi-a">
-          <span>Temperatura:</span>
-          <span>
-            <span>estável <b>27ºC</b></span>
-            <img src="" alt="">
-          </span>
+
+        <div class="container_botao_kpi">
+          <div id="div_kpi" class="card-kpi-a">
+            <span>Temperatura:</span>
+            <span>
+              <span>estável <b>27ºC</b></span>
+              <img src="" alt="">
+            </span>
+          </div>
+          <div>
+            <span id="span_btn">
+              <button class="bt" onclick="temperatura()">
+                ●
+              </button>
+              <button class="bt" onclick="umidade()">
+                ○
+              </button>
+            </span>
+          </div>
         </div>
+
       </div>
+
+     
 
       <div class="alinhar">
         <div class="card-kpi-a">
           <span>Nível Ph da água</span>
           <h1>8.6</h1>
         </div>
+        
+        
 
         <div class="card-kpi-b">
           <span>Salinidade da água</span>
@@ -102,6 +121,8 @@
           <canvas id="grafico_donut"></canvas>
         </div>
       </div>
+
+      
 
     </div>
 
@@ -238,10 +259,10 @@
     });
 
     span_btn.innerHTML = `
-                        <button onclick="temperatura()">
+                        <button class= "bt" onclick="temperatura()">
                           ●
                         </button>
-                        <button onclick="umidade()">
+                        <button class= "bt" onclick="umidade()">
                           ○
                         </button>`;
 
@@ -280,10 +301,10 @@
     });
 
     span_btn.innerHTML = `
-                        <button onclick="temperatura()">
+                        <button class= "bt" onclick="temperatura()">
                           ○
                         </button>
-                        <button onclick="umidade()">
+                        <button class= "bt" onclick="umidade()">
                           ●
                         </button>`;
 
