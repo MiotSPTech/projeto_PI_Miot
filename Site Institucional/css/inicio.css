@@ -37,7 +37,10 @@ body{
 .all-of-site{
     background-color: var(--fundo);
     min-height: 541%;
-    width: 100%;
+    min-width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
 
 /* fundo da tela inicial */
@@ -595,9 +598,9 @@ form .btn-enviar input:hover{
 /* ESTILO DO RODAPÉ */
 
 footer {
-    padding: 100px 4%;
+    padding: 70px 4%;
     width: 100%;
-    background-color: #0077ff72;
+    background-color: #0E336D;
     text-align: left;
 }
 
