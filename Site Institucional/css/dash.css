@@ -25,26 +25,52 @@ body {
     flex-direction: column;
 }
 
+.perfil {
+    display: flex;
+    justify-content: space-around;
+}
+
 .nome_dashboard  {
     display: flex;
     position: relative;
-    top: 50px;
+    font-size: 200%;
+    top: 35px;
     left: 50px;
 }
 
 .nome_perfil {
     display: flex;
     position: fixed;
-    top: 50px;
-    right: 70px;
+    font-size: 120%;
+    top: 35px;
+    right: 120px;
 }
 .nome_perfil img{
     display: flex;
     position: fixed;
-    width: 40px;
-    height: 40px;
-    top: 50px;
-    right: 20px;
+    width: 47px;
+    height: 47px;
+    top: 35px;
+    right: 50px;
+}
+.bt {
+    display: inline-block;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 0 2px;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    background-color: #bcbcc1;
+    border-color:  transparent;
+}
+
+.bt:hover{
+    background-color: #4f86fe;
+    transform: scale(1.1, 1.1);
 }
 
 .alinhar {
@@ -52,7 +78,6 @@ body {
     margin-top: 2%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 70vw;
     gap: 30px;
 }
@@ -60,12 +85,44 @@ body {
 .navigation {
     position: relative;
     height: 100vh;
-    background: #E5E5E5;
+    background: #010959;
     width: 70px;
-    box-shadow: 10px 0 0 #3C80D1;
-    border-left: 10px solid #E5E5E5 ;
+    box-shadow: 10px 0 0 #3c81d1;
+    border-left: 10px solid #010959;
     overflow: hidden;
     transition: 0.5s;
+}
+/* background: #aeb8ce;
+background: #0f5bff 
+background: #01062e
+COR DA NAVBAR*/
+
+.navigation ul li.active {
+    background: #3c81d1;
+}
+
+.navigation ul li.active a::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #010959;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 #3c81d1;
+}
+
+.navigation ul li.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #010959;
+    border-radius: 50%;
+    box-shadow: 15px -15px 0 #3c81d1;
 }
 
 .navigation:hover {
@@ -81,20 +138,12 @@ body {
     padding-top: 40px;
 }
 
-.bt {
-    position: relative;
-    left: 10px;
-    border: 1px;
-    cursor: pointer;
-    background: transparent;
-}
-
-
 .navigation ul li {
     position: relative;
     list-style: none;
     width: 100%;
-    margin-bottom: 35px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .navigation ul li a {
@@ -102,14 +151,22 @@ body {
     display: flex;
     width: 100%;
     text-decoration: none;
-    color: #000000;
+    color: #fff;
 }
 
 .navigation ul li a .icon {
     position: relative;
     display: block;
-    max-width: 60px;
+    min-width: 60px;
+    height: 60px;
     text-align: center;
+    line-height: 70px;
+}
+
+.navigation ul li a .icon ion-icon {
+    position: relative;
+    font-size: 1.5rem;
+    z-index: 1;
 }
 
 .navigation ul li a .title {
@@ -120,41 +177,7 @@ body {
     line-height: 60px;
     white-space: nowrap;
 }
-#logo_icone img {
-    display: block; /* Garante que o ícone seja exibido como bloco */
-    margin: auto; /* Centraliza o ícone horizontalmente */
-    width: 120px; /* Ajusta a largura do ícone para 40 pixels (ou o tamanho desejado) */
-    height: auto; /* Permite que o navegador mantenha a proporção do ícone */
-    min-width: none;
-    margin-left: 65px;
-}
-#dash_icone img {
-    display: block;
-    margin: auto;
-    width: 40px; /* Reduz o tamanho do ícone */
-    height: auto; /* Permite que o navegador mantenha a proporção do ícone */
-    margin-top: 10px; /* Adiciona espaço acima do ícone para movê-lo para baixo */
-}
 
-#dash_icone .title {
-    position: relative;
-    display: block;
-    padding-left: 10px;
-    line-height: 60px;
-    white-space: nowrap;
-    text-align: center; /* Centraliza o texto horizontalmente */
-}
-#saida_icone img{
-    display: block;
-    margin: auto;
-    width: 40px;
-    height: auto;
-    margin-top: 10px;
-}
-.navigation ul li a .icon img,
-.navigation ul li a .title {
-    display: none;
-}
 
 .card-kpi-a {
     border-radius: 15px;
@@ -200,25 +223,6 @@ body {
 
 .card-kpi-b:hover {
     transform: scale(1.05);
-}
-
-.card-kpi-c {
-    border-radius: 15px;
-    width: 22vw;
-    height: 27vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #eaaeea, #d6b0d6);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #333; /* Mudança na cor do texto para um tom mais escuro */
-    font-family: 'Arial', sans-serif; /* Fonte mais simples e amplamente suportada */
-    transition: transform 0.3s ease;
-}
-
-.card-kpi-c:hover {
-    transform: scale(1.05); /* Efeito de escala ao passar o mouse */
 }
 
 .grafico {
