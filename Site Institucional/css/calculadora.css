@@ -5,20 +5,41 @@ body {
     margin: 0;
 }
 
-
-.container_header{
-    display: flex;
-    background-color:#3C81D1;
-    position: fixed;
+header{
+    position: sticky;
     top: 0;
-    text-align: center;
+    background-color: #092D6A;
     width: 100%;
-    padding: 5px 0;
-    left: 0;
 }
+header .logo{
+    margin-left: 40px;
+}
+
+header .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a{
+    color: #c6c5c5;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    display: inline-block;
+    transition: 0.2s;
+    text-shadow: 3px 3px 9px #002544e9;
+}
+
+header a:hover{
+    color: var(--texto2);
+    text-shadow: 0px 0px 8px #008cff;
+    transform: scale(1.05);
+}
+
 .container_inputs_calculadora{
     display: flex;
-    background-color: #A0A5AC ;
+    background-color: #a0a5ac81 ;
     position: fixed;
     top: 110px;
     left: 10px;
@@ -26,64 +47,63 @@ body {
     flex-direction: column;
     padding: 57px;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 3);
     color: #1B1B1D;
+}
+.container_inputs_calculadora input {
+    padding: 3px; /* Adicionando espaço interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Adicionando uma borda com cor cinza */
+    background-color: #ffffffc4; /* Cor de fundo */
+    margin-bottom: 3px; /* Espaçamento entre os inputs */
+    margin-top: -4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+}
+.container_inputs_calculadora p{
+    margin: 3px;
+    margin-top: -50px;
+    font-family: 'Poppins', sans-serif;
+}
+.container_inputs_calculadora button{
+    padding: 5px 5px; /* Adiciona espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #092D6A; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Altera o cursor ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 2); /* Adiciona uma sombra */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Adiciona transição suave */
+}
+
+.container_inputs_calculadora button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
 
 .div_container_result {
-    margin-top: 10px; /* Adicionando algum espaço entre a div dos inputs e a div da resposta */
     padding: 200px;
-    background-color: #3C81D1; /* Cor de fundo */
+    background-color: #092D6A; /* Cor de fundo */
     border-radius: 20px; /* Bordas arredondadas */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 3); /* Sombra */
     max-width: 30%; /* Largura máxima */
-    margin-left: auto; /* Centralizando horizontalmente */
-    margin-right: auto; /* Centralizando horizontalmente */
     position: fixed; /* Posicionando a div de forma fixa */
-    top: 105px; /* Posicionando a div abaixo do cabeçalho */
+    top: 110px; /* Posicionando a div abaixo do cabeçalho */
     right: 10px; /* Afastando a div da direita */
-    color: #1B1B1D;
+    color: #ffffff;
     display: none;
     height: 2%;
     height: 7%;
 
 }
-
-
-.container_inputs_calculadora input {
-    padding: 4px; /* Adicionando espaço interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    border: 1px solid #ccc; /* Adicionando uma borda com cor cinza */
-    background-color: #E5E5E5; /* Cor de fundo */
-    margin-bottom: 3px; /* Espaçamento entre os inputs */
-    margin-top: -4px;
-}
-.container_inputs_calculadora p{
-    margin: 3px 0;
-    margin-top: -50px;
-    font-family: 'Poppins', sans-serif;
-}
-#div_resultado{
-    text-align: center;
-    max-width: 100%;
-}
 .p_result{
-    margin-top: -180px;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-
+    font-size: 20px;
+    text-align: center;
+    margin-top: -150px;
 }
 .div_image img{
-    position: absolute;
+    position: fixed;
     top: 120px; /* Posicionando a mesma distância do topo que a div_container_result */
     right: 190px; /* Posicionando a mesma distância da direita que a div_container_result */
     display: block;
-}
-.p_result .span_causa{
-    background-color: white;
-}
-.p_result .span_ganho{
-    background-color:  white;
 }
 
