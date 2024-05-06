@@ -274,13 +274,25 @@
 
         setInterval(() => {
             obterDados(dht11Umidade, 'dht11/umidade');
+            obterDados(lm35Temperatura, 'lm35/temperatura');
+
+            obterDados(umidade2, 'dht11/umidade');
+            obterDados(temperatura2, 'lm35/temperatura');
+
+            obterDados(umidade3, 'dht11/umidade');
+            obterDados(temperatura3, 'lm35/temperatura');
+
+            obterDados(umidade4, 'dht11/umidade');
+            obterDados(temperatura4, 'lm35/temperatura');
+
+            obterDados(umidade5, 'dht11/umidade');
+            obterDados(temperatura5, 'lm35/temperatura');
+
             //obterDados(dht11Temperatura, 'dht11/temperatura');
            //obterDados(luminosidade, 'luminosidade');
-            obterDados(lm35Temperatura, 'lm35/temperatura');
             //obterDados(chave, 'chave');
         }, 1000);
 
     </script>
 </body>
-
 </html>

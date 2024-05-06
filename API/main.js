@@ -77,6 +77,15 @@ const serial = async (
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
+
+                     let umidade2 = dht11Umidade + 2;
+                    let temperatura2 = lm35Temperatura + 2;
+                    let umidade3 = dht11Umidade + 4;
+                    let temperatura3 = lm35Temperatura + 4;
+                    let umidade4 = dht11Umidade + 6;
+                    let temperatura4 = lm35Temperatura + 6;
+                    let umidade5 = dht11Umidade + 8;
+                    let temperatura5 = lm35Temperatura + 8;
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
@@ -84,14 +93,28 @@ const serial = async (
                 'INSERT INTO tbRegistro (leituraUmidade, leituraTemperatura, idTomada) VALUES (?, ?, 1), (?, ?, 2), (?, ?, 3), (?, ?, 4), (?, ?, 5)',
                 [dht11Umidade,
                     lm35Temperatura,
-                    dht11Umidade + 2,
-                    lm35Temperatura + 2,
-                    dht11Umidade + 4,
-                    lm35Temperatura + 4,
-                    dht11Umidade + 6,
-                    lm35Temperatura + 6,
-                    dht11Umidade + 8,
-                    lm35Temperatura + 8] 
+                    umidade2,
+                    temperatura2,
+                    umidade3,
+                    temperatura3,
+                    umidade4,
+                    temperatura4,
+                    umidade5,
+                    temperatura5] 
+
+
+                    // dht11Umidade,
+                    // lm35Temperatura,
+                    // dht11Umidade + 2,
+                    // lm35Temperatura + 2,
+                    // dht11Umidade + 4,
+                    // lm35Temperatura + 4,
+                    // dht11Umidade + 6,
+                    // lm35Temperatura + 6,
+                    // dht11Umidade + 8,
+                    // lm35Temperatura + 8
+
+
                     //chave] // alterar para o formato do meu banco
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + lm35Temperatura )
