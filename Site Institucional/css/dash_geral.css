@@ -40,7 +40,6 @@ body {
     display: flex;
     position: relative;
     font-size: 200%;
-    left: 5px;
 }
 
 .nome_perfil {
@@ -83,8 +82,10 @@ body {
     margin-top: 2%;
     display: flex;
     flex-direction: row;
-    width: 70vw;
+    width: 55vw;
     gap: 30px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .a{
     margin-top: 2%;
@@ -121,7 +122,6 @@ COR DA NAVBAR*/
 }
 
 .navigation ul li.active a::after {
-    content: '';
     position: absolute;
     bottom: -30px;
     right: 0;
@@ -134,6 +134,7 @@ COR DA NAVBAR*/
 
 .navigation:hover {
     width: 300px;
+    z-index: 1;
 }
 
 .navigation ul {
@@ -188,7 +189,7 @@ COR DA NAVBAR*/
 
 .card-kpi-a {
     border-radius: 15px;
-    width: 22vw;
+    width: 18vw;
     height: 27vh;
     display: flex;
     flex-direction: column;
@@ -206,9 +207,20 @@ COR DA NAVBAR*/
 }
 
 .card-kpi-a span {
-    font-size: 25px;
+    font-size: 20px;
 }
 
+.card-kpi-a img {
+    width: 50%;
+}
+.card-kpi-a .img-kpi{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2%;
+}
 .card-kpi-b {
     border-radius: 15px;
     width: 22vw;
@@ -231,45 +243,82 @@ COR DA NAVBAR*/
 .card-kpi-b:hover {
     transform: scale(1.05);
 }
-.card-kpi-c {
-    border-radius: 15px;
-    width: 22vw;
-    height: 27vh;
+
+.grafico {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #0051ff, #4f86fe);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease;
-}
-
-.card-kpi-c:hover {
-    transform: scale(1.05);
-}
-
-.card-kpi-c span {
-    font-size: 25px;
-}
-
-.grafico {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30vw;
+    width: 60vw;
     height: 40vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
     border-radius: 20px;
     background-color: #ffffff;
 
 }
-
+.grafico span{
+    width: 25vw;
+    text-align: center;
+}
 body {
     background-color: #f4f4f4;
     color: #333;
 }
 .maior{
     width: 100vw;
+}
+.navigation:hover .logo{
+    margin-left: 25%;
+}
+.secao-a{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.secao-b{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60vw;
+   transform: translateX(-23%);
+}
+.secao-c{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20vw;
+    border-radius: 15px;
+    height: 70vh;
+    align-items: center;
+    background: linear-gradient(135deg, #0051ff, #4f86fe);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease;
+    margin-right:  2%; 
+}
+.secao-c:hover {
+    transform: scale(1.05);
+}
+.card-alerta{
+    width: 18vw;
+    height: 7vh;
+    background-color: #ffffff;
+    box-shadow:  0 6px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 15px;
+    color: black;
+}
+.btn-alert{
+    background-color: transparent;
+    border-color: 4px black;
+    border-radius: 15px;
+}
+.btn-alert:hover{
+    background-color: black;
+    color: #ffffff;
+    transform: scale(1, 1);
 }
