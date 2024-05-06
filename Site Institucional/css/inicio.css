@@ -116,10 +116,10 @@ header nav ul li{
     padding: 0 14px;
 }
 
-header .cad button{
-    padding: 5px 20px;
-    font-size: 15px;
-    text-transform: uppercase;
+header .log_cad button{
+    padding: 10px 25px;
+    font-size: 14px;
+    text-transform: capitalize;
     font-weight: 600;
     background-color: var(--azulclaro);
     border: 0;
@@ -129,29 +129,13 @@ header .cad button{
     transition: all 0.2s ease;
 }
 
-header .cad button:hover{
+header .log_cad button:hover{
     box-shadow: 0px 0px 8px #0077ffd5;
 }
 
-header .log button{
-    padding: 0px 5px;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 300;
-    background-color: #0077ff00;
-    color: #cccccc;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    display: inline-block;
-    transition: 0.2s;
-    text-shadow: 5px 5px 9px #002544e9;
-}
-
-header .log button:hover{
-    color: var(--texto2);
-    transform: scale(1.05);
-    text-shadow: 0px 0px 8px #008cff;
+header .log_cad span{
+    font-weight: 400;
+    text-transform: lowercase;
 }
 
 /* Estilo do topo do site */
