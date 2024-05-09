@@ -51,7 +51,7 @@
                 <input type="password" placeholder="Senha" class="input" id="input_senha" onkeyup="validacaoSenha()">
                 <p id="p_senha"></p>
                 <div class="letras_pequenas">
-                    <span id="span_tamanho">Sua senha deve conter 8 ou mais caracteres</span> <br>
+                    <span id="span_tamanho">Sua senha deve conter 8 ou mais caracteres</span> <br>  
                     <span id="span_maiuscula">Sua senha deve conter 1 letra maiúscula</span> <br>
                     <span id="span_minuscula">Sua senha deve conter 1 letra minúscula</span> <br>
                     <span id="span_numero">Sua senha deve conter 1 número</span> <br>
@@ -196,7 +196,7 @@
                 } else {
                     span_minuscula.innerHTML = `<span style="color:red;">Sua senha deve conter 1 letra minúscula</span>`
                 }
-                if (/[1-9]/.test(senha)) {
+                if (/[0-9]/.test(senha)) {
                     span_numero.innerHTML = `<span style="color:green;">Sua senha deve conter 1 número</span>`
                 } else {
                     span_numero.innerHTML = `<span style="color:red;">Sua senha deve conter 1 número</span>`
