@@ -1,86 +1,123 @@
 body {
-    background-color: white;
+    background-color: var(--fundo);
     font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins como fonte principal */
     display: flex;
     margin: 0;
+    box-sizing: border-box;
+	text-decoration: none;
 }
 
-header{
-    position: sticky;
-    top: 0;
-    background-color: #092D6A;
+:root{
+    --fundo: #eeeefa;
+    --azul: #3C81D1;
+    --azulclaro: #0077ff;
+	--azulescuronav: #0E336D; 
+    --texto: #1B1B1D;
+    --texto2: #FDFBFB;
+	--button-radius: 0.7rem;
+}
+
+nav {
+    padding: 1px 4%;
+	height: auto;
     width: 100%;
-}
-header .logo{
-    margin-left: 40px;
-}
-
-header .container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header a{
-    color: #c6c5c5;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 15px;
-    display: inline-block;
+    background-color: var(--azulescuronav);
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
     transition: 0.2s;
+}
+
+.container-navbar img{
+	height: auto;
+	width: 4%;
+}
+
+.container-navbar p{
+	font-size: 0.6rem;
+	text-transform: uppercase;
+	/* color: #000000; */
+	color: #fdfbfb56;
+	text-decoration: underline;
+}
+
+.container-navbar a img{
+	height: 5vh;
+	width: 3vw;
+	margin-top: 0.5%;
+	margin-left: 1167px;
     text-shadow: 3px 3px 9px #002544e9;
 }
 
-header a:hover{
+.container-navbar a img:hover{
     color: var(--texto2);
     text-shadow: 0px 0px 8px #008cff;
     transform: scale(1.05);
 }
 
-.container_inputs_calculadora{
-    display: flex;
-    background-color: #a0a5ac81 ;
+
+/* Container */
+.container_inputs_calculadora {
+    background-color: #a0a5ac81;
+    justify-content: flex-start;
     position: fixed;
-    top: 110px;
-    left: 10px;
+    top: 12%;
+    margin-top: 60px;
+    margin-left: 10px;
+    left: 4%;
     width: 30%;
     flex-direction: column;
-    padding: 57px;
+    align-items: center;
+    padding: 2% 2%;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     color: #1B1B1D;
 }
+  
+  /* Inputs */
 .container_inputs_calculadora input {
-    padding: 3px; /* Adicionando espaço interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    border: 1px solid #ccc; /* Adicionando uma borda com cor cinza */
-    background-color: #ffffffc4; /* Cor de fundo */
-    margin-bottom: 3px; /* Espaçamento entre os inputs */
-    margin-top: -4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+    background-color: #ffffffa1;
+	border: none;
+	border-radius: 10px;
+	padding: 2% 0;
+    margin-bottom: 20px;
+	width: 100%;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.container_inputs_calculadora p{
-    margin: 3px;
-    margin-top: -50px;
-    font-family: 'Poppins', sans-serif;
+
+.informacao{
+    font-size: 1rem;
 }
-.container_inputs_calculadora button{
-    padding: 5px 5px; /* Adiciona espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    background-color: #092D6A; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Altera o cursor ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 2); /* Adiciona uma sombra */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Adiciona transição suave */
+  
+  /* Buttons */
+
+  .container_inputs_calculadora{
+    text-align: center;
+  }
+
+.container_inputs_calculadora button {
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #092D6A;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in;
 }
 
 .container_inputs_calculadora button:hover {
-    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+    background-color: #0056b3;
+    box-shadow: 0px 0px 8px #0077ffd5;
 }
+  
 
 .div_container_result {
-    padding: 200px;
+    padding: 15% 13%;
+    margin-top: 33px;
+    margin-right: 50px;
     background-color: #092D6A; /* Cor de fundo */
     border-radius: 20px; /* Bordas arredondadas */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 3); /* Sombra */
@@ -94,16 +131,22 @@ header a:hover{
     height: 7%;
 
 }
+
 .p_result{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     text-align: center;
     margin-top: -150px;
 }
+
+
 .div_image img{
     position: fixed;
-    top: 120px; /* Posicionando a mesma distância do topo que a div_container_result */
-    right: 190px; /* Posicionando a mesma distância da direita que a div_container_result */
+    padding: 3.5% 10%;
+    margin-top: 10px;
+    margin-right: 50px;
+    filter: drop-shadow(9px 9px 9px #00192de0);
+    top: 110px; /* Posicionando a mesma distância do topo que a div_container_result */
+    right: 10px; /* Posicionando a mesma distância da direita que a div_container_result */
     display: block;
 }
-

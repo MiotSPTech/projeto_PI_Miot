@@ -4,45 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home_navbar.css">
-    <title>Document</title>
+    <title>Calculadora Financeira</title>
+    <link rel="shortcut icon"  href="Imagem/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="css/calculadora.css" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <!-- criação do menu -->
-            <div class="logo">
-                <!-- linkagem à pagina inicial caso for clicado no ícone -->
-                <a href="inicio.html">
-                    <img src="Imagem/image-removebg-preview (1).png" alt="Logo">
-                </a>
-
-
-        </div> <!--container-->
-
-    </header>
+    <nav class="container-navbar">
+        <!-- linkagem à pagina inicial caso for clicado no ícone -->
+            <img src="./Imagem/65_Sem_Titulo_20240504015230 (1).png" alt="Logo">
+            
+            <a href="inicio.html">
+                <img src="./Imagem/exit-Branco.png">
+            </a>
+            <p>voltar à página inicial</p>
+    
+    </div>    
+    </nav>
 
 
     <div class="container_inputs_calculadora">
-
-        <br>
-        <br>
-        <p>Quantas horas sua empresa fica parada por curtos-circuitos por ano:</p>
+        <p class="informacao">Quantas horas sua empresa fica parada por ano devido a curtos-circuitos?</p>
         <input id="input_qtd_horas_paradas">
         
         <br>
-        <br>
         
-        <p>Qual valor de faturamento anual da sua empresa:</p>
+        <p class="informacao">Qual é o valor do faturamento anual da sua empresa?</p>
         <input id="input_faturamento">
         
         <br>
-        <br>
         
-        <p>Quantas horas sua empresa fica em produção por dia:</p>
+        <p class="informacao">Quantas horas sua empresa está em produção por dia?</p>
         <input id="input_horas_por_dia">
 
         <br>
@@ -90,13 +84,14 @@
         div_resultado.innerHTML = `
         
         <p class="p_result">
-        <b>Com base no faturamento fornecido, estimamos <b>${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}<b> em perdas.<br>
-        Com nossa solução, podemos recuperar 60% desse valor, deixando <b>${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <b>em seu bolso.<b><br><br>
+        <b>Com base no faturamento fornecido, estimamos <span style="color: red;">${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em perdas.</b><br>
+        <b>Com nossa solução, podemos recuperar 60% desse valor, deixando <span style="color: green;">${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em seu bolso.</b><br><br>
 
-        <b> Assim trazendo segurança e desempenho para sua empresa!<b><br><br>
+    <b>Assim trazendo segurança e desempenho para sua empresa!</b><br><br>
 
-        <b> Miot, preservando você, a vida, o negocio e as conquistas!<b>
-        `
+    <b>Miot, preservando você, a vida, o negócio e as conquistas!</b>
+</p>`
+
         
     }
 </script>

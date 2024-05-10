@@ -440,6 +440,7 @@ section.nossa-solucao{
     padding: 140px 4%;
     margin-top: 104.1px;
     position: relative;
+    text-align: center;
 }
 
 section.nossa-solucao::before {
@@ -459,26 +460,36 @@ section.nossa-solucao .flex{
 
 .nossa-solucao .txt-nossa-solucao{
     color: var(--texto);
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .nossa-solucao h1{
-    font-size: 50px;
-    font-weight: 700;
-    margin-bottom: 80px;
+    font-size: 70px;
+    font-weight: 800;
+    margin-bottom: -30px;
     text-transform: uppercase;
     text-align: center;
     transition: 0.2s;
     text-shadow: 3px 3px 3px #00192d6e;
 }
 
-.nossa-solucao h1 span{
+.nossa-solucao span{
     color: var(--azulclaro);
     display: block;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    text-transform: lowercase;
+    text-align: center;
+    transition: 0.2s;
+    text-shadow: 2px 2px 2px #00192d49;
 }
 
 .nossa-solucao .txt-nossa-solucao p{
-    text-align: justify;
+    text-align: center;
+    vertical-align: top; /* Alinha o texto ao topo dos cards */
+    margin-top: -60px;
+    width: 100%;
 }
 
 .nossa-solucao .txt-nossa-solucao p span{
@@ -487,7 +498,125 @@ section.nossa-solucao .flex{
     font-weight: 600;
 }
 
+/* Estilo das informacoes */
+section.card-solucao{
+    padding: 40px 4%;
+}
+
+section.card-solucao .flex{
+    gap: 60px;
+    margin-top: -100px;
+}
+
+.card-solucao .card {
+    width: 400px;
+    height: 300px;
+    perspective: 1000px;
+    justify-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.front,
+.back {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    transition: transform 0.5s;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: #ffffff; 
+}
+
+.front img{
+    width: 400px; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(1, 51, 108, 0.547), rgba(5, 109, 228, 0.8)); 
+    backdrop-filter: blur(3px);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.front h2 {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: var(--texto2);
+    font-size: 24px;
+    text-align: center; 
+    z-index: 2; 
+    text-shadow: 3px 3px 3px #00192d6e;
+}
+
+
+.back {
+    background-color: var(--azulclaro); 
+    transform: rotateY(180deg);
+    color: var(--texto2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    text-align: justify;
+    padding: 10px 10px;
+}
+
+.card:hover .front {
+    transform: rotateY(-180deg); /* Corrigido para -180deg */
+}
+
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+
+
+
+
+section .btn-nossa-solucao {
+    text-align: center; 
+    position: relative;
+    margin-top: 10px;
+    line-height: 4;
+}
+
+section .btn-nossa-solucao button{
+    padding: 5px 15px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: transparent;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease;
+    position: relative;
+    animation: animacao-botao 1s ease-in-out infinite alternate;
+}
+
 /* Estilo do nosso contato */
+section .btn-nossa-solucao button:hover{
+    box-shadow: 0px 0px 8px #0077ffd5;
+    transform: scale(1.05);
+}
+
 section.entrar-em-contato{
     padding: 140px 4%;
     margin-top: 104.1px;
@@ -514,6 +643,12 @@ section.entrar-em-contato::before {
     text-shadow: 3px 3px 3px #00192d6e;
 }
 
+.entrar-em-contato p{
+    margin-top: -80px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
 .entrar-em-contato h1 span{
     color: var(--azulclaro);
 }
@@ -535,12 +670,8 @@ form input{
     background-color: #0077ff30;
     border: 0;
     outline: 0;
-    color: var(--texto2);
+    color: var(--texto);
     font-size: 13px;
-}
-
-form input::placeholder{
-    color: #ffffffcf;
 }
 
 form textarea{
@@ -550,14 +681,10 @@ form textarea{
     background-color: #0077ff30;
     border: 0;
     outline: 0;
-    color: var(--texto2);
+    color: var(--texto);
     font-size: 13px;
     resize: none; /* Impede o redimensionamento do textarea pelo usuário */
     height: 200px;
-}
-
-form textarea::placeholder{
-    color: #ffffffcf;
 }
 
 form .btn-enviar input[type=submit]{

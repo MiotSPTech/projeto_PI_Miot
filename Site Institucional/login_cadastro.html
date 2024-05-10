@@ -23,19 +23,14 @@
     </nav>
 
    
-    <div class="container painel-ativo">
+    <div class="container painel-ativo" style="width: 91%; height: 81%; overflow: auto;">
 
         <!-- cadastro -->
         <div class="container-formulario cadastro">
             <form action="#" class="formulario" id="formulario1">
                 <h2 class="titulo1">Crie uma conta</h2>
-                <input type="text" placeholder="Seu nome completo" id="input_nome" class="input" onkeyup="validacaoNome()">
-                <p id="p_nome_completo"></p>
-                <br>
-                <input type="text" placeholder="Coloque o codigo da sua empresa" class="input" id="input_codigo">
-                <br>           
-                <select id="select_cargos" class="select_cargos">
-                    <option value="#">
+                <select id="select_cargos" class="selectcargos">
+                    <option value="#" class="um">
                         Escolha seu cargo
                     </option>
                     <option value="gestor">
@@ -45,12 +40,17 @@
                         Administrador
                     </option>
                 </select>
+                <input type="text" placeholder="Seu nome completo" id="input_nome" class="input" onkeyup="validacaoNome()">
+                <p id="p_nome_completo"></p>
+                
+                <input type="text" placeholder="Coloque o codigo da sua empresa" class="input" id="input_codigo">
+                
                 <input type="email" placeholder="E-mail" class="input" id="input_email" onkeyup="validacaoEmail()">
                 <p id="p_email"></p>
-                <br>
-                <input type="password" placeholder="Senha" class="input" id="input_senha" onkeyup="validacaoSenha()">
+                
+                <input type="password" placeholder="Senha" class="input" id="input_senha" onfocus="mostrarLetrasPequenas()" onkeyup="validacaoSenha()">
                 <p id="p_senha"></p>
-                <div class="letras_pequenas">
+                <div class="letras_pequenas" style="display: none;">
                     <span id="span_tamanho">Sua senha deve conter 8 ou mais caracteres</span> <br>  
                     <span id="span_maiuscula">Sua senha deve conter 1 letra maiúscula</span> <br>
                     <span id="span_minuscula">Sua senha deve conter 1 letra minúscula</span> <br>
@@ -69,7 +69,7 @@
         <!-- Sign In -->
         <div class="container-formulario entrar">
             <form action="#" class="formulario" id="formulario2">
-                <h2 class="titulo1">Acessar Conta</h2>
+                <h2 class="titulo2">Acessar Conta</h2>
                 <input type="email" placeholder="Seu e-mail" class="input">
                 <input type="password" placeholder="Sua senha" class="input">
                 <a href="#" class="link">Esqueceu sua senha?</a>
@@ -107,31 +107,26 @@
 <script>
 
     function acessarSite() {
-
-    //     let email = ipt_email.value
-    //     let senha = ipt_senha.value
-
-    //     if (email.indexOf("@")) {
-    //         if (email.endsWith(".com") || email.endsWith(".br")) {
-    //         } else {
-    //             alert("Email inválido")
-    //         }
-    //     } else {
-    //         alert("Email inválido")
-    //     }
-
-    // }
-
-
-    // if (senha.lenght >= 8) {
-    //     if (/[A-Z]/.test(senha)) {
-
-    //     }
-    // } else {
-    //     alert("Sua senha deve conter mais de 8 caracteres")
-
-    window.location.href = "Dashboard.html";
+    window.location.href = "Dashboard_Geral.html";
     }
+
+    window.onload = function mostrarLetrasPequenas() {
+        
+        const letrasPequenas = document.getElementsByClassName('letras_pequenas')[0];
+
+        const inputSenha = document.getElementById('input_senha');
+
+        inputSenha.addEventListener('focus', function() {
+
+            letrasPequenas.style.display = 'block';
+        });
+
+        inputSenha.addEventListener('blur', function() {
+    // Change the display property to 'none' to hide it
+    letrasPequenas.style.display = 'none';
+  });
+    }
+
 
     
     function validacaoNome() {
