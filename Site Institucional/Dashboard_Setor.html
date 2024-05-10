@@ -19,49 +19,42 @@
         <li class="logo">
           <a href="#">
             <span class="icon"><ion-icon name="logo-medium"></ion-icon></span>
-            <span class="title">Miot</span>
+            <span class="title">MIOT</span>
           </a>
         </li>
 
-        <li class="list">
+        <li class="list active">
           <a href="Dashboard_Geral.html">
             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
             <span class="title">Home</span>
           </a>
         </li>
 
-        <li class="list active">
-          <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 1</span>
+        <li class="list">
+          <a href="#">
+            <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+            <span class="title">Últimos 30 dias</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 2</span>
-          </a>
-        </li>
-
-        <li class="list">
-          <a href="Dashboard_Geral.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 3</span>
+            <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+            <span class="title">Histórico</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 4</span>
+            <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
+            <span class="title">Analise Geral</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 5</span>
+            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+            <span class="title">Perfil</span>
           </a>
         </li>
 
@@ -82,7 +75,7 @@
       <div class="cont">
         <div class="perfil">
           <div class="nome_dashboard">
-            <b>Dashboard Setor</b>
+            <b>Tomada 25</b>
           </div>
         </div>
           <div class="nome_perfil">
@@ -94,48 +87,62 @@
 
       <div class="alinhar .a">
         <div class="card-kpi-b">
-          <span>Tomada ligada em uso</span>
-          <h1>5/5</h1>
+          <span>Informações da tomada</span>
+          <h3>Ramal: 006001</h3>
+          <h3>Setor: Setor 5</h3>
+          <h3>Andar: 6º andar</h3>
         </div>
 
         <div class="container_botao_kpi">
-          <div id="div_kpi" class="card-kpi-a">
-            <span>Média Umidade Atual:</span>
+          <div id="div_kpi" class="card-kpi-b">
+            <span>Aparelho Conectado e Local:</span>
                     <span class="img-kpi">
-                      <span>estável <b>40%</b></span>
-                      <img src="Imagem/gotinha.jpg" alt="">
+                      <span>Esteira Indústrial</span>
                     </span>
+                    <span>Sala de Operações</span>
           </div>
         </div>
   
-        <div class="card-kpi-b">
-          <span>Staus de Risco</span>
-          <h3>Normal sem Riscos</h3>
+        <div class="card-kpi-b ruim">
+          <span>Status de Risco</span>
+          <h3>Perigo</h3>
+          <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><h3>103ºC</h3></div>
         </div>
 
-        <div class="container_botao_kpi">
-          <div id="div_kpi" class="card-kpi-a">
-            <span>Temperatura:</span>
-            <span class="img-kpi">
-              <span>estável <b>27ºC</b></span>
-              <img src="Imagem/termo.jpg" alt="">
-            </span>
-          </div>
-        </div>
+        
 
       </div>
 
       <div class="alinhar">
-        <div class="grafico">
-          <span>Média umidade por setor</span>
-          <canvas id="grafico_coluna"></canvas>
-        </div>
-
-        <div class="grafico">
-          <span>Média temperatura por setor</span>
-          <canvas id="grafico_linha_temperatura"></canvas>
-        </div>
-      </div>
+         <!-- <div class="grafico">
+              <span>Quantidades de tomadas que super aqueceram</span>
+              <canvas id="grafico_coluna"></canvas>
+            </div> -->
+    
+            <div id="trocar_grafico" class="grafico">
+              <span>Variação de temperatura nas últimas horas</span>
+              <canvas style="width: 100%; height: 96%;" id="grafico_linha_temperatura"></canvas>
+            </div>
+    
+            <div class="container_botao_kpi">
+              <div id="div_mudar_kpi" class="card-kpi-a ruim">
+                <span>Média Temperatura Atual:</span>
+                <span class="img-kpi">
+                  <span>Perigo <b>103ºC</b></span>
+                  <img src="Imagem/termo.jpg" alt="">
+                </span>
+              </div>
+              <div>
+                <span id="span_btn">
+                  <button class="bt" onclick="temperatura()">
+                    
+                  </button>
+                  <button class="bt" onclick="umidade()">
+                    
+                  </button>
+                </span>
+              </div>
+            </div>
     </div>
 
   </div>
@@ -153,40 +160,18 @@
 
     list.forEach((item) =>
       item.addEventListener('click', activeLink));
-  </script>
-</body>
-<script>
-  const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
 
+  const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
+ 
 
   new Chart(grafico_linha_temperatura, {
     type: 'line',
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00'],
       datasets: [
-      {
-          label: 'tomada 1',
-          data: [30, 29, 28, 25, 22, 10],
-          borderWidth: 1
-        },
         {
-          label: 'tomada 2',
-          data: [29, 27, 12, 23, 20, 21],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 3',
-          data: [5, 25, 24, 21, 18, 19],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 4',
-          data: [25, 23, 10, 19, 16, 17],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 5',
-          data: [23, 21, 20, 17, 8, 15],
+          label: 'Tomada 25',
+          data: [60, 65, 72, 83, 90, 95, 98, 101, 100, 103, 103],
           borderWidth: 1
         }]
 
@@ -200,48 +185,114 @@
     }
   });
 
-  const grafico_coluna = document.getElementById('grafico_coluna');
+  // const grafico_coluna = document.getElementById('grafico_coluna');
 
-  new Chart(grafico_coluna, {
-    type: 'bar',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [{
-          label: 'tomada 1',
-          data: [30, 29, 28, 25, 22, 10],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 2',
-          data: [29, 27, 12, 23, 20, 21],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 3',
-          data: [5, 25, 24, 21, 18, 19],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 4',
-          data: [25, 23, 10, 19, 16, 17],
-          borderWidth: 1
-        },
-        {
-          label: 'tomada 5',
-          data: [23, 21, 20, 17, 8, 15],
-          borderWidth: 1
-        }]
+  // new Chart(grafico_coluna, {
+  //   type: 'bar',
+  //   data: {
+  //     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+  //     datasets: [{
+  //       label: 'Tomadas',
+  //       data: [90, 20, 40, 56,10, 82],
+  //       borderWidth: 1
+  //     }]
 
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true
+  //       }
+  //     }
+  //   }
+  // });
 
 </script>
-
+</body>
 </html>
+<script>
+  function temperatura() {
+
+    trocar_grafico.innerHTML = `
+    <span>Variação de temperatura nas últimas horas</span>
+        <canvas style="width: 100%; height: 96%;"  id="grafico_temperatura"></canvas>`;
+
+    const grafico_temperatura = document.getElementById('grafico_temperatura');
+
+    new Chart(grafico_temperatura, {
+      type: 'line',
+      data: {
+        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00'],
+        datasets: [{
+          label: 'Tomada 25',
+          data: [60, 65, 72, 83, 90, 95, 98, 101, 100, 103, 103],
+          borderWidth: 1
+        }]
+
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    span_btn.innerHTML = `
+                        <button class="bt" onclick="temperatura()">                          
+                        </button>
+                        <button class="bt" onclick="umidade()">                          
+                        </button>`;
+
+    div_mudar_kpi.innerHTML = `
+                    <span>Média Temperatura Atual:</span>
+                    <span class="img-kpi">
+                      <span>Perigo <b>103ºC</b></span>
+                      <img src="Imagem/termo.jpg" alt="">
+                    </span>`;
+  }
+
+  function umidade() {
+
+    trocar_grafico.innerHTML = `
+    <span>Variação de umidade nas últimas horas</span>
+        <canvas style="width: 100%; height: 96%;"  id="grafico_umidade"></canvas>`;
+        span_btn.innerHTML = `
+                        <button class="bt" onclick="temperatura()">                          
+                        </button>
+                        <button class="bt" onclick="umidade()">                       
+                        </button>`;
+
+    div_mudar_kpi.innerHTML=`
+                    <span>Média Umidade Atual:</span>
+                    <span class="img-kpi">
+                      <span>Perigo <b>80%</b></span>
+                      <img src="Imagem/gotinha.jpg" alt="">
+                    </span>`;
+
+    const grafico_umidade = document.getElementById('grafico_umidade');
+
+    new Chart(grafico_umidade, {
+      type: 'line',
+      data: {
+        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00'],
+        datasets: [{
+          label: 'Tomada 25',
+          data: [40, 40, 45, 45, 40, 40, 50, 55, 77, 75, 80],
+          borderWidth: 1
+        }]
+
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    
+  }
+</script>

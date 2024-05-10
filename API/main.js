@@ -21,6 +21,14 @@ const serial = async (
     //valoresLuminosidade,
     valoresLm35Temperatura,
     //valoresChave
+    valoresumidade2,
+    valorestemperatura2,
+    valoresumidade3,
+    valorestemperatura3,
+    valoresumidade4,
+    valorestemperatura4,
+    valoresumidade5,
+    valorestemperatura5
 ) => {
     let poolBancoDados = ''
 
@@ -30,10 +38,10 @@ const serial = async (
             // altere!
             // Credenciais do banco de dados
             host: 'localhost', // hosts : localhost ou 127.0.0.1
-            user: 'root', //mudar usuario: luana ou 
-            password: '220206', // mudar senha: ETI&61ss3 ou
+            user: 'luana', //mudar usuario: luana ou 
+            password: 'ETI&61ss3', // mudar senha: ETI&61ss3 ou
             database: 'bdMiot', // mudar nome banco
-            port: 3306 // portas: 3307 ou 3306
+            port: 3307 // portas: 3307 ou 3306
         }
     ).promise();
 
@@ -66,6 +74,16 @@ const serial = async (
         const lm35Temperatura = parseFloat(valores[1]);
         //const luminosidade = parseFloat(valores[3]);
         //const chave = parseInt(valores[4]);
+        let umidade2 = dht11Umidade + 2;
+        let temperatura2 = lm35Temperatura + 2;
+        let umidade3 = dht11Umidade + 4;
+        let temperatura3 = lm35Temperatura + 4;
+        let umidade4 = dht11Umidade + 6;
+        let temperatura4 = lm35Temperatura + 6;
+        let umidade5 = dht11Umidade + 8;
+        let temperatura5 = lm35Temperatura + 8;
+       
+
 
         // Armazena os valores dos sensores nos arrays correspondentes
         valoresDht11Umidade.push(dht11Umidade);
@@ -73,19 +91,18 @@ const serial = async (
        // valoresLuminosidade.push(luminosidade);
         valoresLm35Temperatura.push(lm35Temperatura);
         //valoresChave.push(chave);
+        valoresumidade2.push(umidade2);
+        valorestemperatura2.push(temperatura2);
+        valoresumidade3.push(umidade3);
+        valorestemperatura3.push(temperatura3);
+        valoresumidade4.push(umidade4);
+        valorestemperatura4.push(temperatura4);
+        valoresumidade5.push(umidade5);
+        valorestemperatura5.push(temperatura5);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-
-                     let umidade2 = dht11Umidade + 2;
-                    let temperatura2 = lm35Temperatura + 2;
-                    let umidade3 = dht11Umidade + 4;
-                    let temperatura3 = lm35Temperatura + 4;
-                    let umidade4 = dht11Umidade + 6;
-                    let temperatura4 = lm35Temperatura + 6;
-                    let umidade5 = dht11Umidade + 8;
-                    let temperatura5 = lm35Temperatura + 8;
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
@@ -118,6 +135,10 @@ const serial = async (
                     //chave] // alterar para o formato do meu banco
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + lm35Temperatura )
+            console.log("valores inseridos no banco: ", umidade2 + ", " + temperatura2 )
+            console.log("valores inseridos no banco: ", umidade3 + ", " + temperatura3 )
+            console.log("valores inseridos no banco: ", umidade4 + ", " + temperatura4)
+            console.log("valores inseridos no banco: ", umidade5 + ", " + temperatura5 )
         }
         
     });
@@ -135,8 +156,16 @@ const servidor = (
     valoresDht11Umidade,
     //valoresDht11Temperatura,
     //valoresLuminosidade,
-    valoresLm35Temperatura
+    valoresLm35Temperatura,
     //valoresChave
+    valoresumidade2,
+    valorestemperatura2,
+    valoresumidade3,
+    valorestemperatura3,
+    valoresumidade4,
+    valorestemperatura4,
+    valoresumidade5,
+    valorestemperatura5
 ) => {
     const app = express();
 
@@ -168,6 +197,30 @@ const servidor = (
     /*app.get('/sensores/chave', (_, response) => {
         return response.json(valoresChave);
     });*/
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valorestemperatura2);
+    });
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valorestemperatura3);
+    });
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valorestemperatura4);
+    });
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valorestemperatura5);
+    });
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresumidade2);
+    });
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresumidade3);
+    });
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresumidade4);
+    });
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresumidade5);
+    });
 }
 
 // Função principal assíncrona para iniciar a comunicação serial e o servidor web
@@ -178,6 +231,14 @@ const servidor = (
    // const valoresLuminosidade = [];
     const valoresLm35Temperatura = [];
     //const valoresChave = [];
+    const valoresumidade2 = [];
+    const valorestemperatura2 = [];
+    const valoresumidade3 = [];
+    const valorestemperatura3 = [];
+    const valoresumidade4 = [];
+    const valorestemperatura4 = [];
+    const valoresumidade5 = [];
+    const valorestemperatura5 = [];
 
     // Inicia a comunicação serial
     await serial(
@@ -186,6 +247,14 @@ const servidor = (
         //valoresLuminosidade,
         valoresLm35Temperatura,
        // valoresChave
+       valoresumidade2,
+       valorestemperatura2,
+       valoresumidade3,
+       valorestemperatura3 ,
+       valoresumidade4,
+       valorestemperatura4 ,
+       valoresumidade5,
+       valorestemperatura5
     );
 
     // Inicia o servidor web
@@ -195,5 +264,13 @@ const servidor = (
         //valoresLuminosidade,
         valoresLm35Temperatura,
         //valoresChave
+        valoresumidade2,
+       valorestemperatura2,
+       valoresumidade3,
+       valorestemperatura3 ,
+       valoresumidade4,
+       valorestemperatura4 ,
+       valoresumidade5,
+       valorestemperatura5
     );
 })();

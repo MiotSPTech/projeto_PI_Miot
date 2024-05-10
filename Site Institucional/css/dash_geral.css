@@ -9,7 +9,29 @@ body {
     display: flex;
     overflow: hidden;
     flex-direction: row;
-    width: 100vw;
+}
+.container .img_tomada{
+    width: 20%;
+    margin-left: 15%;
+}
+
+.container-alert{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.container-alert ion-icon{
+    margin-left: 25%;
+    font-size: 2rem;
+}
+.container span{
+    width: 100%;
+}
+.icon-alerta{
+    font-size: 3rem;
 }
 .cont{
     display: flex;
@@ -24,6 +46,7 @@ body {
     width: 100vw;
     align-items: center;
     justify-content: center;
+
 }
 
 .container_botao_kpi {
@@ -40,6 +63,7 @@ body {
     display: flex;
     position: relative;
     font-size: 200%;
+    top: 25px;
 }
 
 .nome_perfil {
@@ -82,13 +106,15 @@ body {
     margin-top: 2%;
     display: flex;
     flex-direction: row;
-    width: 55vw;
+    width: 80vw;
     gap: 30px;
     justify-content: space-evenly;
     align-items: center;
+    
 }
-.a{
-    margin-top: 2%;
+
+.alertas{
+    flex-direction: column;
 }
 .navigation {
     position: relative;
@@ -185,42 +211,6 @@ COR DA NAVBAR*/
     line-height: 60px;
     white-space: nowrap;
 }
-
-
-.card-kpi-a {
-    border-radius: 15px;
-    width: 18vw;
-    height: 27vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0051ff, #4f86fe);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease;
-}
-
-.card-kpi-a:hover {
-    transform: scale(1.05);
-}
-
-.card-kpi-a span {
-    font-size: 20px;
-}
-
-.card-kpi-a img {
-    width: 50%;
-}
-.card-kpi-a .img-kpi{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 2%;
-}
 .card-kpi-b {
     border-radius: 15px;
     width: 22vw;
@@ -234,6 +224,7 @@ COR DA NAVBAR*/
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .card-kpi-b span {
@@ -264,61 +255,23 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
-.maior{
-    width: 100vw;
-}
+
 .navigation:hover .logo{
     margin-left: 25%;
 }
-.secao-a{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-.secao-b{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 60vw;
-   transform: translateX(-23%);
-}
-.secao-c{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 20vw;
-    border-radius: 15px;
-    height: 70vh;
-    align-items: center;
-    background: linear-gradient(135deg, #0051ff, #4f86fe);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease;
-    margin-right:  2%; 
-}
-.secao-c:hover {
-    transform: scale(1.05);
-}
-.card-alerta{
-    width: 18vw;
-    height: 7vh;
+
+.card-alerta a{
+    text-decoration: none;
+    width: 15vw;
+    height: 28vh;
     background-color: #ffffff;
     box-shadow:  0 6px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-evenly;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     border-radius: 15px;
     color: black;
-}
-.btn-alert{
-    background-color: transparent;
-    border-color: 4px black;
-    border-radius: 15px;
-}
-.btn-alert:hover{
-    background-color: black;
-    color: #ffffff;
-    transform: scale(1, 1);
+    color: #fff;
+    background: linear-gradient(135deg, #c60c0c, #e51313);
 }

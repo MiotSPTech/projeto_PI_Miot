@@ -51,7 +51,32 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Umidade',
+                        label: 'sensor 1',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 2',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 3',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    
+                    {
+                        label: 'sensor 4',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 5',
                         type: 'line',
                         borderColor: ['#45b3e7'],
                         backgroundColor: ['#89cff0']
@@ -171,10 +196,34 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Temperatura',
+                        label: 'sensor 1',
                         type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 2',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 3',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 4',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    },
+                    {
+                        label: 'sensor 5',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
                     }]
                 },
                 options: {
@@ -265,7 +314,7 @@
                     grafico.data.labels.shift();
                     grafico.data.datasets[0].data.shift();
                 }
-
+                 
                 grafico.data.labels.push(tempo[endpoint]++);
                 grafico.data.datasets[0].data.push(parseFloat(valor));
                 grafico.update();

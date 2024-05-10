@@ -19,7 +19,7 @@
         <li class="logo">
           <a href="#">
             <span class="icon"><ion-icon name="logo-medium"></ion-icon></span>
-            <span class="title">Miot</span>
+            <span class="title">MIOT</span>
           </a>
         </li>
 
@@ -31,37 +31,30 @@
         </li>
 
         <li class="list">
-          <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 1</span>
+          <a href="#">
+            <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+            <span class="title">Últimos 30 dias</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 2</span>
-          </a>
-        </li>
-
-        <li class="list">
-          <a href="Dashboard_Geral.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 3</span>
+            <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+            <span class="title">Histórico</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 4</span>
+            <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
+            <span class="title">Analise Geral</span>
           </a>
         </li>
 
         <li class="list">
           <a href="Dashboard_Setor.html">
-            <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
-            <span class="title">Setor 5</span>
+            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+            <span class="title">Perfil</span>
           </a>
         </li>
 
@@ -90,104 +83,97 @@
               Administrador</b>
             <img src="Imagem/avatar_perfil.png" alt="">
           </div>
+
+          
       </div>
 
-      <div class="secao-a">
-        <div class="secao-b">
+
+
           <div class="alinhar">
-            <div class="grafico">
-              <span>Quantidades de tomadas que super aqueceram</span>
-              <canvas id="grafico_coluna"></canvas>
-            </div>
-    
-            <div id="trocar_grafico" class="grafico">
-              <span>Média temperatura por setor</span>
-              <canvas id="grafico_linha_temperatura"></canvas>
-            </div>
-    
-            <div class="container_botao_kpi">
-              <div id="div_kpi" class="card-kpi-a">
-                <span>Média Temperatura Atual:</span>
-                <span class="img-kpi">
-                  <span>estável <b>27ºC</b></span>
-                  <img src="Imagem/termo.jpg" alt="">
-                </span>
-              </div>
-              <div>
-                <span id="span_btn">
-                  <button class="bt" onclick="temperatura()">
-                    
-                  </button>
-                  <button class="bt" onclick="umidade()">
-                    
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="alinhar a">
-            <div class="card-kpi-a">
+            <div class="card-kpi-b">
               <span>Tomadas em uso</span>
-              <h1>100</h1>
+              <h1>100/110</h1>
             </div>
-            
-            
     
             <div class="card-kpi-b">
               <span>Tomadas em risco</span>
-              <h1>5</h1>
+              <h1>5/100</h1>
+            </div>
+
+            <div class="card-kpi-b">
+              <span>Tomadas Sem Sinal</span>
+              <h1>10</h1>
             </div>
     
           </div>
-        </div>
 
 
-          <div class="secao-c">
-            <h1>Alertas</h1>
-            <div class="card-alerta">
-              <ion-icon name="warning-outline"></ion-icon>
-              <span>Tomada 25</span>
-              <span>103ºC</span>
-              <button class="btn-alert">Saber Mais</button>
-            </div>
 
-            <div class="card-alerta">
-              <ion-icon name="warning-outline"></ion-icon>
-              <span>Tomada 89</span>
-              <span>80ºC</span>
-              <button class="btn-alert">Saber Mais</button>
-            </div>
+          <div class="alinhar alertas">
 
-            <div class="card-alerta">
-              <ion-icon name="warning-outline"></ion-icon>
-              <span>Tomada 201</span>
-              <span>60ºC</span>
-              <button class="btn-alert">Saber Mais</button>
-            </div>
-
-            <div class="card-alerta">
-              <ion-icon name="warning-outline"></ion-icon>
-              <span>Tomada 46</span>
-              <span>69ºC</span>
-              <button class="btn-alert">Saber Mais</button>
-            </div>
-
-            <div class="card-alerta">
-              <ion-icon name="warning-outline"></ion-icon>
-              <span>Tomada 62</span>
-              <span>70ºC</span>
-              <button class="btn-alert">Saber Mais</button>
+            <div>
+              <h1>Últimos Alertas</h1>
             </div>
             
-          </div>
 
-      </div>
+            <div class="alinhar">
+
+              
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+            </div>
+
+            </div>
+               
     </div>
 
   </div>
 
+
+
+   
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -348,6 +334,18 @@
     trocar_grafico.innerHTML = `
     <span>Média umidade por setor</span>
         <canvas id="grafico_umidade"></canvas>`;
+        span_btn.innerHTML = `
+                        <button class= "bt" onclick="temperatura()">                          
+                        </button>
+                        <button class= "bt" onclick="umidade()">                       
+                        </button>`;
+
+    div_kpi.innerHTML = `
+                    <span>Média Umidade Atual:</span>
+                    <span class="img-kpi">
+                      <span>estável <b>40%</b></span>
+                      <img src="Imagem/gotinha.jpg" alt="">
+                    </span>`;
 
     const grafico_umidade = document.getElementById('grafico_umidade');
 
@@ -391,17 +389,6 @@
       }
     });
 
-    span_btn.innerHTML = `
-                        <button class= "bt" onclick="temperatura()">                          
-                        </button>
-                        <button class= "bt" onclick="umidade()">                       
-                        </button>`;
-
-    div_kpi.innerHTML = `
-                    <span>Média Umidade Atual:</span>
-                    <span class="img-kpi">
-                      <span>estável <b>40%</b></span>
-                      <img src="Imagem/gotinha.jpg" alt="">
-                    </span>`;
+    
   }
 </script>

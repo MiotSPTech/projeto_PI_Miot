@@ -191,7 +191,7 @@ COR DA NAVBAR*/
 
 .card-kpi-a {
     border-radius: 15px;
-    width: 18vw;
+    width: 24vw;
     height: 27vh;
     display: flex;
     flex-direction: column;
@@ -225,7 +225,7 @@ COR DA NAVBAR*/
 }
 .card-kpi-b {
     border-radius: 15px;
-    width: 18vw;
+    width: 24vw;
     height: 27vh;
     display: flex;
     flex-direction: column;
@@ -240,10 +240,14 @@ COR DA NAVBAR*/
 
 .card-kpi-b span {
     font-size: 25px;
+    top: 5;
 }
 
 .card-kpi-b:hover {
     transform: scale(1.05);
+}
+.card-kpi-b h3{
+    margin: 0;
 }
 
 .grafico {
@@ -261,6 +265,9 @@ COR DA NAVBAR*/
     width: 25vw;
     text-align: center;
 }
+.grafico canvas{
+    width: 80%;
+}
 body {
     background-color: #f4f4f4;
     color: #333;
@@ -268,4 +275,21 @@ body {
 
 .navigation:hover .logo{
     margin-left: 25%;
+}
+.ruim{
+    background: linear-gradient(135deg, #c60c0c, #e51313);
+}
+.ruim h3{
+    font-size: 200%;
+}
+.container-alert{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.container-alert ion-icon{
+    font-size: 2rem;
 }

@@ -23,17 +23,46 @@ create table tbIndustria(
     idIndustria int,
     foreign key (idIndustria) references tbIndustria (idIndustria)
 	);
+    
+create table tbSetor (
+	idSetor int primary key auto_increment
+    ,andar int 
+    ,nomeSetor varchar(45)
+    ,ramalSetor varchar(20)
+    ,idIndustria int
+    ,foreign key (idIndustria) references tbIndustria (idIndustria)
+    );
 
 create table tbTomada(
 	idTomada int Primary key auto_increment,
     descricaoTomada varchar(50) not null,
     localizacaoTomada varchar(60) not null,
-    voltagemTomada varchar (20) not null,
+    aparelhoConectadoTomada varchar (20) not null,
     tipoTomada varchar (20) not null,
     statusTomada varchar (20) check ( statusTomada in('ligada', 'desligada')),
     codVerificacaoSistemaTomada varchar (8) not null,
-    idIndustria int,
-    foreign key (idIndustria) references tbIndustria (idIndustria)
+    idSetor int,
+    foreign key (idSetor) references tbSetor (idSetor)
+    );
+    
+create table tbParametros (
+	idTomada int
+    ,foreign key (idTomada) references tbTomada (idTomada)
+    ,temperaturaMax decimal (7,2)
+    ,temperaturaMin decimal (7,2)
+    ,umidadeMax int
+    ,umidadeMin int
+    ,primary key (idTomada)
+    );
+
+    create table tbRegistro(
+    idRegistro int primary key auto_increment,
+    dataHoraRegistro datetime not null default current_timestamp,
+	leituraTemperatura decimal(7,2) not null,
+    leituraUmidade int,
+    statusRegistro varchar(20) not null default 'Normal' check (statusRegistro in ('Normal', 'Irregularidade', 'Risco')),
+    idTomada int default 1,
+    foreign key (idTomada) references tbTomada (idTomada)
     );
     
 create table tbAlerta(
@@ -41,24 +70,8 @@ create table tbAlerta(
     dataHoraAlerta datetime not null default current_timestamp,
 	notificacaoAlerta varchar(45) not null,
     statusAlerta varchar (20) check ( statusAlerta in ('em Aberto', 'Resolvido', 'Ignorado')),
-    idTomada int,
-    foreign key (idTomada) references tbTomada (idTomada)
-    );
-    
-    create table tbSensor(
-	idSensor int primary key auto_increment,
-    tipoSensor varchar (20)  not null check (tipoSensor in ('Temperatura', 'Umidade')),
-    idTomada int,
-    foreign key (idTomada) references tbTomada (idTomada)
-    );
-    
-    create table tbRegistro(
-    idRegistro int primary key auto_increment,
-    dataHoraRegistro datetime not null default current_timestamp,
-	leituraSensor decimal(3,1) not null,
-    statusRegistro varchar(20) not null check (statusRegistro in ('Normal', 'Irregularidade', 'Risco')),
-    idSensor int,
-    foreign key (idSensor) references tbSensor (idSensor)
+    idRegistro int,
+    foreign key (idRegistro) references tbRegistro (idRegistro)
     );
     
 -- Inserts para tbIndustria
@@ -69,6 +82,16 @@ VALUES
 ('Metalúrgica LMN', '01234567890123', 'Travessa Metalúrgica', '101', '01234567', 'Bairro da Metalurgia', 'Cidade Metalúrgica'),
 ('Tecidos e Cia', '78901234567890', 'Avenida do Tecido', '123', '78901234', 'Bairro dos Tecidos', 'Cidade Têxtil'),
 ('Produtos Químicos S.A.', '23456789012345', 'Rua dos Químicos', '567', '23456789', 'Bairro Químico', 'Cidade dos Produtos Químicos');
+
+select * from tbIndustria;
+
+INSERT INTO tbSetor (nomeSetor, ramalSetor, andar, idIndustria) 
+VALUES 
+('Operações', '002001', 5, 1),
+('Sala de Controle','003001', 3, 1),
+('Maquinário', '004001', 6, 2),
+('Sala de Produção','009001', 1, 4),
+('Laboratório','008001', 5, 3);
 
 select * from tbIndustria;
 
@@ -84,18 +107,40 @@ VALUES
 select * from tbRepresentante;
 
 -- Inserts para tbTomada
-INSERT INTO tbTomada (descricaoTomada, localizacaoTomada, voltagemTomada, tipoTomada, statusTomada, codVerificacaoSistemaTomada, idIndustria) 
+INSERT INTO tbTomada (descricaoTomada, localizacaoTomada, aparelhoConectadoTomada, tipoTomada, statusTomada, codVerificacaoSistemaTomada, idSetor) 
 VALUES 
-('Tomada 2', 'Sala de Operações', '220V', 'Tipo B', 'desligada', 'DEF456', 3),
-('Tomada 3', 'Área de Produção', '110V', 'Tipo A', 'desligada', 'GHI789', 4),
-('Tomada 4', 'Almoxarifado', '220V', 'Tipo B', 'ligada', 'JKL012', 5),
-('Tomada 5', 'Sala de Testes', '110V', 'Tipo A', 'desligada', 'MNO345', 2),
-('Tomada 6', 'Sala de Controle', '220V', 'Tipo B', 'ligada', 'PQR678', 1);
+('Tomada 25', 'Sala de Operações', 'Esteira Industrial', 'Tipo B', 'desligada', 'DEF456', 3),
+('Tomada 3', 'Área de Produção', 'Garra Mecanica', 'Tipo A', 'desligada', 'GHI789', 4),
+('Tomada 4', 'Almoxarifado', 'Misturadoura', 'Tipo B', 'ligada', 'JKL012', 5),
+('Tomada 5', 'Sala de Testes', 'Difusor Industrial', 'Tipo A', 'desligada', 'MNO345', 2),
+('Tomada 6', 'Sala de Controle', 'Empilhadeira', 'Tipo B', 'ligada', 'PQR678', 1);
 
 select * from tbTomada;
 
+-- Inserts para tbSensor
+INSERT INTO tbParametros (idTomada, temperaturaMax, temperaturaMin, umidadeMax, umidadeMin) 
+VALUES 
+(1, 60.35, 10.15, 45, 20),
+(2, 60.35, 10.15, 45, 20),
+(3, 60.35, 10.15, 45, 20),
+(4, 60.35, 10.15, 45, 20),
+(5, 60.35, 10.15, 45, 20);
+
+select * from tbParametros;
+
+-- Inserts para tbRegistro
+INSERT INTO tbRegistro (leituraTemperatura, leituraUmidade, statusRegistro, idTomada) 
+VALUES 
+(20.5, 60, 'Normal', 1),
+(25.0,40, 'Irregularidade', 2),
+(68.2, 90, 'Risco', 3),
+(28.7,20, 'Normal', 4),
+(0.0, 70, 'Irregularidade', 5);
+
+select * from tbRegistro;
+
 -- Inserts para tbAlerta
-INSERT INTO tbAlerta (notificacaoAlerta, statusAlerta, idTomada) 
+INSERT INTO tbAlerta (notificacaoAlerta, statusAlerta, idRegistro) 
 VALUES 
 ('Alerta de possivel curto-circuito', 'em Aberto', 2),
 ('Alerta de alta temperatura', 'em Aberto', 3),
@@ -105,52 +150,55 @@ VALUES
 
 select * from tbAlerta;
 
--- Inserts para tbSensor
-INSERT INTO tbSensor (tipoSensor, idTomada) 
-VALUES 
-('Umidade', 1),
-('Temperatura', 2),
-('Umidade', 3),
-('Temperatura', 4),
-('Umidade', 5);
 
-select * from tbSensor;
+-- select que traz todas as tomadas de um determinado setor
+select descricaoTomada, localizacaoTomada, statusTomada, statusRegistro from tbSetor
+inner join tbTomada on tbSetor.idSetor = tbTomada.idSetor
+inner join tbRegistro on tbTomada.idTomada = tbRegistro.idTomada
+where tbSetor.idSetor = 1;
 
--- Inserts para tbRegistro
-INSERT INTO tbRegistro (leituraSensor, statusRegistro, idSensor) 
-VALUES 
-(20.5, 'Normal', 1),
-(25.0, 'Irregularidade', 2),
-(60.2, 'Risco', 3),
-(28.7, 'Normal', 4),
-(0.0, 'Irregularidade', 5);
-
-select * from tbRegistro;
-
--- select que traz todas as tomadas de uma determinada industria
-select descricaoTomada, localizacaoTomada, statusTomada, statusRegistro from tbIndustria
-inner join tbTomada on tbIndustria.idIndustria = tbTomada.idIndustria
-inner join tbSensor on tbTomada.idTomada = tbSensor.idTomada
-inner join tbRegistro on tbSensor.idSensor = tbRegistro.idSensor
-where tbIndustria.idIndustria = 2;
+-- select que traz todos os setores de uma determinada indústria
+select nomeSetor, andar from tbIndustria 
+inner join tbSetor on tbSetor.idIndustria = tbIndustria.idIndustria
+where tbIndustria.idIndustria = 1;
 
 -- select que retorna todas as informações do Alerta
-select descricaoTomada, localizacaoTomada, notificacaoAlerta, dataHoraAlerta, statusAlerta, leituraSensor from tbTomada
-inner join tbAlerta on tbAlerta.idTomada = tbTomada.idTomada
-inner join tbSensor on tbSensor.idTomada = tbTomada.idTomada
-inner join tbRegistro on tbRegistro.idSensor = tbSensor.idSensor
+select descricaoTomada, localizacaoTomada, notificacaoAlerta, dataHoraAlerta, statusAlerta, leituraTemperatura, leituraUmidade from tbTomada
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
+inner join tbAlerta on tbAlerta.idRegistro = tbRegistro.idRegistro
 where tbAlerta.idAlerta = 1;
 
 -- select que traz todas as informações de uma tomada especifica 
-select descricaoTomada, localizacaoTomada, voltagemTomada, tipoTomada, statusTomada, leituraSensor, statusRegistro, dataHoraRegistro from tbTomada
-inner join tbAlerta on tbAlerta.idTomada = tbTomada.idTomada
-inner join tbSensor on tbSensor.idTomada = tbTomada.idTomada
-inner join tbRegistro on tbRegistro.idSensor = tbSensor.idSensor
+select descricaoTomada, localizacaoTomada, aparelhoConectadoTomada, tipoTomada, statusTomada, leituraUmidade, leituraTemperatura, statusRegistro, dataHoraRegistro from tbTomada
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
 where tbTomada.idTomada = 3;
 
 -- select que retorna histórico de alertas
-select descricaoTomada, notificacaoAlerta, dataHoraAlerta, dataHoraRegistro, statusRegistro, StatusAlerta, localizacaoTomada, leituraSensor from tbTomada
-inner join tbAlerta on tbAlerta.idTomada = tbTomada.idTomada
-inner join tbSensor on tbSensor.idTomada = tbTomada.idTomada
-inner join tbRegistro on tbRegistro.idSensor = tbSensor.idSensor
+select descricaoTomada, notificacaoAlerta, dataHoraAlerta, dataHoraRegistro, statusRegistro, StatusAlerta, localizacaoTomada, leituraTemperatura, leituraUmidade from tbTomada
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
+inner join tbAlerta on tbAlerta.idRegistro = tbRegistro.idRegistro
 order by tbAlerta.dataHoraAlerta desc;
+
+-- select que traz o total de tomadas desligadas
+select count(idTomada) as quantidade_tomadas_sem_sinal from tbTomada 
+where statusTomada = 'desligada';
+
+-- select que retorna quantidade total de tomadas
+select count(idTomada) as quantidade_total_tomadas from tbTomada ;
+
+-- select de tomadas em funcionamento
+select count(idTomada) as quantidade_tomadas_sem_sinal from tbTomada 
+where statusTomada = 'ligada';
+
+-- select que retorna as tomadas que estão em risco
+select tbTomada.idTomada, descricaoTomada, nomeSetor, leituraTemperatura from tbSetor
+inner join tbTomada on tbTomada.idSetor = tbSetor.idSetor
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
+where tbRegistro.leituraTemperatura > 60;
+
+-- select que retorna os dados dos kpis da tomada especifica
+select nomeSetor, ramalSetor, andar, aparelhoConectadoTomada, localizacaoTomada, statusRegistro, leituraUmidade, leituraTemperatura
+from tbSetor
+inner join tbTomada on tbTomada.idSetor = tbSetor.idSetor
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
+where tbTomada.idTomada = 4;
