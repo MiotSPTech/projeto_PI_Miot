@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIOT</title>
-    <link rel="stylesheet" href="./css/dash_setor.css">
-    <link rel="shortcut icon"  href="imagem/logo.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIOT</title>
+  <link rel="stylesheet" href="./css/dash_setor.css">
+  <link rel="shortcut icon" href="imagem/logo.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -67,82 +67,84 @@
       </ul>
     </div>
 
-    
+
+  </div>
+
+  <div class="dash">
+
+    <div class="cont">
+      <div class="perfil">
+        <div class="nome_dashboard">
+          <b>Tomada 25</b>
+        </div>
+      </div>
+      <div class="nome_perfil">
+        <b>Claudia Alves <br>
+          Administrador</b>
+        <img src="Imagem/avatar_perfil.png" alt="">
+      </div>
     </div>
 
-    <div class="dash">
-
-      <div class="cont">
-        <div class="perfil">
-          <div class="nome_dashboard">
-            <b>Tomada 25</b>
-          </div>
-        </div>
-          <div class="nome_perfil">
-            <b>Claudia Alves <br>
-              Administrador</b>
-            <img src="Imagem/avatar_perfil.png" alt="">
-          </div>
+    <div class="alinhar .a">
+      <div class="card-kpi-b">
+        <span>Informações da tomada</span>
+        <h3>Ramal: 006001</h3>
+        <h3>Setor: Setor 5</h3>
+        <h3>Andar: 6º andar</h3>
       </div>
 
-      <div class="alinhar .a">
-        <div class="card-kpi-b">
-          <span>Informações da tomada</span>
-          <h3>Ramal: 006001</h3>
-          <h3>Setor: Setor 5</h3>
-          <h3>Andar: 6º andar</h3>
+      <div class="container_botao_kpi">
+        <div id="div_kpi" class="card-kpi-b">
+          <span>Aparelho Conectado e Local:</span>
+          <span class="img-kpi">
+            <span>Esteira Indústrial</span>
+          </span>
+          <span>Sala de Operações</span>
         </div>
+      </div>
 
-        <div class="container_botao_kpi">
-          <div id="div_kpi" class="card-kpi-b">
-            <span>Aparelho Conectado e Local:</span>
-                    <span class="img-kpi">
-                      <span>Esteira Indústrial</span>
-                    </span>
-                    <span>Sala de Operações</span>
-          </div>
-        </div>
-  
-        <div class="card-kpi-b ruim">
-          <span>Status de Risco</span>
-          <h3>Perigo</h3>
-          <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><h3>103ºC</h3></div>
-        </div>
-
-        
+      <div class="card-kpi-b ruim">
+        <h4>Média de Temperatura Adequada: 65ºC</h4>
+        <h4>Média Minima Adequada: 60ºC</h4>
+        <h4>Média Maxima Adequada: 70ºC</h4>
 
       </div>
 
-      <div class="alinhar">
-         <!-- <div class="grafico">
+
+
+    </div>
+
+    <div class="alinhar">
+      <!-- <div class="grafico">
               <span>Quantidades de tomadas que super aqueceram</span>
               <canvas id="grafico_coluna"></canvas>
             </div> -->
-    
-            <div id="trocar_grafico" class="grafico">
-              <span>Variação de temperatura nas últimas horas</span>
-              <canvas style="width: 100%; height: 96%;" id="grafico_linha_temperatura"></canvas>
-            </div>
-    
-            <div class="container_botao_kpi">
-              <div id="div_mudar_kpi" class="card-kpi-a ruim">
-                <span>Média Temperatura Atual:</span>
-                <span class="img-kpi">
-                  <span>Perigo <b>103ºC</b></span>
-                  <img src="Imagem/termo.jpg" alt="">
-                </span>
-              </div>
-              <div>
-                <span id="span_btn">
-                  <button class="bt" onclick="temperatura()">
-                    
-                  </button>
-                  <button class="bt" onclick="umidade()">
-                    
-                  </button>
-                </span>
-              </div>
-            </div>
+
+      <div id="trocar_grafico" class="grafico">
+        <span>Variação de temperatura nas últimas horas</span>
+        <canvas style="width: 100%; height: 96%;" id="grafico_linha_temperatura"></canvas>
+      </div>
+
+      <div class="container_botao_kpi">
+        <div id="div_mudar_kpi" class="card-kpi-a ruim">
+          <span><b>Média Temperatura Atual</b></span>
+          <span><b>Status de Risco:</b></span>
+          <span class="img-kpi">
+            <span><b>Perigo 103ºC</b></span>
+            <img src="Imagem/termo.jpg" alt="">
+          </span>
+        </div>
+        <div>
+          <span id="span_btn">
+            <button class="bt" onclick="temperatura()">
+
+            </button>
+            <button class="bt" onclick="umidade()">
+
+            </button>
+          </span>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -161,54 +163,55 @@
     list.forEach((item) =>
       item.addEventListener('click', activeLink));
 
-  const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
- 
+    const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
 
-  new Chart(grafico_linha_temperatura, {
-    type: 'line',
-    data: {
-      labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00'],
-      datasets: [
-        {
-          label: 'Tomada 25',
-          data: [60, 65, 72, 83, 90, 95, 98, 101, 100, 103, 103],
-          borderWidth: 1
-        }]
 
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    new Chart(grafico_linha_temperatura, {
+      type: 'line',
+      data: {
+        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00'],
+        datasets: [
+          {
+            label: 'Tomada 25',
+            data: [60, 65, 72, 83, 90, 95, 98, 101, 100, 103, 103],
+            borderWidth: 1
+          }]
+
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
+    });
 
-  // const grafico_coluna = document.getElementById('grafico_coluna');
+    // const grafico_coluna = document.getElementById('grafico_coluna');
 
-  // new Chart(grafico_coluna, {
-  //   type: 'bar',
-  //   data: {
-  //     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-  //     datasets: [{
-  //       label: 'Tomadas',
-  //       data: [90, 20, 40, 56,10, 82],
-  //       borderWidth: 1
-  //     }]
+    // new Chart(grafico_coluna, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+    //     datasets: [{
+    //       label: 'Tomadas',
+    //       data: [90, 20, 40, 56,10, 82],
+    //       borderWidth: 1
+    //     }]
 
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true
-  //       }
-  //     }
-  //   }
-  // });
+    //   },
+    //   options: {
+    //     scales: {
+    //       y: {
+    //         beginAtZero: true
+    //       }
+    //     }
+    //   }
+    // });
 
-</script>
+  </script>
 </body>
+
 </html>
 <script>
   function temperatura() {
@@ -245,12 +248,11 @@
                         <button class="bt" onclick="umidade()">                          
                         </button>`;
 
-    div_mudar_kpi.innerHTML = `
-                    <span>Média Temperatura Atual:</span>
-                    <span class="img-kpi">
-                      <span>Perigo <b>103ºC</b></span>
-                      <img src="Imagem/termo.jpg" alt="">
-                    </span>`;
+    div_mudar_kpi.innerHTML = `<span><b>Média Temperatura Atual</b></span>
+                <span><b>Status de Risco:</b></span>
+                <span class="img-kpi">
+                  <span><b>Perigo 103ºC</b></span>
+                  <img src="Imagem/termo.jpg" alt="">`;
   }
 
   function umidade() {
@@ -258,16 +260,16 @@
     trocar_grafico.innerHTML = `
     <span>Variação de umidade nas últimas horas</span>
         <canvas style="width: 100%; height: 96%;"  id="grafico_umidade"></canvas>`;
-        span_btn.innerHTML = `
+    span_btn.innerHTML = `
                         <button class="bt" onclick="temperatura()">                          
                         </button>
                         <button class="bt" onclick="umidade()">                       
                         </button>`;
 
-    div_mudar_kpi.innerHTML=`
-                    <span>Média Umidade Atual:</span>
+    div_mudar_kpi.innerHTML = `
+                    <span><b>Média Umidade Atual</b></span>
                     <span class="img-kpi">
-                      <span>Perigo <b>80%</b></span>
+                      <span><b>Perigo 80%</b></span>
                       <img src="Imagem/gotinha.jpg" alt="">
                     </span>`;
 
@@ -293,6 +295,17 @@
       }
     });
 
-    
+
   }
+
+
+
+
+
+
+
+
+
+
+
 </script>
