@@ -40,7 +40,7 @@ const serial = async (
             host: 'localhost', // hosts : localhost ou 127.0.0.1
             user: 'luana', //mudar usuario: luana ou 
             password: 'ETI&61ss3', // mudar senha: ETI&61ss3 ou
-            database: 'bdMiot', // mudar nome banco
+            database: 'bdMiot', // mudar nome bancqo
             port: 3307 // portas: 3307 ou 3306
         }
     ).promise();
