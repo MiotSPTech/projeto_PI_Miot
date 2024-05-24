@@ -71,8 +71,8 @@
         <div class="container-formulario entrar">
             <form action="#" class="formulario" id="formulario2">
                 <h2 class="titulo2">Acessar Conta</h2>
-                <input type="email" placeholder="Seu e-mail" class="input">
-                <input type="password" placeholder="Sua senha" class="input">
+                <input type="email" placeholder="Seu e-mail" class="input" id="email_input">
+                <input type="password" placeholder="Sua senha" class="input" id="senha_input">
                 <a href="#" class="link">Esqueceu sua senha?</a>
                 <button class="botao1" onclick="entrar()">
                         Entrar
@@ -110,21 +110,13 @@
     function entrar() {
         window.location.href = "Dashboard_Geral.html";
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailLoginVar = email_input.value;
+        var senhaLoginVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+        console.log("FORM LOGIN: ", emailLoginVar);
+        console.log("FORM SENHA: ", senhaLoginVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -132,8 +124,8 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                emailServer: emailLoginVar,
+                senhaServer: senhaLoginVar
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -144,14 +136,16 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.EMAIL_REPRESENTANTE = json.emailRepresentante;
+                    sessionStorage.NOME_REPRESENTANTE = json.nomeRepresentante;
+                    sessionStorage.ID_REPRESENTANTE = json.idRepresentante;
+                    sessionStorage.CARGO_REPRESENTANTE = json.cargoRepresentante;
+                    sessionStorage.CODIGO_INDUSTRIA = json.codigoIndustria;
+                    //sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location.href = "Dashboard_Geral.html";
+                    }, 100); // apenas para exibir o loading
 
                 });
 
@@ -159,10 +153,7 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+                alert(`Houve um erro ao tentar realizar o login!`);
             }
 
         }).catch(function (erro) {
