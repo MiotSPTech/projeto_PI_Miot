@@ -125,10 +125,11 @@ body {
 
 .imagem-robo {
     width: 100%;
-    margin-right: 190px;
+    margin-right: 120px;
     display: flex;
     justify-content: flex-end;
-    animation: toggle__animation 3s infinite;
+    animation: toggle__animation 2s infinite;
+    filter: drop-shadow(5px 5px 10px #00aeff);
 }
 
 .imagem-robo .robot{
@@ -139,7 +140,7 @@ body {
 
 @keyframes toggle__animation {
     0%, 100% {
-      transform: translateY(-10px) rotateX(15deg) rotateY(-20deg);
+      transform: translateY(-20px) rotateX(15deg) rotateY(-20deg);
     }
   
     50% {
