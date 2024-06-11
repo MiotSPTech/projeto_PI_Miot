@@ -229,8 +229,8 @@ body {
     padding: 15px 40px;
     font-size: 12px;
     text-transform: uppercase;
-	margin-top: 30px;
-	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
     font-weight: 600;
     background-color: var(--azulescuronav);
     border: 0;
@@ -264,6 +264,7 @@ body {
 .sobreposicao {
 	background-color: var(--azulescuronav);
 	background-image: url("../Imagem/valvula.png");
+	background-size: 100% 100vh;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -336,7 +337,7 @@ body {
 	background-color: #ffffffa1;
 	border: none;
 	border-radius: 10px;
-	padding: 0.9rem 0.9rem;
+	padding: 0.9rem 0.4rem;
 	width: 90%;
 	margin-top: 30px;
 }
@@ -345,8 +346,11 @@ select.selectcargos{
 	background-color: #ffffffa1;
 	border: none;
 	border-radius: 10px;
-	padding: 0.9rem 0.9rem;
+	padding: 0.9rem 0.4rem;
 	width: 90%;
 	align-items: center;
 	margin-top: 30px;
+}
+.painel-ativo{
+	height: 100%;
 }
