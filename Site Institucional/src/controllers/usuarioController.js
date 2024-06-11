@@ -32,7 +32,7 @@ function autenticar(req, res) {
                                         //aquarios: resultadoAquarios
                                     });
                                 //} else {
-                                    res.status(204).json({ aquarios: [] });
+                                    //res.status(204).json({ aquarios: [] });
                                 //}
                             //})
                     } else if (resultadoAutenticar.length == 0) {
