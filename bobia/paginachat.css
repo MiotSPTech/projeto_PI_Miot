@@ -150,3 +150,36 @@ body {
   background-color: var(--background-dark);
   color: var(--text-color);
 }
+
+.message.chatbot {
+  background-color: var(--background-dark);
+  color: var(--text-color);
+  border-radius: 0px 10px 10px 10px;
+-webkit-border-radius: 0px 10px 10px 10px;
+-moz-border-radius: 0px 10px 10px 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative; /* Para posicionar a imagem do ícone */
+}
+
+.message.chatbot::before {
+  content: ''; /* Criando o balão de conversa */
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid var(--background-dark);
+}
+
+.robo-icone {
+  width: 30px; /* Tamanho do ícone do chatbot */
+  height: 30px; /* Tamanho do ícone do chatbot */
+  position: absolute; /* Posicionamento absoluto para ficar dentro do balão */
+  bottom: -15px; /* Ajuste fino do posicionamento vertical */
+  left: -40px; /* Ajuste fino do posicionamento horizontal */
+  border-radius: 50%; /* Para tornar a imagem redonda */
+  
+}
