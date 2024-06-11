@@ -23,9 +23,14 @@
             <div class="menu-item">Create a design system</div>
         </div> -->
         <div class="chat-window" id="resposta">
-            <!-- <img src="img/chat-bot-icon.png" class="robo-icone"> -->
-            <ul class="message-list"></ul>
+            <!-- Adicione a imagem do ícone do chatbot -->
+            <img src="img/chat-bot-icon.png" class="robo-icone" alt="Ícone do Chatbot">
+            <!-- Use uma lista para criar o balão de conversa -->
+            <ul class="message-list">
+                <!-- Cada resposta da IA será um item da lista -->
+            </ul>
         </div>
+        
         <div class="chat-input">
             <input type="text" class="message-input" placeholder="Digite aqui" id="pergunta">
             <button class="send-button" onclick="gerarResposta()">Enviar</button>
@@ -38,21 +43,34 @@
 
 </html>
 <script>
-    // fazer a chamada do BobIA
-    async function gerarResposta() {
-        const pergunta = document.getElementById('pergunta').value;
+    // Seleciona a lista onde as mensagens serão adicionadas
+const messageList = document.querySelector('.message-list');
 
-        const response = await fetch('http://localhost:3333/perguntar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ pergunta })
-        });
+async function gerarResposta() {
+    const pergunta = document.getElementById('pergunta').value;
 
-        const data = await response.json();
+    const response = await fetch('http://localhost:3333/perguntar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ pergunta })
+    });
 
-        
-        document.getElementById('resposta').innerText = data.resultado;
-    }
+    const data = await response.json();
+
+    // Cria um novo item de mensagem
+    const messageItem = document.createElement('li');
+    messageItem.classList.add('message');
+
+    // Adiciona a classe de estilo dependendo de quem está falando (usuário ou chatbot)
+    messageItem.classList.add('chatbot'); // Adicione uma classe para o estilo do chatbot
+
+    // Adiciona a mensagem da IA dentro do item de mensagem
+    messageItem.innerText = data.resultado;
+
+    // Adiciona o novo item de mensagem à lista
+    messageList.appendChild(messageItem);
+}
+
 </script>
