@@ -44,6 +44,16 @@ create table tbTomada(
     );
     
     
+create table tbRegistro(
+	idRegistro int Primary key auto_increment,
+    leituraUmidade int not null,
+    leituraTemperatura varchar (20) not null,
+    statusRegistro varchar (20) check ( statusTomada in('Critico', 'Em Alerta', 'Normal')),
+    idTomada int,
+    foreign key (idTomada) references tbTomada (idTomada)
+    );
+    
+    
 -- Inserts para tbIndustria
 INSERT INTO tbIndustria (codigoIndustria, nomeIndustria, cnpjIndustria, logradouroIndustria, numLogradouroIndustria, cepIndustria, bairroIndustria, cidadeIndustria) 
 VALUES 
