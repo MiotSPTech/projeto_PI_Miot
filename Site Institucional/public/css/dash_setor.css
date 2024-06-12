@@ -1,295 +1,280 @@
-body {
+*{
     margin: 0;
     padding: 0;
-    font-family: Verdana;
     box-sizing: border-box;
 }
 
-.container {
+body{
+    height: 155vh;
     display: flex;
-    overflow: hidden;
-    flex-direction: row;
-    width: 100vw;
-}
-.cont{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 80vw;
-    height: 15vh;
-}
-.dash {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.container_botao_kpi {
-    display: flex;
-    flex-direction: column;
-}
-
-.perfil {
-    display: flex;
-    justify-content: space-around;
-}
-
-.nome_dashboard  {
-    display: flex;
-    position: relative;
-    font-size: 200%;
-    margin-top: 8%;
-}
-
-.nome_perfil {
-    display: flex;
+nav.menu_lateral{
+    width: 80px;
+    height: 100%;
+    background-color: #0E336D;
+    padding: 40px 0px;
+    box-shadow: 3px 0 0 black;
     position: fixed;
-    font-size: 120%;
-    top: 35px;
-    right: 120px;
-}
-.nome_perfil img{
-    display: flex;
-    position: fixed;
-    width: 47px;
-    height: 47px;
-    top: 35px;
-    right: 50px;
-}
-.bt {
-    display: inline-block;
-    position: relative;
-    width: 18px;
-    height: 18px;
-    margin: 0 2px;
-    top: 10px;
-    left: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    background: transparent;
-    background-color: #bcbcc1;
-    border-color:  transparent;
-}
-
-.bt:hover{
-    background-color: #4f86fe;
-    transform: scale(1.1, 1.1);
-}
-
-.alinhar {
-
-    margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    width: 80vw;
-    gap: 30px;
-    justify-content: space-evenly;
-    align-items: center;
-    transform: translateX(-10%);
-}
-.a{
-    margin-top: 2%;
-}
-.navigation {
-    position: relative;
-    height: 100vh;
-    background: #010959;
-    width: 70px;
-    box-shadow: 10px 0 0 #3c81d1;
-    border-left: 10px solid #010959;
-    overflow: hidden;
-    transition: 0.5s;
-}
-/* background: #aeb8ce;
-background: #0f5bff 
-background: #01062e
-COR DA NAVBAR*/
-
-.navigation ul li.active {
-    background: #3c81d1;
-}
-
-.navigation ul li.active a::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: #010959;
-    border-radius: 50%;
-    box-shadow: 15px 15px 0 #3c81d1;
-}
-
-.navigation ul li.active a::after {
-    position: absolute;
-    bottom: -30px;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: #010959;
-    border-radius: 50%;
-    box-shadow: 15px -15px 0 #3c81d1;
-}
-
-.navigation:hover {
-    width: 300px;
-    z-index: 1;
-}
-
-.navigation ul {
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    padding-left: 5px;
-    padding-top: 40px;
+    overflow: hidden;
+    transition: .2s;
+    z-index: 1000;
 }
-
-.navigation ul li {
-    position: relative;
-    list-style: none;
+.btn_expansao{
     width: 100%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.navigation ul li a {
-    position: relative;
+    padding-left: 10px 0;
     display: flex;
-    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px; /* Adicionado espaço abaixo */
+}
+.btn_expansao img {
+    width: 70px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    cursor: pointer;
+}
+
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item_menu a {
+    color: white;
     text-decoration: none;
-    color: #fff;
-}
-
-.navigation ul li a .icon {
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 70px;
-}
-
-.navigation ul li a .icon ion-icon {
-    position: relative;
-    font-size: 1.5rem;
-    z-index: 1;
-}
-
-.navigation ul li a .title {
-    position: relative;
-    display: block;
-    padding-left: 10px;
-    height: 60px;
-    line-height: 60px;
-    white-space: nowrap;
-}
-
-
-.card-kpi-a {
-    border-radius: 15px;
-    width: 24vw;
-    height: 27vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0051ff, #4f86fe);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease;
-}
-
-.card-kpi-a:hover {
-    transform: scale(1.05);
-}
-
-.card-kpi-a span {
     font-size: 20px;
+    padding: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.card-kpi-a img {
-    width: 50%;
+ul li.item_menu a .txt_link{
+    margin-left: 40px;
+    margin-left: 20px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
 }
-.card-kpi-a .img-kpi{
+
+span.icon{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+ul li.item_menu:hover{
+    background-color: #3C81D1;
+}
+ul li.item_menu{
+    transition: .5s;
+}
+nav.menu_lateral:hover{
+    width: 300px;
+}
+
+/*Informação do usuario*/
+
+.container_usuario{
+    position: absolute;
+    top: 0;
+    left: 100px; /* largura da nav, ajuste conforme necessário */
+    width:90%; /* largura total menos a largura da nav */
+    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: 2%;
+    justify-content: space-around;
+    padding-top: 10px;
 }
-.card-kpi-b {
-    border-radius: 15px;
-    width: 24vw;
-    height: 27vh;
+.tomada b{
+    font-size: 35px;
+}
+.nome_perfil{
+    width: 200px;
+    display: flex;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.nome_perfil img{
+    width: 70px;
+    margin-right: 5px;
+}
+.texto_usuario{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #132053, #111955);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease;
+    margin-right: 20px;
 }
 
-.card-kpi-b span {
-    font-size: 25px;
-    top: 5;
+/*linha de divisão*/
+
+.linha {
+    width: 80%; /* Defina a largura conforme necessário */
+    height: 1px; /* Altura da linha */
+    background-color: #ccc; /* Cor da linha */
+    z-index: 999; /* Ajuste o z-index se necessário */
+    margin: 100px auto ;
 }
 
-.card-kpi-b:hover {
-    transform: scale(1.05);
-}
-.card-kpi-b h3{
-    margin: 0;
-}
+/*cards informativos*/
 
-.grafico {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60vw;
-    height: 47vh;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-    border-radius: 20px;
-    background-color: #ffffff;
-}
-.grafico span{
-    width: 25vw;
-    text-align: center;
-}
-.grafico canvas{
-    width: 80%;
-}
-body {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-.navigation:hover .logo{
-    margin-left: 25%;
-}
-.ruim{
-    background: linear-gradient(135deg, #c60c0c, #e51313);
-}
-.ruim h3{
-    font-size: 200%;
-}
-.container-alert{
+.container_cards{
+    position: absolute;
+    top: 100px;
+    left: 100px; /* largura da nav, ajuste conforme necessário */
+    width:90%; /* largura total menos a largura da nav */
+    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    text-align: center;
+    justify-content: space-around;
+    padding-top: 10px;
 }
-.container-alert ion-icon{
-    font-size: 2rem;
+.card_kpi_a{
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    padding: 50px 70px;
 }
+.card_kpi_b{
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    padding: 50px 70px;
+}
+.card_kpi_c {
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    padding: 10px 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .temp_item span,
+  .umid_item span {
+    font-size: 18px;
+    color: #000000;
+    top: 0;
+  }
+  .temp_item,
+  .umid_item {
+    display: flex;
+    flex-direction: column; /* Para alinhar span e h1 verticalmente */
+    align-items: center; /* Alinhar elementos ao centro */
+    margin-bottom: 5px;
+}
+  /* Gradiente de cor para temperatura */
+  .temperatura {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .temp_item {
+    padding: 0 20px;
+  }
+  
+  .temp_item h1 {
+    color: white;
+    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  
+  /* Estilo padrão para umidade */
+  .umidade {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .umid_item {
+    padding: 0 20px;
+  }
+
+  .umid_item h1{
+    color: white;
+    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  /* card de acompanhamento de dash*/
+  .container_cards_acompanhamneto{
+    position: absolute;
+    top: 300px;
+    left: 510px; /* largura da nav, ajuste conforme necessário */
+    width:90%; /* largura total menos a largura da nav */
+    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+
+
+  }
+  .card_kpi_temperatura{
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    padding: 70px 20px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card_kpi_umidade{
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .imagem_span img{
+    width: 200px;
+    margin-left: 20px;
+  }
+  .imagem_span2 img{
+    width: 200px;
+    margin-left: 20px;
+  }
+  .imagem_span, .imagem_span2{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    
+  }
+  .imagem_span span{
+    font-size: 30px;
+    font-weight: 900;
+  }
+  .imagem_span2 span{
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  
+  .dash_temperatura{
+    position: absolute;
+    top: 290px;
+    left: 110px; /* largura da nav, ajuste conforme necessário */
+    width: 80vw; /* Largura do gráfico */
+    height: 60vh; /* Altura do gráfico */
+  }
+  .dash_umidade{
+    position: absolute;
+    top: 700px;
+    left: 110px; /* largura da nav, ajuste conforme necessário */  
+    width: 80vw; /* Largura do gráfico */
+    height: 60vh; /* Altura do gráfico */
+  }

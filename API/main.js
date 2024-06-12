@@ -30,7 +30,7 @@ const serial = async (
         {
             // altere!
             // Credenciais do banco de dados
-            host: 'localhost', // hosts : localhost ou 127.0.0.1
+            host: '10.18.33.109', // hosts : localhost ou 10.18.33.109
             user: 'luana', //mudar usuario: luana ou 
             password: 'ETI&61ss3', // mudar senha: ETI&61ss3 ou
             database: 'bdMiot', // mudar nome bancqo
