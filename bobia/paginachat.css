@@ -13,9 +13,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  /* background: rgb(0, 10, 20);
-  background: radial-gradient(circle, #3C81D1 0%, #0077ff 55%); */
-  background-image: url(img/fundo.jpg);
+  background: rgb(60,129,209);
+  background: radial-gradient(circle, rgba(60,129,209,1) 0%, rgba(8,24,111,1) 90%); 
+  /* background-image: url(img/fundo.jpg); */
   margin: 0;
   padding: 0;
   width: 100%;
@@ -26,7 +26,24 @@ body {
   color: var(--text-color);
 }
 
+.image-arrow{
+  display: flex;
+  align-items: flex-start;
+  z-index: 1;
+  margin-bottom: 44vw;
+  margin-right: 95vw;
+}
+
+.image-arrow img{
+  width: 4vw;
+  z-index: 1;
+  cursor: pointer;
+} 
+
+
+
 .card {
+  position: fixed;
   width: 90%;
   max-width: 1000px;
   height: 90%;
@@ -42,7 +59,7 @@ body {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.sidebar {
+/* .sidebar {
   width: 25%;
   background-color: var(--background-dark);
   padding: 20px;
@@ -67,7 +84,7 @@ body {
 
 .sidebar .menu-item:hover {
   background-color: var(--accent-color);
-}
+} */
 
 .chat-area {
   flex: 1;
@@ -77,10 +94,28 @@ body {
 
 .chat-header {
   background-color: var(--background-dark);
-  padding: 20px;
+  padding: 1vw;
   text-align: center;
-  font-size: 24px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
 }
+
+.chat-header span {
+  letter-spacing: 0.2rem;
+  text-shadow: 0px 4px 0px rgba(0,0,0,0.6);
+  font-weight: 700;
+}
+
+
+
+.robo-icone-header {
+  width: 4vw; /* Tamanho do ícone do chatbot */
+  height: 8vh; /* Tamanho do ícone do chatbot */
+  margin-left: 1vw; /* Espaçamento entre o ícone e o texto */
+}
+
 
 .chat-window {
   flex: 1;
@@ -174,12 +209,4 @@ body {
   border-right: 20px solid var(--background-dark);
 }
 
-.robo-icone {
-  width: 30px; /* Tamanho do ícone do chatbot */
-  height: 30px; /* Tamanho do ícone do chatbot */
-  position: absolute; /* Posicionamento absoluto para ficar dentro do balão */
-  bottom: -15px; /* Ajuste fino do posicionamento vertical */
-  left: -40px; /* Ajuste fino do posicionamento horizontal */
-  border-radius: 50%; /* Para tornar a imagem redonda */
-  
-}
+
