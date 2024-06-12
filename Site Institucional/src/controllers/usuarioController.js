@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+var setorModel = require("../models/setorModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -20,21 +20,21 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        //aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            //.then((resultadoAquarios) => {
-                                //if (resultadoAquarios.length > 0) {
+                        setorModel.buscarSetores(resultadoAutenticar[0].codigoIndustria)
+                            .then((resultadoSetores) => {
+                                if (resultadoSetores.length > 0) {
                                     res.json({
                                         idRepresentante: resultadoAutenticar[0].idRepresentante,
                                         emailRepresentante: resultadoAutenticar[0].emailRepresentante,
                                         nomeRepresentante: resultadoAutenticar[0].nomeRepresentante,
                                         codigoIndustria: resultadoAutenticar[0].codigoIndustria,
-                                        cargoRepresentante: resultadoAutenticar[0].cargoRepresentante
-                                        //aquarios: resultadoAquarios
+                                        cargoRepresentante: resultadoAutenticar[0].cargoRepresentante,
+                                        setores: resultadoSetores
                                     });
-                                //} else {
-                                    //res.status(204).json({ aquarios: [] });
-                                //}
-                            //})
+                                } else {
+                                    res.status(204).json({ setores: [] });
+                                }
+                            })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

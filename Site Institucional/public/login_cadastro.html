@@ -106,6 +106,9 @@
 </html>
 
 <script>
+    const validacoesCorretas = [];
+
+
     //continue o login daqui
     function entrar() {
 
@@ -140,6 +143,7 @@
                     sessionStorage.ID_REPRESENTANTE = json.idRepresentante;
                     sessionStorage.CARGO_REPRESENTANTE = json.cargoRepresentante;
                     sessionStorage.CODIGO_INDUSTRIA = json.codigoIndustria;
+                    sessionStorage.SETORES = JSON.stringify(json.setores);
                     //sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
@@ -186,6 +190,7 @@
 
         if (nome == "") {
             p_nome_completo.innerHTML = `<p style="color:red;">Insira seu nome completo</p>`
+            validacoesCorretas.push(true);
         } else {
             p_nome_completo.innerHTML = ""
         }
@@ -202,6 +207,7 @@
             p_email.innerHTML = `<p style="color:red;">Insira um email</p>`
         } else if (email.indexOf("@") > -1 && email.indexOf(".com") >-1){
             p_email.innerHTML = ""
+            validacoesCorretas.push(true);
         } else {
             p_email.innerHTML = `<p style="color:red;">Insira um email válido</p>`
         }
@@ -230,21 +236,25 @@
 
                 if (contador >= 8) {
                     span_tamanho.innerHTML = `<span style="color:green;">Sua senha deve conter 8 ou mais caracteres</span>`
+                    validacoesCorretas.push(true);
                 } else {
                     span_tamanho.innerHTML = `<span style="color:red;">Sua senha deve conter 8 ou mais caracteres</span>`
                 }
                 if (/[A-Z]/.test(senha)) {
                     span_maiuscula.innerHTML = `<span style="color:green;">Sua senha deve conter 1 letra maiúscula</span>`
+                    validacoesCorretas.push(true);
                 } else {
                     span_maiuscula.innerHTML = `<span style="color:red;">Sua senha deve conter 1 letra maiúscula</span>`
                 }
                 if (/[a-z]/.test(senha)) {
                     span_minuscula.innerHTML = `<span style="color:green;">Sua senha deve conter 1 letra minúscula</span>`
+                    validacoesCorretas.push(true);
                 } else {
                     span_minuscula.innerHTML = `<span style="color:red;">Sua senha deve conter 1 letra minúscula</span>`
                 }
                 if (/[0-9]/.test(senha)) {
                     span_numero.innerHTML = `<span style="color:green;">Sua senha deve conter 1 número</span>`
+                    validacoesCorretas.push(true);
                 } else {
                     span_numero.innerHTML = `<span style="color:red;">Sua senha deve conter 1 número</span>`
                 }
@@ -255,6 +265,7 @@
                     senha.indexOf("&") > -1 ||
                     senha.indexOf("?") > -1) {
                     span_simbolo.innerHTML = `<span style="color:green;">Sua senha deve conter 1 símbolo(!@#$%&?)</span>`
+                    validacoesCorretas.push(true);
                 } else {
                     span_simbolo.innerHTML = `<span style="color:red;">Sua senha deve conter 1 símbolo(!@#$%&?)</span>`
                 }
@@ -275,6 +286,7 @@
             p_repitaSenha.innerHTML = `<p style="color:red;">Repita a senha inserida anteriormente</p>`
         } else {
             p_repitaSenha.innerHTML = ""
+            validacoesCorretas.push(true);
         }
     }
 
@@ -284,55 +296,60 @@
 
     function cadastrar() {
         
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nomeVar = input_nome.value;
-        var emailVar = input_email.value;
-        var senhaVar = input_senha.value;
-        var confirmacaoSenhaVar = input_repita_senha.value;
-        var cargoVar = select_cargos.value;
-        var codigoVar = input_codigo.value
-        
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            codigoServer: codigoVar,
-            cargoServer: cargoVar
-        }),
-        })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
+        if(validacoesCorretas.length == 8){
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var nomeVar = input_nome.value;
+            var emailVar = input_email.value;
+            var senhaVar = input_senha.value;
+            var confirmacaoSenhaVar = input_repita_senha.value;
+            var cargoVar = select_cargos.value;
+            var codigoVar = input_codigo.value
             
-                alert('Cadastro realizado com sucesso!');
 
-            setTimeout(() => {
-                container.classList.remove("painel-ativo");
-            }, "2000");
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                codigoServer: codigoVar,
+                cargoServer: cargoVar
+            }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-            } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-            alert(`Houve um erro ao tentar realizar o cadastro!`);
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            alert(`#ERRO: ${resposta}`);
-        });
+                if (resposta.ok) {
+                
+                    alert('Cadastro realizado com sucesso!');
 
-        return false;
+                setTimeout(() => {
+                    container.classList.remove("painel-ativo");
+                }, "2000");
+
+                } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+                alert(`Houve um erro ao tentar realizar o cadastro!`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                alert(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+        }else{
+            alert("Verifique as validações dos campos! Todos os campos devem estar Corretos!");
+        }
+
+        
     }
 
 
