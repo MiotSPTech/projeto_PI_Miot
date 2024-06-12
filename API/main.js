@@ -81,27 +81,27 @@ const serial = async (
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-            let umidade3 = dht11Umidade + 1;
+            let umidade3 = dht11Umidade + 0.5;
             let temperatura3 = lm35Temperatura + 1;
-            let umidade4 = dht11Umidade + 2;
+            let umidade4 = dht11Umidade + 1;
             let temperatura4 = lm35Temperatura + 2;
-            let umidade5 = dht11Umidade + 3;
+            let umidade5 = dht11Umidade + 1.5;
             let temperatura5 = lm35Temperatura + 3;
-            let umidade7 = dht11Umidade + 4;
+            let umidade7 = dht11Umidade + 2;
             let temperatura7 = lm35Temperatura + 4;
-            let umidade8 = umidade3 * 2;
+            let umidade8 = umidade3 * 1.5;
             let temperatura8 = temperatura3 * 2;
-            let umidade9 = umidade4 * 2;
+            let umidade9 = umidade4 * 1.5;
             let temperatura9 = temperatura4 * 2;
-            let umidade10 = umidade5 * 2;
+            let umidade10 = umidade5 * 1.5;
             let temperatura10 = temperatura5 * 2;
-            let umidade11 = umidade7 * 2;
+            let umidade11 = umidade7 * 1.5;
             let temperatura11 = temperatura7 * 2;
-            let umidade12 = umidade3 * 3;
+            let umidade12 = umidade3 * 2;
             let temperatura12 = temperatura3 * 3;
-            let umidade13 = umidade4 * 3;
+            let umidade13 = umidade4 * 2;
             let temperatura13 = temperatura4 * 3;
-            let umidade14 = umidade5 * 3;
+            let umidade14 = umidade5 * 2;
             let temperatura14 = temperatura5 * 3;
 
             let status3 ='';
