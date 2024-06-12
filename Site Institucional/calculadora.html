@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home_navbar.css">
+    <title>Calculadora Financeira</title>
+    <link rel="shortcut icon"  href="Imagem/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="css/calculadora.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="container-navbar">
+        <!-- linkagem à pagina inicial caso for clicado no ícone -->
+            <img src="./Imagem/65_Sem_Titulo_20240504015230 (1).png" alt="Logo">
+            
+            <a href="inicio.html">
+                <img src="./Imagem/exit-Branco.png">
+            </a>
+            <p>voltar à página inicial</p>
+    
+    </div>    
+    </nav>
+
+
+    <div class="container_inputs_calculadora">
+        <p class="informacao">Quantas horas sua empresa fica parada por ano devido a curtos-circuitos?</p>
+        <input id="input_qtd_horas_paradas">
+        
+        <br>
+        
+        <p class="informacao">Qual é o valor do faturamento anual da sua empresa?</p>
+        <input id="input_faturamento">
+        
+        <br>
+        
+        <p class="informacao">Quantas horas sua empresa está em produção por dia?</p>
+        <input id="input_horas_por_dia">
+
+        <br>
+        <br>
+
+        <button  class="button_calcular" onclick="calcularEconomia()"">
+            Calcular
+        </button>
+
+        
+        <br>
+        <br>
+    </div>
+    <div class="div_image" id="div_image">
+        <img src="Imagem/undraw_calculator_re_alsc.svg" alt="imagem de maluco">
+    </div>
+    <div class="div_container_result" id="div_container_result">
+
+        <div id="div_resultado"></div>
+
+    </div>
+        
+    
+</body>
+</html>
+<script>
+    function calcularEconomia() {
+        const qtdHorasParadas = Number(input_qtd_horas_paradas.value);
+        const faturamentoAnual = Number(input_faturamento.value);
+        const horasDeTrabalho = Number(input_horas_por_dia.value); 
+
+        let faturamentoPorDia = faturamentoAnual / 365
+        let horasEmDias = qtdHorasParadas / horasDeTrabalho // vai dar o resultado em dias
+        let causaDoCurto = faturamentoPorDia * horasEmDias
+        
+        let GanhoComNos = causaDoCurto * 0.6
+        
+
+        let div_container_result = document.getElementById("div_container_result"); // Obtendo a referência para o elemento HTML
+        div_container_result.style.display = "block"
+
+        let div_image = document.getElementById("div_image"); // Obtendo a referência para o elemento HTML
+        div_image.style.display = "none"
+
+        div_resultado.innerHTML = `
+        
+        <p class="p_result">
+        <b>Com base no faturamento fornecido, estimamos <span style="color: red;">${causaDoCurto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em perdas.</b><br>
+        <b>Com nossa solução, podemos recuperar 60% desse valor, deixando <span style="color: green;">${GanhoComNos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em seu bolso.</b><br><br>
+
+    <b>Assim trazendo segurança e desempenho para sua empresa!</b><br><br>
+
+    <b>Miot, preservando você, a vida, o negócio e as conquistas!</b>
+</p>`
+
+        
+    }
+</script>
+
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIOT</title>
+    <link rel="stylesheet" href="./css/dash_geral.css">
+    <link rel="shortcut icon"  href="imagem/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="container">
+  <div class="container">
+    <div class="navigation">
+      <ul>
+
+        <li class="logo">
+          <a href="#">
+            <span class="icon"><ion-icon name="logo-medium"></ion-icon></span>
+            <span class="title">MIOT</span>
+          </a>
+        </li>
+
+        <li class="list active">
+          <a href="Dashboard_Geral.html">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="#">
+            <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+            <span class="title">Últimos 30 dias</span>
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="Dashboard_Setor.html">
+            <span class="icon"><ion-icon name="notifications-outline"></ion-icon></span>
+            <span class="title">Histórico</span>
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="Dashboard_Setor.html">
+            <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
+            <span class="title">Analise Geral</span>
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="Dashboard_Setor.html">
+            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+            <span class="title">Perfil</span>
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="login_cadastro.html">
+            <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+            <span class="title">Sair</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    
+    </div>
+
+    <div class="dash">
+
+      <div class="cont">
+        <div class="perfil">
+          <div class="nome_dashboard">
+            <b>Dashboard Geral</b>
+          </div>
+        </div>
+          <div class="nome_perfil">
+            <b>Claudia Alves <br>
+              Administrador</b>
+            <img src="Imagem/avatar_perfil.png" alt="">
+          </div>
+
+          
+      </div>
+
+
+
+          <div class="alinhar">
+            <div class="card-kpi-b">
+              <span>Tomadas em uso</span>
+              <h1>100/110</h1>
+            </div>
+    
+            <div class="card-kpi-b">
+              <span>Tomadas em risco</span>
+              <h1>5/100</h1>
+            </div>
+
+            <div class="card-kpi-b">
+              <span>Tomadas Sem Sinal</span>
+              <h1>10</h1>
+            </div>
+    
+          </div>
+
+
+
+          <div class="alinhar alertas">
+
+            <div>
+              <h1>Últimos Alertas</h1>
+            </div>
+            
+
+            <div class="alinhar">
+
+              
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 98</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>83ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 7</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 100</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>82ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 6</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 30</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>70ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 3</span></div>
+              </a>
+              </div>
+  
+              <div class="card-alerta">
+                <a href="Dashboard_Setor.html">
+                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 100</span></div>
+                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>63ºC</span></div>
+                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 4</span></div>
+              </a>
+              </div>
+            </div>
+
+            </div>
+               
+    </div>
+
+  </div>
+
+
+
+   
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    const list = document.querySelectorAll('.list');
+    function activeLink() {
+      list.forEach((item) =>
+        item.classList.remove('active'));
+      this.classList.add('active');
+    }
+
+    list.forEach((item) =>
+      item.addEventListener('click', activeLink));
+  </script>
+</body>
+<script>
+  const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
+
+
+  new Chart(grafico_linha_temperatura, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Setor 1',
+          data: [30, 29, 28, 25, 22, 10],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 2',
+          data: [29, 27, 12, 23, 20, 21],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 3',
+          data: [5, 25, 24, 21, 18, 19],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 4',
+          data: [25, 23, 10, 19, 16, 17],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 5',
+          data: [23, 21, 20, 17, 8, 15],
+          borderWidth: 1
+        }]
+
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const grafico_coluna = document.getElementById('grafico_coluna');
+
+  new Chart(grafico_coluna, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+      datasets: [{
+        label: 'Tomadas',
+        data: [90, 20, 40, 56,10, 82],
+        borderWidth: 1
+      }]
+
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+</script>
+
+</html>
+<script>
+  function temperatura() {
+
+    var elemento = document.getElementById("div_kpi");
+        elemento.style.property = "background-color: #6fd176;";
+    
+
+    trocar_grafico.innerHTML = `
+    <span>Média temperatura por setor</span>
+        <canvas id="grafico_temperatura"></canvas>`;
+
+    const grafico_temperatura = document.getElementById('grafico_temperatura');
+
+    new Chart(grafico_temperatura, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          label: 'Setor 1',
+          data: [30, 29, 28, 25, 22, 10],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 2',
+          data: [29, 27, 12, 23, 20, 21],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 3',
+          data: [5, 25, 24, 21, 18, 19],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 4',
+          data: [25, 23, 10, 19, 16, 17],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 5',
+          data: [23, 21, 20, 17, 8, 15],
+          borderWidth: 1
+        }]
+
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    span_btn.innerHTML = `
+                        <button class= "bt" onclick="temperatura()">                          
+                        </button>
+                        <button class= "bt" onclick="umidade()">                          
+                        </button>`;
+
+    div_kpi.innerHTML = `
+                    <span>Média Temperatura Atual:</span>
+                    <span class="img-kpi">
+                      <span>estável <b>27ºC</b></span>
+                      <img src="Imagem/termo.jpg" alt="">
+                    </span>`;
+  }
+
+  function umidade() {
+
+    var elemento = document.getElementById("div_kpi");
+        elemento.style.property = "background: linear-gradient(135deg, #132053, #111955);";
+
+    trocar_grafico.innerHTML = `
+    <span>Média umidade por setor</span>
+        <canvas id="grafico_umidade"></canvas>`;
+        span_btn.innerHTML = `
+                        <button class= "bt" onclick="temperatura()">                          
+                        </button>
+                        <button class= "bt" onclick="umidade()">                       
+                        </button>`;
+
+    div_kpi.innerHTML = `
+                    <span>Média Umidade Atual:</span>
+                    <span class="img-kpi">
+                      <span>estável <b>40%</b></span>
+                      <img src="Imagem/gotinha.jpg" alt="">
+                    </span>`;
+
+    const grafico_umidade = document.getElementById('grafico_umidade');
+
+    new Chart(grafico_umidade, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          label: 'Setor 1',
+          data: [30, 29, 28, 25, 22, 10],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 2',
+          data: [29, 27, 12, 23, 20, 21],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 3',
+          data: [5, 25, 24, 21, 18, 19],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 4',
+          data: [25, 23, 10, 19, 16, 17],
+          borderWidth: 1
+        },
+        {
+          label: 'Setor 5',
+          data: [23, 21, 20, 17, 8, 15],
+          borderWidth: 1
+        }]
+
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    
+  }
+</script>
