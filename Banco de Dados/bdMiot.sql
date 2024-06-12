@@ -47,8 +47,9 @@ create table tbTomada(
 create table tbRegistro(
 	idRegistro int Primary key auto_increment,
     leituraUmidade int not null,
-    leituraTemperatura varchar (20) not null,
-    statusRegistro varchar (20) check ( statusTomada in('Critico', 'Em Alerta', 'Normal')),
+    dataHoraRegistro datetime default current_timestamp,
+    leituraTemperatura decimal(7,2) not null,
+    statusRegistro varchar (20) check ( statusRegistro in('Critico', 'Em Alerta', 'Normal')),
     idTomada int,
     foreign key (idTomada) references tbTomada (idTomada)
     );
@@ -88,5 +89,34 @@ VALUES
 ('Tomada 3C', 'Misturadoura', 'ligada', 3),
 ('Tomada 4C',  'Difusor Industrial', 'ligada', 3),
 ('Tomada 5C', 'Empilhadeira', 'ligada', 3);
-
 select * from tbTomada;
+select * from tbRegistro;
+
+-- select dos cards dos setores primeira dash
+select distinct tbSetor.idSetor, tbSetor.nomeSetor, tbRegistro.statusRegistro from tbIndustria
+inner join tbSetor on tbSetor.codigoIndustria = tbIndustria.codigoIndustria
+inner join tbTomada on tbTomada.idSetor = tbSetor.idSetor
+inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
+where tbRegistro.statusRegistro IN ('Em Alerta', 'Critico') and tbIndustria.codigoIndustria = 'HIJ789'
+order by tbRegistro.statusRegistro DESC;
+
+
+-- select que retorna o ultimo registro de temperatura e umidade de cada tomada
+SELECT leituraUmidade, leituraTemperatura, statusRegistro FROM tbRegistro 
+WHERE tbRegistro.idTomada = 14
+ORDER BY idRegistro DESC LIMIT 1;
+
+-- select que retorna todas as tomadas em risco ou alerta por setor
+SELECT t.idTomada, t.descricaoTomada, t.aparelhoConectadoTomada, r.statusRegistro FROM tbTomada t
+INNER JOIN (SELECT r1.idTomada, r1.statusRegistro FROM tbRegistro r1 WHERE r1.idRegistro = (SELECT MAX(r2.idRegistro) FROM tbRegistro r2 WHERE r2.idTomada = r1.idTomada)) r  
+ON t.idTomada = r.idTomada
+WHERE t.idSetor = 2 AND r.statusRegistro IN ('Em Alerta', 'Critico');
+
+-- select que retorna informações do setor
+select ramalSetor, andar from tbSetor 
+where idSetor = 2;
+
+-- select para retornar da dados para o grafico]
+SELECT leituraUmidade, leituraTemperatura FROM tbRegistro 
+WHERE tbRegistro.idTomada = 5
+ORDER BY idRegistro DESC LIMIT 7;

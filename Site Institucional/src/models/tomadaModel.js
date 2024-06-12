@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarDadosGrafico(id) {
 
-  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura FROM tbRegistro 
+  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura, DATE_FORMAT(dataHoraRegistro, '%Hh%i') AS horaRegistro FROM tbRegistro 
                         WHERE tbRegistro.idTomada = ${id}
                         ORDER BY idRegistro DESC LIMIT 7;`;
 
@@ -12,7 +12,8 @@ function buscarDadosGrafico(id) {
 
 function buscarUltimoDadoRegistro(id) {
 
-  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura, statusRegistro FROM tbRegistro 
+  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura, statusRegistro, DATE_FORMAT(dataHoraRegistro, '%Hh%i') AS horaRegistro
+ FROM tbRegistro 
                         WHERE tbRegistro.idTomada = ${id}
                         ORDER BY idRegistro DESC LIMIT 1;`;
 
