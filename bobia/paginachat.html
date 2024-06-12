@@ -12,8 +12,15 @@
 </head>
 
 <body>
+    <div class="image-arrow">
+        <img src="img/white-arrow-removebg-preview.png" alt="" onclick="voltarPagina()">
+    </div>
     <div class="card">
-        <div class="chat-header">Chatbot MIOT</div>
+        <div class="chat-header">
+            <span>Chatbot MIOT</span>
+            <img src="img/chat-bot-icon.png" class="robo-icone-header" alt="Ícone do Chatbot">
+        </div>
+        
 <!--         <div class="sidebar">
             <h2>Goodcode</h2>
             <div class="menu-item">New Chat</div>
@@ -24,7 +31,7 @@
         </div> -->
         <div class="chat-window" id="resposta">
             <!-- Adicione a imagem do ícone do chatbot -->
-            <img src="img/chat-bot-icon.png" class="robo-icone" alt="Ícone do Chatbot">
+            <!-- <img src="img/chat-bot-icon.png" class="robo-icone" alt="Ícone do Chatbot"> -->
             <!-- Use uma lista para criar o balão de conversa -->
             <ul class="message-list">
                 <!-- Cada resposta da IA será um item da lista -->
@@ -68,10 +75,18 @@ async function gerarResposta() {
 
     // Adiciona a mensagem da IA dentro do item de mensagem
     messageItem.innerText = data.resultado;
+/*     messageItem.innerHTML = `
+            <img src="img/chat-bot-icon.png" class="robo-icone" alt="Ícone do Chatbot">
+            <span class="chatbot-text">${data.resultado}</span>
+        `; */
 
     // Adiciona o novo item de mensagem à lista
     messageList.appendChild(messageItem);
     
+}
+
+function voltarPagina() {
+    window.location.href = 'bobia.html'
 }
 
 </script>
