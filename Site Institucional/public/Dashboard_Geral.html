@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="container">
+<body class="container" onload="exibirUltimosAlertas(2), exibirKPISetor(2)">
   <div class="container">
     <div class="navigation">
       <ul>
@@ -74,8 +74,8 @@
 
       <div class="cont">
         <div class="perfil">
-          <div class="nome_dashboard">
-            <b>Dashboard Geral</b>
+          <div class="nome_dashboard" id="nome_setor">
+            
           </div>
         </div>
           <div class="nome_perfil">
@@ -90,19 +90,16 @@
 
 
           <div class="alinhar">
-            <div class="card-kpi-b">
-              <span>Tomadas em uso</span>
-              <h1>100/110</h1>
+            <div class="card-kpi-b" id="info_setor">
+              
             </div>
     
-            <div class="card-kpi-b">
-              <span>Tomadas em risco</span>
-              <h1>5/100</h1>
+            <div class="card-kpi-b" id="qtd_tomadas_alertas">
+              
             </div>
 
-            <div class="card-kpi-b">
-              <span>Tomadas Sem Sinal</span>
-              <h1>10</h1>
+            <div class="card-kpi-b" id="qtd_tomadas_desligadas">
+              
             </div>
     
           </div>
@@ -116,53 +113,10 @@
             </div>
             
 
-            <div class="alinhar">
+            <div class="alinhar" id="kpi_alertas">
 
               
-              <div class="card-alerta">
-                <a href="Dashboard_Setor.html">
-                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
-                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 25</span></div>
-                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>103ºC</span></div>
-                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 5</span></div>
-              </a>
-              </div>
-  
-              <div class="card-alerta">
-                <a href="Dashboard_Setor.html">
-                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
-                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 98</span></div>
-                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>83ºC</span></div>
-                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 7</span></div>
-              </a>
-              </div>
-  
-              <div class="card-alerta">
-                <a href="Dashboard_Setor.html">
-                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
-                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 100</span></div>
-                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>82ºC</span></div>
-                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 6</span></div>
-              </a>
-              </div>
-  
-              <div class="card-alerta">
-                <a href="Dashboard_Setor.html">
-                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
-                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 30</span></div>
-                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>70ºC</span></div>
-                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 3</span></div>
-              </a>
-              </div>
-  
-              <div class="card-alerta">
-                <a href="Dashboard_Setor.html">
-                <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
-                <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>Tomada 100</span></div>
-                <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>63ºC</span></div>
-                <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>Setor 4</span></div>
-              </a>
-              </div>
+              
             </div>
 
             </div>
@@ -189,206 +143,111 @@
       item.addEventListener('click', activeLink));
   </script>
 </body>
-<script>
-  const grafico_linha_temperatura = document.getElementById('grafico_linha_temperatura');
-
-
-  new Chart(grafico_linha_temperatura, {
-    type: 'line',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Setor 1',
-          data: [30, 29, 28, 25, 22, 10],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 2',
-          data: [29, 27, 12, 23, 20, 21],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 3',
-          data: [5, 25, 24, 21, 18, 19],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 4',
-          data: [25, 23, 10, 19, 16, 17],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 5',
-          data: [23, 21, 20, 17, 8, 15],
-          borderWidth: 1
-        }]
-
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  const grafico_coluna = document.getElementById('grafico_coluna');
-
-  new Chart(grafico_coluna, {
-    type: 'bar',
-    data: {
-      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-      datasets: [{
-        label: 'Tomadas',
-        data: [90, 20, 40, 56,10, 82],
-        borderWidth: 1
-      }]
-
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-</script>
-
 </html>
 <script>
-  function temperatura() {
-
-    var elemento = document.getElementById("div_kpi");
-        elemento.style.property = "background-color: #6fd176;";
-    
-
-    trocar_grafico.innerHTML = `
-    <span>Média temperatura por setor</span>
-        <canvas id="grafico_temperatura"></canvas>`;
-
-    const grafico_temperatura = document.getElementById('grafico_temperatura');
-
-    new Chart(grafico_temperatura, {
-      type: 'line',
-      data: {
-        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-        datasets: [{
-          label: 'Setor 1',
-          data: [30, 29, 28, 25, 22, 10],
-          borderWidth: 1
+  function exibirUltimosAlertas(idSetor){
+    fetch("/setor/buscarTomadasporSetor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        {
-          label: 'Setor 2',
-          data: [29, 27, 12, 23, 20, 21],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 3',
-          data: [5, 25, 24, 21, 18, 19],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 4',
-          data: [25, 23, 10, 19, 16, 17],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 5',
-          data: [23, 21, 20, 17, 8, 15],
-          borderWidth: 1
-        }]
+        body: JSON.stringify({
+            idSetor: idSetor
+        })
+    })
+    .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
 
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        if (resposta.ok) {
+            return resposta.json(); 
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Houve um erro ao tentar realizar o login!");
+            throw new Error("Erro na resposta do servidor");
         }
-      }
+    })
+    .then(function (dados) {
+        console.log(dados);
+
+        dados.forEach(item => {
+
+
+            document.getElementById("kpi_alertas").innerHTML += `
+                <div class="card-alerta" onclick="tomadaEscolhida(${item.idTomada})">
+                  <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
+                  <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>${item.descricaoTomada}</span></div>
+                  <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>${item.statusRegistro}</span></div>
+                  <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>${item.aparelhoConectadoTomada}</span></div>
+                </div>`;
+
+            
+        });
+    })
+    .catch(function (erro) {
+        console.log(erro);
     });
 
-    span_btn.innerHTML = `
-                        <button class= "bt" onclick="temperatura()">                          
-                        </button>
-                        <button class= "bt" onclick="umidade()">                          
-                        </button>`;
-
-    div_kpi.innerHTML = `
-                    <span>Média Temperatura Atual:</span>
-                    <span class="img-kpi">
-                      <span>estável <b>27ºC</b></span>
-                      <img src="Imagem/termo.jpg" alt="">
-                    </span>`;
+    return false;
   }
 
-  function umidade() {
 
-    var elemento = document.getElementById("div_kpi");
-        elemento.style.property = "background: linear-gradient(135deg, #132053, #111955);";
-
-    trocar_grafico.innerHTML = `
-    <span>Média umidade por setor</span>
-        <canvas id="grafico_umidade"></canvas>`;
-        span_btn.innerHTML = `
-                        <button class= "bt" onclick="temperatura()">                          
-                        </button>
-                        <button class= "bt" onclick="umidade()">                       
-                        </button>`;
-
-    div_kpi.innerHTML = `
-                    <span>Média Umidade Atual:</span>
-                    <span class="img-kpi">
-                      <span>estável <b>40%</b></span>
-                      <img src="Imagem/gotinha.jpg" alt="">
-                    </span>`;
-
-    const grafico_umidade = document.getElementById('grafico_umidade');
-
-    new Chart(grafico_umidade, {
-      type: 'line',
-      data: {
-        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-        datasets: [{
-          label: 'Setor 1',
-          data: [30, 29, 28, 25, 22, 10],
-          borderWidth: 1
+  function  exibirKPISetor(idSetor){
+    fetch("/setor/buscarInformacaoSetor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        {
-          label: 'Setor 2',
-          data: [29, 27, 12, 23, 20, 21],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 3',
-          data: [5, 25, 24, 21, 18, 19],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 4',
-          data: [25, 23, 10, 19, 16, 17],
-          borderWidth: 1
-        },
-        {
-          label: 'Setor 5',
-          data: [23, 21, 20, 17, 8, 15],
-          borderWidth: 1
-        }]
+        body: JSON.stringify({
+            idSetor: idSetor
+        })
+    })
+    .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
 
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        if (resposta.ok) {
+            return resposta.json(); 
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Houve um erro ao tentar realizar o login!");
+            throw new Error("Erro na resposta do servidor");
         }
-      }
+    })
+    .then(function (dados) {
+        console.log(dados);
+
+        dados.forEach(item => {
+
+
+            document.getElementById("info_setor").innerHTML += `
+                <h1>Informações Setor</h1>
+                <span>Ramal: ${item.ramalSetor}</span>
+                <span>${item.andar}º Andar</span>`;
+
+
+                document.getElementById("nome_setor").innerHTML += `
+                <b>Dashboard Setor: ${item.nomeSetor}</b>`;
+
+                document.getElementById("qtd_tomadas_alertas").innerHTML += `
+                <span>Tomadas em Alerta</span>
+                <h1>${item.qtdRegistrosEmAlertaOuCritico}/${item.qtdTotalTomadas}</h1>`;
+
+                document.getElementById("qtd_tomadas_desligadas").innerHTML += `
+                <span>Tomadas Sem Sinal</span>
+                <h1>${item.qtdTomadasDesligadas}/${item.qtdTotalTomadas}</h1>`;
+            
+        });
+    })
+    .catch(function (erro) {
+        console.log(erro);
     });
 
-    
+    return false;
+  }
+
+
+  function tomadaEscolhida(idTomada){
+    sessionStorage.TOMADA_ESCOLHIDA = idTomada;
+
+    window.location = 'Dashboard_Tomada.html'
   }
 </script>

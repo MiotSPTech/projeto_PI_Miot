@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="exibirKPI(5), obterDadosGrafico(5)">
+<body onload="exibirKPI(sessionStorage.TOMADA_ESCOLHIDA), obterDadosGrafico(sessionStorage.TOMADA_ESCOLHIDA)">
   <nav class="menu_lateral">
 
     <div class="btn_expansao">
@@ -47,8 +47,8 @@
   <!--Informação do usuario-->
   <div class="container_usuario">
     <div class="perfil">
-      <div class="tomada">
-        <b>Especificações da Tomada</b>
+      <div class="tomada" id="nome_tomada">
+        
       </div>
     </div>
       <div class="nome_perfil">
@@ -63,14 +63,12 @@
 
   <!--kpi´s informativas-->
   <div class="container_cards">
-    <div class="card_kpi_a">
-      <span>Tomadas em uso</span>
-      <h1>100/110</h1>
+    <div class="card_kpi_a"  id="kpi_aparelho">
+      
     </div>
 
-    <div class="card_kpi_b">
-      <span>Tomadas em risco</span>
-      <h1>5/100</h1>
+    <div class="card_kpi_b"   id="kpi_status">
+
     </div>
 
     <div class="card_kpi_c">
@@ -152,6 +150,18 @@ function exibirKPI(idTomada) {
                         <img src="Imagem/gotinha.jpg">
                     </div>
                     <h1>${item.statusRegistro}</h1>`;
+
+
+                    document.getElementById("kpi_aparelho").innerHTML = `
+                    <span>Aparelho Conectado</span>
+                    <h1>${item.aparelhoConectadoTomada}</h1>`;
+
+                    document.getElementById("kpi_status").innerHTML = `
+                    <span>Status Tomada</span>
+                    <h1>${item.statusTomada}</h1>`;
+
+                    document.getElementById("nome_tomada").innerHTML = `
+                    <b>Especificações da Tomada: ${item.descricaoTomada}</b>`;
         });
     })
     .catch(function (erro) {

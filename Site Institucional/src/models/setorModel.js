@@ -26,14 +26,23 @@ function buscarTomadasporSetor(id) {
 
 function buscarInformacaoSetor(id) {
 
-  var instrucaoSql = `select ramalSetor, andar from tbSetor 
-                      where idSetor = 2;`;
+  var instrucaoSql = `SELECT  s.ramalSetor,  s.andar,  s.nomeSetor,
+  (SELECT COUNT(*)  FROM tbTomada t 
+    WHERE t.idSetor = s.idSetor) AS qtdTotalTomadas,
+    (SELECT COUNT(*)  FROM tbTomada t 
+     WHERE t.idSetor = s.idSetor AND t.statusTomada = 'desligada') AS qtdTomadasDesligadas,
+    (SELECT COUNT(*) FROM tbRegistro r
+     JOIN tbTomada t ON t.idTomada = r.idTomada
+     WHERE t.idSetor = s.idSetor  AND r.idRegistro = ( SELECT MAX(r2.idRegistro)  FROM tbRegistro r2 
+     WHERE r2.idTomada = t.idTomada ) AND r.statusRegistro IN ('Em Alerta', 'Critico')) AS qtdRegistrosEmAlertaOuCritico
+FROM tbSetor s
+WHERE s.idSetor = ${id};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
-// function cadastrar(empresaId, descricao) {
+// function cadastrar(empresaId, descricao) 
   
 //   var instrucaoSql = `INSERT INTO (descricao, fk_empresa) aquario VALUES (${descricao}, ${empresaId})`;
 

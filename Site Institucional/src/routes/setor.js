@@ -3,7 +3,7 @@ var router = express.Router();
 
 var setorController = require("../controllers/setorController");
 
-router.get("/buscarInformacaoSetor", function (req, res) {
+router.post("/buscarInformacaoSetor", function (req, res) {
   setorController.buscarInformacaoSetor(req, res);
 });
 

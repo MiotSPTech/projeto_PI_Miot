@@ -12,8 +12,9 @@ function buscarDadosGrafico(id) {
 
 function buscarUltimoDadoRegistro(id) {
 
-  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura, statusRegistro, DATE_FORMAT(dataHoraRegistro, '%Hh%i') AS horaRegistro
- FROM tbRegistro 
+  var instrucaoSql = `SELECT leituraUmidade, leituraTemperatura, statusRegistro, DATE_FORMAT(dataHoraRegistro, '%Hh%i') AS horaRegistro, aparelhoConectadoTomada, statusTomada, descricaoTomada
+ FROM tbTomada
+ inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
                         WHERE tbRegistro.idTomada = ${id}
                         ORDER BY idRegistro DESC LIMIT 1;`;
 
