@@ -9,6 +9,12 @@ body{
     display: flex;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    background-image: url(../Imagem/Design\ sem\ nome\ \(4\).png);
+    background-size: cover; /* Garante que a imagem cubra toda a área disponível */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center center; /* Centraliza a imagem no fundo */
+    background-attachment: fixed; /* Faz com que a imagem de fundo não role junto com a página */
 }
 
 nav.menu_lateral{
@@ -16,7 +22,7 @@ nav.menu_lateral{
     height: 100%;
     background-color: #0E336D;
     padding: 40px 0px;
-    box-shadow: 3px 0 0 black;
+    box-shadow: 13.4945px 14.9939px 94.4613px rgba(0, 0, 0, 0.24);
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +30,7 @@ nav.menu_lateral{
     transition: .2s;
     z-index: 1000;
 }
+
 .btn_expansao{
     width: 100%;
     padding-left: 10px 0;
@@ -32,7 +39,7 @@ nav.menu_lateral{
     margin-bottom: 20px; /* Adicionado espaço abaixo */
 }
 .btn_expansao img {
-    width: 70px; /* Ajuste o tamanho conforme necessário */
+    width: 60px; /* Ajuste o tamanho conforme necessário */
     height: auto; /* Mantém a proporção da imagem */
     cursor: pointer;
 }
@@ -84,7 +91,6 @@ nav.menu_lateral:hover{
     top: 0;
     left: 100px; /* largura da nav, ajuste conforme necessário */
     width:90%; /* largura total menos a largura da nav */
-    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -98,8 +104,9 @@ nav.menu_lateral:hover{
     width: 200px;
     display: flex;
     margin-left: auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    border-radius: 12px;
     align-items: center;
     justify-content: center;
 }
@@ -138,18 +145,18 @@ nav.menu_lateral:hover{
     padding-top: 10px;
 }
 .card_kpi_a{
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
 }
 .card_kpi_b{
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
 }
 .card_kpi_c {
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 80px;
     display: flex;
     justify-content: space-around;
@@ -224,8 +231,8 @@ nav.menu_lateral:hover{
 
   }
   .card_kpi_temperatura{
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 70px 20px;
     margin-bottom: 100px;
     display: flex;
@@ -233,8 +240,8 @@ nav.menu_lateral:hover{
     align-items: center;
   }
   .card_kpi_umidade{
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 70px 20px;
     display: flex;
     flex-direction: column;
