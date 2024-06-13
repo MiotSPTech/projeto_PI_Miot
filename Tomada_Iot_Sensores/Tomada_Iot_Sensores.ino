@@ -31,7 +31,7 @@ float umidade = dht_1.readHumidity(); // lê a umidade do sensor DHT e armazena 
   Serial.print(" ; "); //imprime um “;” para separar a umidade da temperatura 
   Serial.println(temperaturaLM); //imprime a temperatura do sensor LM35 e pula linha 
 
-  delay(1000); // Intervalo de 1 segundo antes de pular linha 
+  delay(60000); // Intervalo de 1 segundo antes de pular linha 
 
 } 
 

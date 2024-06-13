@@ -341,8 +341,8 @@ fetch(`/tomada/buscarDadosGrafico`, {
                 dadosUmidade.datasets[0].data.shift();  // apagar o primeiro de umidade
                 dadosUmidade.datasets[0].data.push(novoRegistro[0].leituraUmidade); // incluir uma nova medida de umidade
 
-                dadosTemperatura.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dadosTemperatura.datasets[1].data.push(novoRegistro[0].leituraTemperatura); // incluir uma nova medida de temperatura
+                dadosTemperatura.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                dadosTemperatura.datasets[0].data.push(novoRegistro[0].leituraTemperatura); // incluir uma nova medida de temperatura
 
                 myChartUmidade.update();
                 myChartTemperatura.update();
