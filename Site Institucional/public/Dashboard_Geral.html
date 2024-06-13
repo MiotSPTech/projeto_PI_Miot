@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="container" onload="exibirUltimosAlertas(2), exibirKPISetor(2)">
+<body class="container" onload="exibirUltimosAlertas(sessionStorage.SETOR_ESCOLHIDA), exibirKPISetor(sessionStorage.SETOR_ESCOLHIDA)">
   <div class="container">
     <div class="navigation">
       <ul>
@@ -174,10 +174,12 @@
 
             document.getElementById("kpi_alertas").innerHTML += `
                 <div class="card-alerta" onclick="tomadaEscolhida(${item.idTomada})">
+                  <a>
                   <ion-icon name="warning-outline" class="icon-alerta"></ion-icon>
                   <div class="container-alert"><img src="Imagem\icon_tomada.png" class="img_tomada"><span>${item.descricaoTomada}</span></div>
                   <div class="container-alert"><ion-icon name="thermometer-outline"></ion-icon><span>${item.statusRegistro}</span></div>
                   <div class="container-alert"><ion-icon name="business-outline"></ion-icon><span>${item.aparelhoConectadoTomada}</span></div>
+                  </a>
                 </div>`;
 
             

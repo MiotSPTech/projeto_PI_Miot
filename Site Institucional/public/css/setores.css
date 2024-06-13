@@ -354,12 +354,12 @@ nav.sidebar:hover{
     justify-content: center;
 }
 
-.setor-one{
+.setor-1{
     position: absolute;
     width: 422px;
     height: 250px;
-    left: 310px;
-    top: 455px;
+    /* left: 310px;
+    top: 455px; */
     border-radius: 12px;
     color: var(--quadrados);
     filter: drop-shadow(1px 5px 10px #FFC700);
@@ -372,27 +372,27 @@ nav.sidebar:hover{
     background-color: var(--kpiamarelofundo);
 }
 
-.setor-one:hover{
+.setor-1:hover{
     transform: scale(1.1); /* Aumenta o tamanho do botão em 10% */
     background-color: var(--detalhesamarelo);
 }
 
-.setor-one h1{
+.setor-1 h1{
     font-family: "Poppins";
-    font-size: 75px;
+    font-size: 60px;
     margin-bottom: -25px;
     margin-top: 50px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.setor-one span{
+.setor-1 span{
     font-family: "Poppins";
     font-size: 25px;
     font-weight: 200;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.setor-two{
+.setor-2{
     position: absolute;
     width: 422px;
     height: 250px;
@@ -410,32 +410,32 @@ nav.sidebar:hover{
     background-color: var(--kpivermelhofundo);
 }
 
-.setor-two:hover{
+.setor-2:hover{
     transform: scale(1.1); /* Aumenta o tamanho do botão em 10% */
     background-color: var(--detalhesvermelho);
 }
 
-.setor-two a{
+.setor-2 a{
     color: var(--quadrados);
 }
 
-.setor-two h1{
+.setor-2 h1{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 75px;
+    font-size: 60px;
     margin-bottom: -25px;
     margin-top: 50px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.setor-two span{
+.setor-2 span{
     font-family: "Poppins";
     font-size: 25px;
     font-weight: 200;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.setor-three{
+.setor-3{
     position: absolute;
     width: 422px;
     height: 250px;
@@ -453,25 +453,25 @@ nav.sidebar:hover{
     background-color: var(--kpivermelhofundo);
 }
 
-.setor-three:hover{
+.setor-3:hover{
     transform: scale(1.1); /* Aumenta o tamanho do botão em 10% */
     background-color: var(--detalhesvermelho);
 }
 
-.setor-three a{
+.setor-3 a{
     color: var(--quadrados);
 }
 
-.setor-three h1{
+.setor-3 h1{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 75px;
+    font-size: 60px;
     margin-bottom: -25px;
     margin-top: 50px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.setor-three span{
+.setor-3 span{
     font-family: "Poppins";
     font-size: 25px;
     font-weight: 200;

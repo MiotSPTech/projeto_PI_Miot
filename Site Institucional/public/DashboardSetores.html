@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/setores.css">
     <title>MIOT</title>
 </head>
-<body>
+<body onload="exibirSetoresRiscos()">
     
     <main>
             <!-- Barra Lateral -->
@@ -144,29 +144,33 @@
         </div>
     </div>
 
-    <div class="setores">
-        <a href="Dashboard_Geral.html">
-        <div class="setor-one">
-            <h1>Setor 1</h1>
-            <span>em alerta</span>
-        </div>
-        </a>
+    <div class="setores" id="setores_kpi">
+        
 
-        <a href="Dashboard_Geral.html">
-        <div class="setor-two">
-            <h1>Setor 3</h1>
-            <span>crítico</span>
-        </div>
-        </a>
-        <a href="Dashboard_Geral.html">
-        <div class="setor-three">
-            <h1>Setor 5</h1>
-            <span>crítico</span>
-        </div>
-        </a>
+        
 
     </div>
 
 
 </body>
+<script>
+    function exibirSetoresRiscos(){
+        JSON.parse(sessionStorage.SETORES).forEach(item => {
+            document.getElementById("setores_kpi").innerHTML += `
+                    <a onclick="chamarDash(${item.idSetor})">
+                    <div class="setor-${item.idSetor}">
+                        <h1>${item.nomeSetor}</h1>
+                        <span>${item.statusRegistro}</span>
+                    </div>
+                    </a>
+                    `
+        });
+    }
+
+    function chamarDash(idSetor){
+    sessionStorage.SETOR_ESCOLHIDA = idSetor;
+
+    window.location = 'Dashboard_Geral.html'
+  }
+</script>
 </html>
