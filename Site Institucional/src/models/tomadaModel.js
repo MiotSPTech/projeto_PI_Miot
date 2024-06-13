@@ -23,6 +23,39 @@ function buscarUltimoDadoRegistro(id) {
 }
 
 
+function buscarTomadasGrafico(id) {
+  var instrucaoSql = `
+      SELECT t.descricaoTomada, COUNT(*) AS qtdProblemas
+      FROM tbRegistro r
+      JOIN tbTomada t ON r.idTomada = t.idTomada
+      JOIN tbSetor s ON t.idSetor = s.idSetor
+      JOIN tbIndustria i ON s.codigoIndustria = i.codigoIndustria
+      WHERE r.statusRegistro IN ('Critico', 'Em Alerta') 
+      AND r.dataHoraRegistro >= NOW() - INTERVAL 30 DAY 
+      AND i.codigoIndustria = '${id}'
+      GROUP BY t.idTomada, t.descricaoTomada
+      ORDER BY qtdProblemas DESC;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscarTomadasProblema(id) {
+
+  var instrucaoSql = `SELECT t.idTomada, t.descricaoTomada, COUNT(*) AS qtdProblemas
+FROM tbRegistro r
+JOIN tbTomada t ON r.idTomada = t.idTomada
+JOIN tbSetor s ON t.idSetor = s.idSetor
+JOIN tbIndustria i ON s.codigoIndustria = i.codigoIndustria
+WHERE r.statusRegistro IN ('Critico', 'Em Alerta') AND r.dataHoraRegistro >= NOW() - INTERVAL 30 DAY AND i.codigoIndustria = '${id}'
+GROUP BY t.idTomada
+ORDER BY qtdProblemas DESC LIMIT 1;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+
 // function cadastrar(empresaId, descricao) {
   
 //   var instrucaoSql = `INSERT INTO (descricao, fk_empresa) aquario VALUES (${descricao}, ${empresaId})`;
@@ -34,7 +67,9 @@ function buscarUltimoDadoRegistro(id) {
 
 module.exports = {
   buscarDadosGrafico,
-  buscarUltimoDadoRegistro
+  buscarUltimoDadoRegistro,
+  buscarTomadasGrafico,
+  buscarTomadasProblema
 //   ,
 //   cadastrar
 }

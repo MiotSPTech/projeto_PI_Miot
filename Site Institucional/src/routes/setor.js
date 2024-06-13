@@ -11,4 +11,12 @@ router.post("/buscarTomadasporSetor", function (req, res) {
   setorController.buscarTomadasporSetor(req, res);
 })
 
+router.post("/buscarSetoresGrafico", function (req, res) {
+  setorController.buscarSetoresGrafico(req, res);
+})
+
+router.post("/buscarSetoresProblema", function (req, res) {
+  setorController.buscarSetoresProblema(req, res);
+})
+
 module.exports = router;

@@ -42,6 +42,35 @@ WHERE s.idSetor = ${id};`;
   return database.executar(instrucaoSql);
 }
 
+function buscarSetoresGrafico(id) {
+
+  var instrucaoSql = `SELECT s.idSetor, s.nomeSetor, COUNT(*) AS qtdRegistrosEmAlertaOuCritico
+FROM tbRegistro r
+JOIN tbTomada t ON r.idTomada = t.idTomada
+JOIN tbSetor s ON t.idSetor = s.idSetor
+join tbIndustria  i on i.codigoIndustria = s.codigoIndustria
+WHERE r.statusRegistro IN ('Critico', 'Em Alerta') AND r.dataHoraRegistro >= NOW() - INTERVAL 30 DAY and i.codigoIndustria = '${id}'
+GROUP BY s.idSetor;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscarSetoresProblema(id) {
+
+  var instrucaoSql = `SELECT s.idSetor, s.nomeSetor, COUNT(*) AS qtdRegistrosEmAlertaOuCritico
+FROM tbRegistro r
+JOIN tbTomada t ON r.idTomada = t.idTomada
+JOIN tbSetor s ON t.idSetor = s.idSetor
+join tbIndustria  i on i.codigoIndustria = s.codigoIndustria
+WHERE r.statusRegistro IN ('Critico', 'Em Alerta') AND r.dataHoraRegistro >= NOW() - INTERVAL 30 DAY and i.codigoIndustria = '${id}'
+GROUP BY s.idSetor
+ORDER BY qtdRegistrosEmAlertaOuCritico DESC LIMIT 1;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 // function cadastrar(empresaId, descricao) 
   
 //   var instrucaoSql = `INSERT INTO (descricao, fk_empresa) aquario VALUES (${descricao}, ${empresaId})`;
@@ -54,7 +83,9 @@ WHERE s.idSetor = ${id};`;
 module.exports = {
   buscarSetores,
   buscarTomadasporSetor,
-  buscarInformacaoSetor
+  buscarInformacaoSetor,
+  buscarSetoresGrafico,
+  buscarSetoresProblema
 //   ,
 //   cadastrar
 }

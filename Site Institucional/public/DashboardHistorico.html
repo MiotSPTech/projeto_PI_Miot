@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/historico.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>MIOT</title>
 </head>
-<body>
+<body onload="exibirKPI(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoSetor(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoTomada(sessionStorage.CODIGO_INDUSTRIA)">
     
     <main>
             <!-- Barra Lateral -->
@@ -63,20 +64,249 @@
     </main>
 
     <div class="container_cards_acompanhamneto">
-        <div class="card_kpi_temperatura" id="kpi_temperatura">
+        <div class="card_kpi_temperatura" id="kpi_tomada">
           
         </div>
     
-        <div class="card_kpi_umidade" id="kpi_umidade">
+        <div class="card_kpi_umidade" id="kpi_setor">
           
         </div>
         
       </div>
 
     <div class="dash_umidade">
-        <canvas id="graficoUmidade"></canvas>
+        <canvas id="graficoSetor"></canvas>
       </div>
 
       <div class="dash_temperatura">
-        <canvas id="graficoTemperatura"></canvas>
+        <canvas id="graficoTomada"></canvas>
       </div>
+</body>
+</html>
+<script>
+
+function exibirKPI(codigoIndustria) {
+    fetch("/setor/buscarSetoresProblema", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            codigoIndustria: codigoIndustria
+        })
+    })
+    .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+            return resposta.json(); 
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Houve um erro ao tentar realizar o login!");
+            throw new Error("Erro na resposta do servidor");
+        }
+    })
+    .then(function (dados) {
+        console.log(dados);
+
+        dados.forEach(item => {
+            document.getElementById("kpi_setor").innerHTML = `
+                    <span>Setor com mais Alertas</span>
+                   
+                <h1>${item.nomeSetor}</h1>`;
+
+        });
+    })
+    .catch(function (erro) {
+        console.log(erro);
+    });
+
+
+    fetch("/tomada/buscarTomadasProblema", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            codigoIndustria: codigoIndustria
+        })
+    })
+    .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+            return resposta.json(); 
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Houve um erro ao tentar realizar o login!");
+            throw new Error("Erro na resposta do servidor");
+        }
+    })
+    .then(function (dados) {
+        console.log(dados);
+
+        dados.forEach(item => {
+            document.getElementById("kpi_tomada").innerHTML = `
+            
+                    <span>Tomada com mais Alerta</span>
+                <h1>${item.descricaoTomada}</h1>`;
+        });
+    })
+    .catch(function (erro) {
+        console.log(erro);
+    });
+
+    return false;
+}
+
+
+
+
+// grafico dognut com os setores mais problemas
+function obterDadosGraficoSetor(codigoIndustria) {
+
+fetch(`/setor/buscarSetoresGrafico`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codigoIndustria: codigoIndustria
+            })
+}).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGraficoSetor(resposta, codigoIndustria);
+
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+
+
+function plotarGraficoSetor(resposta, codigoIndustria) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico - labels
+let labelsSetor = [];
+
+// Criando estrutura para plotar gráfico - dados
+let dadosSetor = {
+    labels: labelsSetor,
+    datasets: [
+    {
+        label: 'Setores com mais Alertas',
+        data: [],
+        fill: false,
+        tension: 0.1
+    }]
+};
+
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labelsSetor.push(registro.nomeSetor);
+    dadosSetor.datasets[0].data.push(registro.qtdRegistrosEmAlertaOuCritico);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labelsSetor)
+console.log('Dados:')
+console.log(dadosSetor.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const configSetor = {
+    type: 'doughnut',
+    data: dadosSetor,
+};
+
+
+// Adicionando gráfico criado em div na tela
+let myChartSetor = new Chart(
+    document.getElementById(`graficoSetor`),
+    configSetor
+);
+
+
+}
+
+
+
+
+
+// grafico de barras que mostra todas as tomadas e quantidade de alertas
+// Frontend JavaScript
+function obterDadosGraficoTomada(codigoIndustria) {
+    fetch(`/tomada/buscarTomadasGrafico`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ codigoIndustria: codigoIndustria })
+    })
+    .then(resposta => resposta.json()) // Convertendo resposta para JSON
+    .then(dados => {
+        console.log(`Dados recebidos:`, dados);
+        plotarGraficoTomada(dados, codigoIndustria); // Chamando função de plotagem com os dados convertidos
+    })
+    .catch(error => {
+        console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    });
+}
+
+
+
+function plotarGraficoTomada(dados, codigoIndustria) {
+    console.log('Iniciando plotagem do gráfico...');
+
+    let labelsTomada = [];
+    let dadosTomada = {
+        labels: labelsTomada,
+        datasets: [{
+            label: 'Quantidade de Alertas por Tomada',
+            data: [],
+            fill: false,
+            backgroundColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+
+    // Preenchendo os dados com as informações recebidas
+    dados.forEach(registro => {
+        labelsTomada.push(registro.descricaoTomada);
+        dadosTomada.datasets[0].data.push(registro.qtdProblemas);
+    });
+
+    const configTomada = {
+        type: 'bar',
+        data: dadosTomada,
+    };
+
+    // Verificando se o elemento canvas existe no DOM antes de criar o gráfico
+    let graficoTomadaCanvas = document.getElementById('graficoTomada');
+    if (graficoTomadaCanvas) {
+        let myChartTomada = new Chart(graficoTomadaCanvas, configTomada);
+    } else {
+        console.error('Elemento canvas "graficoTomada" não encontrado no HTML.');
+    }
+}
+
+</script>
