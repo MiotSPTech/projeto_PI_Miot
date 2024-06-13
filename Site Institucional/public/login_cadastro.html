@@ -296,13 +296,12 @@
 
     function cadastrar() {
         
-        if(validacoesCorretas.length == 8){
+        if(validacoesCorretas.length >= 8){
             //Recupere o valor da nova input pelo nome do id
             // Agora vá para o método fetch logo abaixo
             var nomeVar = input_nome.value;
             var emailVar = input_email.value;
             var senhaVar = input_senha.value;
-            var confirmacaoSenhaVar = input_repita_senha.value;
             var cargoVar = select_cargos.value;
             var codigoVar = input_codigo.value
             

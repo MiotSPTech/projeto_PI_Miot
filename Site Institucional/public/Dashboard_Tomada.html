@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/dash_setor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="exibirKPI(5), obterDadosGrafico(5)">
+  <nav class="menu_lateral">
+
+    <div class="btn_expansao">
+      <img src="Imagem/cutcircles.png">
+    </div>
+
+    <ul>
+      <li class="item_menu">
+        <a href="#">
+          <span class="icon"><i class="bi bi-speedometer"></i></span>
+          <span class="txt_link">Dashboard</span>
+        </a>
+      </li>
+      <li class="item_menu">
+        <a href="#">
+          <span class="icon"><i class="bi bi-calendar"></i></span>
+          <span class="txt_link">Historico de 30 dias</span>
+        </a>
+      </li>
+      <li class="item_menu">
+        <a href="#">
+          <span class="icon"><i class="bi bi-people"></i></span>
+          <span class="txt_link">Perfil</span>
+        </a>
+      </li>
+      <li class="item_menu">
+        <a href="#">
+          <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+          <span class="txt_link">Saida</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <!--Informação do usuario-->
+  <div class="container_usuario">
+    <div class="perfil">
+      <div class="tomada">
+        <b>Especificações da Tomada</b>
+      </div>
+    </div>
+      <div class="nome_perfil">
+        <img src="Imagem/avatar_perfil.png" alt="">
+        <div class="texto_usuario">
+        <p>Claudia Alves</p>
+          <b>Administrador</b>
+        </div>
+      </div>
+  </div>
+  <div class="linha"></div>
+
+  <!--kpi´s informativas-->
+  <div class="container_cards">
+    <div class="card_kpi_a">
+      <span>Tomadas em uso</span>
+      <h1>100/110</h1>
+    </div>
+
+    <div class="card_kpi_b">
+      <span>Tomadas em risco</span>
+      <h1>5/100</h1>
+    </div>
+
+    <div class="card_kpi_c">
+      <div class="temperatura">
+        <div class="temp_item">
+          <span>Temperatura</span>
+          <h1>25°C  50°  100°</h1>
+        </div>
+      </div>
+      <div class="umidade">
+        <div class="umid_item">
+          <span>Umidade 1</span>
+          <h1>20% 60% 80% </h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--cards de acompanhamento da dash-->
+  <div class="container_cards_acompanhamneto">
+    <div class="card_kpi_temperatura" id="kpi_temperatura">
+      
+    </div>
+
+    <div class="card_kpi_temperatura" id="kpi_umidade">
+      
+    </div>
+    
+  </div>
+  <!--As dashboard-->
+  <div class="dash_temperatura">
+    <canvas id="graficoTemperatura"></canvas>
+  </div>
+  <div class="dash_umidade">
+    <canvas id="graficoUmidade"></canvas>
+  </div>
+</body>
+</html>
+<script>
+
+let proximaAtualizacao;
+
+function exibirKPI(idTomada) {
+    fetch("/tomada/buscarUltimoRegistro", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idTomada: idTomada
+        })
+    })
+    .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+            return resposta.json(); 
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            alert("Houve um erro ao tentar realizar o login!");
+            throw new Error("Erro na resposta do servidor");
+        }
+    })
+    .then(function (dados) {
+        console.log(dados);
+
+        dados.forEach(item => {
+            document.getElementById("kpi_temperatura").innerHTML = `
+                <div class="imagem_span">
+                    <span>${item.leituraTemperatura}ºC</span>
+                    <img src="Imagem/termo.jpg">
+                </div>
+                <h1>${item.statusRegistro}</h1>`;
+
+            document.getElementById("kpi_umidade").innerHTML = `
+                    <div class="imagem_span2">
+                        <span>${item.leituraUmidade}%</span>
+                        <img src="Imagem/gotinha.jpg">
+                    </div>
+                    <h1>${item.statusRegistro}</h1>`;
+        });
+    })
+    .catch(function (erro) {
+        console.log(erro);
+    });
+
+    return false;
+}
+
+
+
+
+
+
+
+function obterDadosGrafico(idTomada) {
+
+
+if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
+}
+
+fetch(`/tomada/buscarDadosGrafico`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idTomada: idTomada
+            })
+}).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGrafico(resposta, idTomada);
+
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+
+
+function plotarGrafico(resposta, idTomada) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico - labels
+let labelsUmidade = [];
+let labelsTemperatura = [];
+
+// Criando estrutura para plotar gráfico - dados
+let dadosUmidade = {
+    labels: labelsUmidade,
+    datasets: [
+    {
+        label: 'Umidade',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(199, 52, 52)',
+        tension: 0.1
+    }]
+};
+
+let dadosTemperatura = {
+  labels: labelsTemperatura,
+    datasets: [{
+        label: 'Temperatura',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+    }]
+}
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labelsTemperatura.push(registro.horaRegistro);
+    labelsUmidade.push(registro.horaRegistro);
+    dadosUmidade.datasets[0].data.push(registro.leituraUmidade);
+    dadosTemperatura.datasets[0].data.push(registro.leituraTemperatura);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labelsUmidade)
+console.log(labelsTemperatura)
+console.log('Dados:')
+console.log(dadosUmidade.datasets)
+console.log(dadosTemperatura.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const configUmidade = {
+    type: 'line',
+    data: dadosUmidade,
+};
+
+const configTemperatura = {
+    type: 'line',
+    data: dadosTemperatura,
+};
+
+
+// Adicionando gráfico criado em div na tela
+let myChartUmidade = new Chart(
+    document.getElementById(`graficoUmidade`),
+    configUmidade
+);
+
+let myChartTemperatura = new Chart(
+    document.getElementById(`graficoTemperatura`),
+    configTemperatura
+);
+
+setTimeout(() => atualizarGrafico(idTomada, dadosUmidade, dadosTemperatura, myChartUmidade, myChartTemperatura), 2000);
+}
+
+
+
+
+function atualizarGrafico(idTomada, dadosUmidade, dadosTemperatura, myChartUmidade, myChartTemperatura) {
+
+
+
+fetch(`/tomada/buscarDadosGrafico`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idTomada: idTomada
+            })}).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            
+            // alertar(novoRegistro, idAquario);
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dadosUmidade);
+            console.log(dadosTemperatura);
+
+
+
+
+            if (novoRegistro[0].horaRegistro == dadosUmidade.labels[dadosUmidade.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dadosUmidade.labels[dadosUmidade.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dadosUmidade.labels.shift(); // apagar o primeiro
+                dadosUmidade.labels.push(novoRegistro[0].horaRegistro); // incluir um novo momento
+
+                // tirando e colocando valores no gráfico
+                dadosTemperatura.labels.shift(); // apagar o primeiro
+                dadosTemperatura.labels.push(novoRegistro[0].horaRegistro); // incluir um novo momento
+
+                dadosUmidade.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dadosUmidade.datasets[0].data.push(novoRegistro[0].leituraUmidade); // incluir uma nova medida de umidade
+
+                dadosTemperatura.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                dadosTemperatura.datasets[1].data.push(novoRegistro[0].leituraTemperatura); // incluir uma nova medida de temperatura
+
+                myChartUmidade.update();
+                myChartTemperatura.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            setTimeout(() => atualizarGrafico(idTomada, dadosUmidade, dadosTemperatura, myChartUmidade, myChartTemperatura), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        setTimeout(() => atualizarGrafico(idTomada, dadosUmidade, dadosTemperatura, myChartUmidade, myChartTemperatura), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -3,9 +3,9 @@ var router = express.Router();
 
 var tomadaController = require("../controllers/tomadaController");
 
-router.get("/buscarDadosGrafico", function (req, res) {
+router.post("/buscarDadosGrafico", function (req, res) {
   tomadaController.buscarDadosGrafico(req, res);
-});
+})
 
 router.post("/buscarUltimoRegistro", function (req, res) {
   tomadaController.buscarUltimoDadoRegistro(req, res);

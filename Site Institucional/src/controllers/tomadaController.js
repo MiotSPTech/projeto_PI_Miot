@@ -2,6 +2,7 @@ var tomadaModel = require("../models/tomadaModel");
 
 function buscarDadosGrafico(req, res) {
   var idTomada = req.body.idTomada;
+  console.log(idTomada)
 
   tomadaModel.buscarDadosGrafico(idTomada).then((resultado) => {
     if (resultado.length > 0) {

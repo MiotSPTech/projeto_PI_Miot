@@ -6,7 +6,7 @@ function buscarSetores(id) {
                       inner join tbSetor on tbSetor.codigoIndustria = tbIndustria.codigoIndustria
                       inner join tbTomada on tbTomada.idSetor = tbSetor.idSetor
                       inner join tbRegistro on tbRegistro.idTomada = tbTomada.idTomada
-                      where tbRegistro.statusRegistro IN ('Em Alerta', 'Critico') and tbIndustria.codigoIndustria = ${id}
+                      where tbRegistro.statusRegistro IN ('Em Alerta', 'Critico') and tbIndustria.codigoIndustria = '${id}'
                       order by tbRegistro.statusRegistro DESC;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
