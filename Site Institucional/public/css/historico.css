@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+/* estilo geral */
+*{
+    margin: 0; /*a margem da pagina*/
+    padding: 0; /*espaçamento que fica dentro dos elementos*/
+    box-sizing: border-box; /*para que tudo fique dentro da mesma "caixa"*/
+    font-family: "Poppins";
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-image: url(../Imagem/Design\ sem\ nome\ \(4\).png);
+    background-size: cover; /* Garante que a imagem cubra toda a área disponível */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center center; /* Centraliza a imagem no fundo */
+    background-attachment: fixed; /* Faz com que a imagem de fundo não role junto com a página */
+}
+
+.linha{
+    background-color: #000000;
+    height: 1px;
+    filter: opacity(8%);
+    margin-left: 186px;
+    width: 1348px;
+}
+
+.textdash{
+    margin-top: 35px;
+}
+
+:root{
+	--sidebar: #0E336D;
+	--detalhesAzul: #3C81D1;
+	--fundo: #eeeefa;
+	--quadrados: #fff;
+
+	--kpivermelhofundo: #CC4141;
+	--detalhesvermelho: #FF0000;
+
+	--kpiamarelofundo: #FF9A23;
+	--detalhesamarelo: #FFC700;
+
+	--kpiverdefundo: #1A932E;
+	--detalhesverde: #00FF29; 
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.conteudo{
+    height: 100%;
+    width: 70%;
+}
+
+/* Estilos do Conteúdo */
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 20px 5px 5px;
+    gap: 10px;
+}
+
+/* Estilos do Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 180px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-right: -210%;
+    margin-top: 25px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-title {
+    color: #666;
+}
+
+
+/* Estilos da Barra Lateral */
+.sidebar {
+    width: 100px;
+    height: 100%;
+    background-color: var(--sidebar);
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    box-shadow: 13.4945px 14.9939px 94.4613px rgba(0, 0, 0, 0.24);
+
+    overflow: hidden;
+    transition: .2s;
+    z-index: 1000;
+    padding: 20px 0px;
+    
+    padding-top: 50px;
+}
+
+.sidebar-icon{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adicionado espaço abaixo */
+}
+
+.sidebar-icon img {
+    width: 60px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    cursor: pointer;
+}
+
+/* .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 20px;
+} */
+
+nav.sidebar:hover{
+    width: 300px;
+}
+
+.sidebar-menu a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 10px;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* .iconSaida{
+    margin-left: 10px;
+} */
+
+.txt{
+    font-size: 18px;
+    font-family: "Poppins";
+}
+
+.txtIcon {
+    margin-left: 40px;
+}
+
+.sidebar-menu a .txt{
+    margin-left: 40px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.menu-item:hover{
+    background-color: var(--detalhesAzul);
+    margin-left: -5px;
+    border-radius: 2px;
+}
+
+.menu-item {
+    margin: 30px 0;
+    display: flex;
+    align-items: left;
+    transition: .5s;
+}
+
+.menu-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.container_cards_acompanhamneto{
+    position: absolute;
+    top: 150px;
+    left: -300px;
+    width:90%; /* largura total menos a largura da nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+  }
+
+  .card_kpi_temperatura{
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 100px 20px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+  }
+  .card_kpi_umidade{
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+  }
+
+.dash_temperatura{
+    position: absolute;
+    left: 110px; /* largura da nav, ajuste conforme necessário */
+    width: 80vw; /* Largura do gráfico */
+    height: 60vh; /* Altura do gráfico */
+  }
+  .dash_umidade{
+    position: absolute;
+    left: 110px; /* largura da nav, ajuste conforme necessário */  
+    width: 80vw; /* Largura do gráfico */
+    height: 60vh; /* Altura do gráfico */
+  }
