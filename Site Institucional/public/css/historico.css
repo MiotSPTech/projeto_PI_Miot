@@ -206,12 +206,10 @@ nav.sidebar:hover{
 }
 
 .container_cards_acompanhamneto{
-    position: absolute;
-    top: 150px;
-    left: -300px;
+    position: relative;
     width:90%; /* largura total menos a largura da nav */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     padding-top: 10px;
@@ -235,6 +233,9 @@ nav.sidebar:hover{
     flex-direction: column;
     align-items: center;
     background-color: #fff;
+    width: 30%;
+    margin-left: 10%;
+    margin-bottom: 5%;
   }
 
 .dash_temperatura{
@@ -245,7 +246,7 @@ nav.sidebar:hover{
   }
   .dash_umidade{
     position: absolute;
-    left: 110px; /* largura da nav, ajuste conforme necessário */  
+    left: 70%; /* largura da nav, ajuste conforme necessário */  
     width: 80vw; /* Largura do gráfico */
     height: 60vh; /* Altura do gráfico */
   }
