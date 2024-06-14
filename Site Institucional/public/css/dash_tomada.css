@@ -137,7 +137,7 @@ nav.menu_lateral:hover{
     top: 100px;
     left: 100px; /* largura da nav, ajuste conforme necessário */
     width:90%; /* largura total menos a largura da nav */
-    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
+    background: transparent; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -148,11 +148,13 @@ nav.menu_lateral:hover{
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
+    background-color: #fff;
 }
 .card_kpi_b{
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
+    background-color: #fff;
 }
 .card_kpi_c {
     border-radius: 12px;
@@ -162,6 +164,7 @@ nav.menu_lateral:hover{
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    background-color: #fff;
   }
   
   .temp_item span,
@@ -220,8 +223,8 @@ nav.menu_lateral:hover{
     position: absolute;
     top: 300px;
     left: 510px; /* largura da nav, ajuste conforme necessário */
-    width:90%; /* largura total menos a largura da nav */
-    background-color: #fff; /* cor de fundo, ajuste conforme necessário */
+    width: 90%; /* largura total menos a largura da nav */
+    background: transparent; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,6 +241,7 @@ nav.menu_lateral:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
   }
   .card_kpi_umidade{
     border-radius: 12px;
@@ -246,6 +250,7 @@ nav.menu_lateral:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
   }
   .imagem_span img{
     width: 200px;
@@ -277,6 +282,7 @@ nav.menu_lateral:hover{
     left: 110px; /* largura da nav, ajuste conforme necessário */
     width: 80vw; /* Largura do gráfico */
     height: 60vh; /* Altura do gráfico */
+    background: transparent;
   }
   .dash_umidade{
     position: absolute;

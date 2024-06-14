@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="css/dash_tomada.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/sessao.js"></script>
 </head>
-<body onload="exibirKPI(sessionStorage.TOMADA_ESCOLHIDA), obterDadosGrafico(sessionStorage.TOMADA_ESCOLHIDA)">
+<body onload="exibirKPI(sessionStorage.TOMADA_ESCOLHIDA), obterDadosGrafico(sessionStorage.TOMADA_ESCOLHIDA), validarSessao()">
   <nav class="menu_lateral">
 
     <div class="btn_expansao">
@@ -17,13 +18,13 @@
 
     <ul>
       <li class="item_menu">
-        <a href="#">
+        <a href="DashboardSetores.html">
           <span class="icon"><i class="bi bi-speedometer"></i></span>
           <span class="txt_link">Dashboard</span>
         </a>
       </li>
       <li class="item_menu">
-        <a href="#">
+        <a href="DashboardHistorico.html">
           <span class="icon"><i class="bi bi-calendar"></i></span>
           <span class="txt_link">Historico de 30 dias</span>
         </a>
@@ -35,7 +36,7 @@
         </a>
       </li>
       <li class="item_menu">
-        <a href="#">
+        <a onclick="limparSessao()">
           <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
           <span class="txt_link">Saida</span>
         </a>
@@ -54,8 +55,8 @@
       <div class="nome_perfil">
         <img src="Imagem/avatar_perfil.png" alt="">
         <div class="texto_usuario">
-        <p>Claudia Alves</p>
-          <b>Administrador</b>
+        <p id="nome_perfil"></p>
+          <b id="cargo_perfil"></b>
         </div>
       </div>
   </div>

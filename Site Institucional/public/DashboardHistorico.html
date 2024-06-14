@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/historico.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sessao.js"></script>
     <title>MIOT</title>
 </head>
-<body onload="exibirKPI(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoSetor(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoTomada(sessionStorage.CODIGO_INDUSTRIA)">
+<body onload="exibirKPI(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoSetor(sessionStorage.CODIGO_INDUSTRIA), obterDadosGraficoTomada(sessionStorage.CODIGO_INDUSTRIA), validarSessao()">
     
     <main>
             <!-- Barra Lateral -->
@@ -35,7 +36,7 @@
                         <img class="icon" src="Imagem/iconsDash/perfil.svg" alt="Perfil">
                         <span class="txt">Perfil</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a onclick="limparSessao()" class="menu-item">
                         <img class="iconSaida" src="Imagem/iconsDash/sair.svg" alt="Sair">
                         <span class="txt">Sair</span>
                     </a>
@@ -51,8 +52,8 @@
                     <div class="user-info">
                         <img src="Imagem/avatar_perfil.png" alt="Profile Picture">
                         <div class="user-text">
-                            <span class="user-name">Claudia Alves</span>
-                            <span class="user-title">Administrador</span>
+                            <span class="user-name" id="nome_perfil"></span>
+                            <span class="user-title" id="cargo_perfil"></span>
                         </div>
                     </div>
              </div>
