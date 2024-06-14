@@ -352,12 +352,13 @@ nav.sidebar:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }
 
 .setor-1{
     position: absolute;
-    width: 422px;
-    height: 250px;
+    width: 420px;
+    height: 230px;
     /* left: 310px;
     top: 455px; */
     border-radius: 12px;
@@ -379,9 +380,9 @@ nav.sidebar:hover{
 
 .setor-1 h1{
     font-family: "Poppins";
-    font-size: 60px;
-    margin-bottom: -25px;
-    margin-top: 50px;
+    font-size: 50px;
+    margin-bottom: 5px;
+    margin-top: 45px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -394,8 +395,8 @@ nav.sidebar:hover{
 
 .setor-2{
     position: absolute;
-    width: 422px;
-    height: 250px;
+    width: 420px;
+    height: 230px;
     right: 228px;
     top: 158px;
     border-radius: 12px;
@@ -422,9 +423,9 @@ nav.sidebar:hover{
 .setor-2 h1{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 60px;
-    margin-bottom: -25px;
-    margin-top: 50px;
+    font-size: 50px;
+    margin-bottom: 5px;
+    margin-top: 45px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -437,8 +438,8 @@ nav.sidebar:hover{
 
 .setor-3{
     position: absolute;
-    width: 422px;
-    height: 250px;
+    width: 420px;
+    height: 230px;
     right: 228px;
     top: 455px;
     border-radius: 12px;
@@ -465,9 +466,9 @@ nav.sidebar:hover{
 .setor-3 h1{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 60px;
-    margin-bottom: -25px;
-    margin-top: 50px;
+    font-size: 50px;
+    margin-bottom: 5px;
+    margin-top: 45px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
