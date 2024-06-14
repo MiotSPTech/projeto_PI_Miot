@@ -8,10 +8,16 @@
     <link rel="stylesheet" href="./css/dash_geral.css">
     <link rel="shortcut icon"  href="imagem/logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/sessao.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    <script src="js/notify.min.js"></script>
 
 </head>
 
-<body class="container" onload="exibirUltimosAlertas(sessionStorage.SETOR_ESCOLHIDA), exibirKPISetor(sessionStorage.SETOR_ESCOLHIDA)">
+<body class="container" onload="exibirUltimosAlertas(sessionStorage.SETOR_ESCOLHIDA), exibirKPISetor(sessionStorage.SETOR_ESCOLHIDA), validarSessao(), alertas(sessionStorage.SETOR_ESCOLHIDA)">
   <main>
     <!-- Barra Lateral -->
     <nav class="sidebar">
@@ -52,52 +58,54 @@
       <div class="user-info">
         <img src="./Imagem/avatar_perfil.png" alt="">
         <div class="user-text">
-        <p class="user-name" id="perfil"></p>
+        <p class="user-name" id="nome_perfil"></p>
           <b class="user-title" id="cargo_perfil"></b>
         </div>
       </div>
   </div>
 </div> 
   <div class="linha"></div>
+
+
+
+  <div class="alinhar">
+    <div class="card-kpi-b" id="info_setor">
+      
+    </div>
+
+    <div class="card-kpi-b" id="qtd_tomadas_alertas">
+      
+    </div>
+
+    <div class="card-kpi-b" id="qtd_tomadas_desligadas">
+      
+    </div>
+
+  </div>
+
+
+
+  <div class="alinhar alertas">
+
+    <div>
+      <h1>Últimos Alertas</h1>
+    </div>
+    
+
+    <div class="alinhar" id="kpi_alertas">
+
+    </div>
+
+  </div>
+
+</div>
 </main>
 
 
 
-          <div class="alinhar">
-            <div class="card-kpi-b" id="info_setor">
-              
-            </div>
-    
-            <div class="card-kpi-b" id="qtd_tomadas_alertas">
-              
-            </div>
-
-            <div class="card-kpi-b" id="qtd_tomadas_desligadas">
-              
-            </div>
-    
-          </div>
-
-
-
-          <div class="alinhar alertas">
-
-            <div>
-              <h1>Últimos Alertas</h1>
-            </div>
-            
-
-            <div class="alinhar" id="kpi_alertas">
-
-              
-              
-            </div>
-
-            </div>
+          
                
-    </div>
-
-  </div>
+    
 
 
 
@@ -226,4 +234,34 @@
 
     window.location = 'Dashboard_Tomada.html'
   }
+
+
+  function alertas(idSetor) {
+    
+    fetch("http://localhost:8080/setor/buscarTomadasporSetor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ idSetor: idSetor })
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            return resposta.json();
+        } else {
+            throw new Error("Erro na resposta do servidor");
+        }
+    })
+    .then(function (dados) {
+        dados.forEach(item => {
+            $.notify(`Warning: ${item.descricaoTomada} em estado ${item.statusRegistro}`, "warn");
+        });
+    })
+    .catch(function (erro) {
+        console.log("Erro na requisição:", erro);
+    });
+
+    // Descomente a linha abaixo para chamadas periódicas
+    // chamarNovoAlerta = setTimeout(() => alertas(idSetor), 2000);
+}
 </script>

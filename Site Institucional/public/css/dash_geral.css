@@ -59,12 +59,13 @@ main{
 .conteudo{
     height: 100%;
     width: 70%;
+    margin-left: 215px;
 }
 
 /* Estilos do Conteúdo */
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     padding: 5px 20px 5px 5px;
     gap: 10px;
@@ -74,7 +75,7 @@ main{
 .header {
     display: flex;
     justify-content: space-between;
-    margin-left: 180px;
+    margin-left: -700px;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -218,7 +219,7 @@ nav.sidebar:hover{
 
 .container {
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
     flex-direction: row;
 }
 .container .img_tomada{
@@ -265,9 +266,14 @@ nav.sidebar:hover{
     flex-direction: column;
 }
 
+
 .perfil {
     display: flex;
     justify-content: space-around;
+    margin: 0;
+}
+.perfil b{
+    font-size: 25px;
 }
 
 .nome_dashboard  {
