@@ -10,57 +10,55 @@
   <script src="../js/sessao.js"></script>
 </head>
 <body onload="exibirKPI(sessionStorage.TOMADA_ESCOLHIDA), obterDadosGrafico(sessionStorage.TOMADA_ESCOLHIDA), validarSessao()">
-  <nav class="menu_lateral">
-
-    <div class="btn_expansao">
-      <img src="Imagem/cutcircles.png">
-    </div>
-
-    <ul>
-      <li class="item_menu">
-        <a href="DashboardSetores.html">
-          <span class="icon"><i class="bi bi-speedometer"></i></span>
-          <span class="txt_link">Dashboard</span>
-        </a>
-      </li>
-      <li class="item_menu">
-        <a href="DashboardHistorico.html">
-          <span class="icon"><i class="bi bi-calendar"></i></span>
-          <span class="txt_link">Historico de 30 dias</span>
-        </a>
-      </li>
-      <li class="item_menu">
-        <a href="#">
-          <span class="icon"><i class="bi bi-people"></i></span>
-          <span class="txt_link">Perfil</span>
-        </a>
-      </li>
-      <li class="item_menu">
-        <a onclick="limparSessao()">
-          <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
-          <span class="txt_link">Saida</span>
-        </a>
-      </li>
-    </ul>
-
-  </nav>
+  <main>
+    <!-- Barra Lateral -->
+    <nav class="sidebar">
+        <div class="sidebar-icon">
+            <img src="./Imagem/cutcircles.png" alt="">
+        </div>
+        <div class="sidebar-menu">
+            <a href="DashboardSetores.html" class="menu-item">
+                <img class="icon" src="Imagem/iconsDash/dashtomada.svg" alt="DashTomada">
+                <span class="txt">Dashboard</span>
+            </a>
+            <a href="DashboardHistorico.html" class="menu-item">
+                <img class="icon" src="Imagem/iconsDash/historico.svg" alt="Historico">
+                <span class="txt">Historico de 30 dias</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img class="icon" src="Imagem/iconsDash/perfil.svg" alt="Perfil">
+                <span class="txt">Perfil</span>
+            </a>
+            <a onclick="limparSessao()" class="menu-item">
+                <img class="iconSaida" src="Imagem/iconsDash/sair.svg" alt="Sair">
+                <span class="txt">Sair</span>
+            </a>
+        </div>
+</nav>
 
   <!--Informação do usuario-->
+  <div class="conteudo">
+
+    <div class="content">
+        <div class="header">
   <div class="container_usuario">
     <div class="perfil">
-      <div class="tomada" id="nome_tomada">
+      <div class="textdash" id="nome_tomada">
         
       </div>
     </div>
-      <div class="nome_perfil">
+      <div class="user-info">
         <img src="Imagem/avatar_perfil.png" alt="">
-        <div class="texto_usuario">
-        <p id="nome_perfil"></p>
-          <b id="cargo_perfil"></b>
+        <div class="user-text">
+        <p class="user-name" id="nome_perfil"></p>
+          <b class="user-title" id="cargo_perfil"></b>
         </div>
       </div>
   </div>
+</div> 
   <div class="linha"></div>
+</main>
+
 
   <!--kpi´s informativas-->
   <div class="container_cards">
@@ -76,13 +74,13 @@
       <div class="temperatura">
         <div class="temp_item">
           <span>Temperatura</span>
-          <h1>25°C  50°  100°</h1>
+          <h1>60°C-65°C  65°C-70°C  >70°C</h1>
         </div>
       </div>
       <div class="umidade">
         <div class="umid_item">
-          <span>Umidade 1</span>
-          <h1>20% 60% 80% </h1>
+          <span>Umidade</span>
+          <h1><60% 60%-80% >80%</h1>
         </div>
       </div>
     </div>

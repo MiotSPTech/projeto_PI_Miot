@@ -1,15 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+/* estilo geral */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /*a margem da pagina*/
+    padding: 0; /*espaçamento que fica dentro dos elementos*/
+    box-sizing: border-box; /*para que tudo fique dentro da mesma "caixa"*/
+    font-family: "Poppins";
+}
+
+a{
+    text-decoration: none;
 }
 
 body{
-    height: 155vh;
-    display: flex;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
     background-image: url(../Imagem/Design\ sem\ nome\ \(4\).png);
     background-size: cover; /* Garante que a imagem cubra toda a área disponível */
     background-repeat: no-repeat; /* Evita que a imagem se repita */
@@ -17,117 +22,194 @@ body{
     background-attachment: fixed; /* Faz com que a imagem de fundo não role junto com a página */
 }
 
-nav.menu_lateral{
-    width: 80px;
-    height: 100%;
-    background-color: #0E336D;
-    padding: 40px 0px;
-    box-shadow: 13.4945px 14.9939px 94.4613px rgba(0, 0, 0, 0.24);
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    transition: .2s;
-    z-index: 1000;
+.linha{
+    background-color: #000000;
+    height: 1px;
+    filter: opacity(8%);
+    margin-left: 186px;
+    width: 1348px;
 }
 
-.btn_expansao{
+.textdash{
+    margin-top: 35px;
+}
+
+:root{
+	--sidebar: #0E336D;
+	--detalhesAzul: #3C81D1;
+	--fundo: #eeeefa;
+	--quadrados: #fff;
+
+	--kpivermelhofundo: #CC4141;
+	--detalhesvermelho: #FF0000;
+
+	--kpiamarelofundo: #FF9A23;
+	--detalhesamarelo: #FFC700;
+
+	--kpiverdefundo: #1A932E;
+	--detalhesverde: #00FF29; 
+}
+
+main{
     width: 100%;
-    padding-left: 10px 0;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; /* Adicionado espaço abaixo */
-}
-.btn_expansao img {
-    width: 60px; /* Ajuste o tamanho conforme necessário */
-    height: auto; /* Mantém a proporção da imagem */
-    cursor: pointer;
-}
-
-
-ul{
     height: 100%;
-    list-style-type: none;
+    position: relative;
 }
 
-ul li.item_menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 20px;
-    display: flex;
-    margin-bottom: 20px;
-    line-height: 40px;
-    display: flex;
-    align-items: center;
+.conteudo{
+    height: 100%;
+    width: 70%;
 }
 
-ul li.item_menu a .txt_link{
-    margin-left: 40px;
-    margin-left: 20px;
-    white-space: nowrap;
-    transition: opacity 0.2s;
-}
-
-span.icon{
-    font-size: 30px;
-    margin-left: 10px;
-}
-
-ul li.item_menu:hover{
-    background-color: #3C81D1;
-}
-ul li.item_menu{
-    transition: .5s;
-}
-nav.menu_lateral:hover{
-    width: 300px;
-}
-
-/*Informação do usuario*/
-
-.container_usuario{
-    position: absolute;
-    top: 0;
-    left: 100px; /* largura da nav, ajuste conforme necessário */
-    width:90%; /* largura total menos a largura da nav */
+/* Estilos do Conteúdo */
+.content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    padding-top: 10px;
+    padding: 5px 20px 5px 5px;
+    gap: 10px;
 }
-.tomada b{
-    font-size: 35px;
-}
-.nome_perfil{
-    width: 200px;
+
+/* Estilos do Cabeçalho */
+.header {
     display: flex;
-    margin-left: auto;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    border-radius: 12px;
+    justify-content: space-between;
+    margin-left: 180px;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 20px;
 }
-.nome_perfil img{
-    width: 70px;
-    margin-right: 5px;
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+
 }
-.texto_usuario{
+
+.user-info {
+  display: flex;
+  align-items: center;
+  left: 1220px;
+  top: 32px;
+
+  background-color: var(--quadrados);
+  padding: 5px 20px 5px 5px;
+  gap: 10px;
+  border-radius: 24px;
+  position: absolute;
+  width: 190px;
+  height: 53px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-text {
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
 }
 
-/*linha de divisão*/
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
 
-.linha {
-    width: 80%; /* Defina a largura conforme necessário */
-    height: 1px; /* Altura da linha */
-    background-color: #ccc; /* Cor da linha */
-    z-index: 999; /* Ajuste o z-index se necessário */
-    margin: 100px auto ;
+.user-title {
+    color: #666;
+}
+
+/* Estilos da Barra Lateral */
+.sidebar {
+  width: 100px;
+  height: 100%;
+  background-color: var(--sidebar);
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  box-shadow: 13.4945px 14.9939px 94.4613px rgba(0, 0, 0, 0.24);
+
+  overflow: hidden;
+  transition: .2s;
+  z-index: 1000;
+  padding: 20px 0px;
+  
+  padding-top: 50px;
+}
+
+.sidebar-icon{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Adicionado espaço abaixo */
+}
+
+.sidebar-icon img {
+  width: 60px; /* Ajuste o tamanho conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  cursor: pointer;
+}
+
+/* .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 20px;
+} */
+
+nav.sidebar:hover{
+  width: 300px;
+}
+
+.sidebar-menu a{
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 10px;
+  display: flex;
+  margin-bottom: 20px;
+  line-height: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* .iconSaida{
+  margin-left: 10px;
+} */
+
+.txt{
+  font-size: 18px;
+  font-family: "Poppins";
+}
+
+.txtIcon {
+  margin-left: 40px;
+}
+
+.sidebar-menu a .txt{
+  margin-left: 40px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.menu-item:hover{
+  background-color: var(--detalhesAzul);
+  margin-left: -5px;
+  border-radius: 2px;
+}
+
+.menu-item {
+  margin: 30px 0;
+  display: flex;
+  align-items: left;
+  transition: .5s;
+}
+
+.menu-item img {
+  width: 30px;
+  height: 30px;
 }
 
 /*cards informativos*/
@@ -137,7 +219,6 @@ nav.menu_lateral:hover{
     top: 100px;
     left: 100px; /* largura da nav, ajuste conforme necessário */
     width:90%; /* largura total menos a largura da nav */
-    background: transparent; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -148,28 +229,29 @@ nav.menu_lateral:hover{
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
-    background-color: #fff;
+    background-color: var(--quadrados);
 }
 .card_kpi_b{
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 50px 70px;
-    background-color: #fff;
+    background-color: var(--quadrados);
 }
 .card_kpi_c {
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 10px 80px;
+    padding: 0 0 10px 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--quadrados);
   }
   
   .temp_item span,
   .umid_item span {
-    font-size: 18px;
+    font-size: 15px;
+    margin-top: 10px;
     color: #000000;
     top: 0;
   }
@@ -192,11 +274,21 @@ nav.menu_lateral:hover{
   
   .temp_item h1 {
     color: white;
-    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
-    padding: 2px 15px;
+    background: linear-gradient(
+      90deg,
+      #00ff2a 0%,
+      #00ff2a 25%,
+      #ffc700 43%,
+      #ffc700 71%,
+      #ff0000 100%
+    );
+    padding: 2px 5px;
     border-radius: 10px;
-    font-size: 28px;
+    font-size: 15px;
     margin-top: 10px;
+
+    white-space: pre; /* Preserve os espaços em branco */
+    word-spacing: 5px; /* Ajuste conforme necessário */
   }
   
   /* Estilo padrão para umidade */
@@ -207,15 +299,27 @@ nav.menu_lateral:hover{
   
   .umid_item {
     padding: 0 20px;
+    justify-content: center;
   }
 
   .umid_item h1{
     color: white;
-    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
+    background: linear-gradient(
+      90deg,
+      #00ff2a 0%,
+      #00ff2a 2%,
+      #ffc700 38%,
+      #ffc700 67%,
+      #ff0000 100%
+    );
     padding: 2px 15px;
     border-radius: 10px;
-    font-size: 28px;
+    font-size: 15px;
     margin-top: 10px;
+    justify-content: center;
+
+    white-space: pre; /* Preserve os espaços em branco */
+    word-spacing: 20px; /* Ajuste conforme necessário */
   }
 
   /* card de acompanhamento de dash*/
@@ -224,7 +328,6 @@ nav.menu_lateral:hover{
     top: 300px;
     left: 510px; /* largura da nav, ajuste conforme necessário */
     width: 90%; /* largura total menos a largura da nav */
-    background: transparent; /* cor de fundo, ajuste conforme necessário */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -279,15 +382,20 @@ nav.menu_lateral:hover{
   .dash_temperatura{
     position: absolute;
     top: 290px;
-    left: 110px; /* largura da nav, ajuste conforme necessário */
-    width: 80vw; /* Largura do gráfico */
+    left: 130px; /* largura da nav, ajuste conforme necessário */
+    width: 55vw; /* Largura do gráfico */
     height: 60vh; /* Altura do gráfico */
-    background: transparent;
+    background: var(--quadrados);
+    border-radius: 12px;
+    padding: 20px;
   }
   .dash_umidade{
     position: absolute;
-    top: 700px;
-    left: 110px; /* largura da nav, ajuste conforme necessário */  
-    width: 80vw; /* Largura do gráfico */
+    top: 750px;
+    left: 130px; /* largura da nav, ajuste conforme necessário */  
+    width: 55vw; /* Largura do gráfico */
     height: 60vh; /* Altura do gráfico */
+    background: var(--quadrados);
+    border-radius: 12px;
+    padding: 20px;
   }

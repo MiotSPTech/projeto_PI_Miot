@@ -88,8 +88,16 @@ main{
 .user-info {
     display: flex;
     align-items: center;
-    margin-right: -370%;
-    margin-top: 25px;
+    left: 1220px;
+    top: 32px;
+
+    background-color: var(--quadrados);
+    padding: 5px 20px 5px 5px;
+    gap: 10px;
+    border-radius: 24px;
+    position: absolute;
+    width: 190px;
+    height: 53px;
 }
 
 .user-info img {
